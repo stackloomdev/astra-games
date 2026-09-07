@@ -57,6 +57,25 @@
   --space-15: 15px; --space-16: 16px; --space-22: 22px; --space-24: 24px;
   --space-32: 32px;
 
+  /* --- Script fallbacks -------------------------------------------------
+     Figtree carries Latin. Everything else resolves to the platform's own
+     face for that script: no multi-megabyte download, no thousand-rule
+     unicode-range table, and correct shaping for Arabic and Devanagari. */
+  --font-han-sc: "PingFang SC", "HarmonyOS Sans SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --font-han-jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    Meiryo, "Noto Sans CJK JP", "Source Han Sans JP", sans-serif;
+  --font-han-kr: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR",
+    "Source Han Sans KR", sans-serif;
+  --font-arabic: "SF Arabic", "Geeza Pro", "Segoe UI", "Noto Sans Arabic",
+    Tahoma, sans-serif;
+  --font-devanagari: "Kohinoor Devanagari", "Nirmala UI", "Noto Sans Devanagari",
+    sans-serif;
+  --font-cyrillic: -apple-system, "Segoe UI", "Noto Sans", Roboto, sans-serif;
+
+  /* Latin locales need no companion face. */
+  --font-script: -apple-system, system-ui, sans-serif;
+
   /* --- Motion ----------------------------------------------------------- */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
@@ -90,7 +109,7 @@
   --radius-card: var(--radius-card);
   --radius-large: var(--radius-large);
 
-  --font-sans: var(--font-figtree), var(--font-noto-sc), -apple-system,
+  --font-sans: var(--font-figtree), var(--font-script), -apple-system,
     system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -132,6 +151,15 @@
   letter-spacing: -0.028em;
 }
 
+/* Per-language script face. `:lang()` matches the document language and any
+   region subtag, so zh-CN, zh-TW and zh-Hans all resolve together. */
+:root:lang(zh) { --font-script: var(--font-han-sc); }
+:root:lang(ja) { --font-script: var(--font-han-jp); }
+:root:lang(ko) { --font-script: var(--font-han-kr); }
+:root:lang(ar) { --font-script: var(--font-arabic); }
+:root:lang(hi) { --font-script: var(--font-devanagari); }
+:root:lang(ru) { --font-script: var(--font-cyrillic); }
+
 /* ============================================================================
    Base
    ========================================================================= */
@@ -147,7 +175,7 @@ body {
   margin: 0;
   background: var(--palette-bg);
   color: var(--palette-text-primary);
-  font-family: var(--font-figtree), var(--font-noto-sc), -apple-system, system-ui, sans-serif;
+  font-family: var(--font-figtree), var(--font-script), -apple-system, system-ui, sans-serif;
   font-synthesis-weight: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -273,8 +301,10 @@ img, svg { display: block; max-width: 100%; }
 
 /* CJK has no word boundaries, so a display heading will otherwise break at an
    arbitrary character ("做完了，四 / 步就能挂上来"). Headings written as a series
-   of <span> phrases keep each phrase whole and only break between them. */
+   of <span> phrases keep each phrase whole and only break between them. Latin
+   locales are unaffected: an inline-block phrase still wraps internally. */
 .phrase > span { display: inline-block; }
+:where([lang^="zh"], [lang^="ja"], [lang^="ko"]) .phrase > span { white-space: nowrap; }
 
 /* Hide scrollbar on the category pill rail (Airbnb pattern) */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Built with GPT-6 Astra',
+    tagline: 'Games worth playing. Ideas worth building.',
+    description:
+      'A curated collection of games, interactive experiments and art sandboxes made with GPT-6 Astra. The catalogue tracks the upstream awesome-gpt-6-astra list in real time.',
+  },
+  nav: { works: 'Catalogue', how: 'Get listed', about: 'About', language: 'Language', skipToContent: 'Skip to content' },
+  hero: {
+    liveBadge: 'Catalogue tracks the upstream README live',
+    staleBadge: 'Showing the most recent cached catalogue',
+    headline: ['Games worth playing.', 'Ideas worth building.'],
+    lead: 'Games, interactive experiments and art sandboxes made with GPT-6 Astra. Every entry says what you play, where to play it, and what the model actually did.',
+    browse: 'Browse the catalogue',
+    submit: 'Submit your work',
+    statWorks: 'Listed works',
+    statAuthors: 'Creators',
+    statPlayable: 'Playable now',
+    lastChecked: 'Last checked',
+  },
+  marquee: ['One-button flight', 'Soft-body physics', 'Island tower defence', 'Kart racing', 'Particle art', 'Spherical worlds', 'Procedural art', 'Web Audio', 'Three.js', 'Canvas 2D', 'Raw WebGL', 'One-shot tests', 'Iterative builds'],
+  works: {
+    eyebrow: 'Catalogue',
+    heading: ['Everything here is playable —', 'not a pile of dead links'],
+    lead: 'The catalogue is parsed straight from {readme}. Additions and edits upstream show up here within minutes; this site keeps no second copy of the list.',
+    upstreamReadme: 'the upstream README',
+    search: 'Search works, creators or mechanics',
+    emptyTitle: 'Nothing matches',
+    emptyBody: 'Try another keyword, or',
+    reset: 'reset the filters',
+    categories: { all: 'All', game: 'Games', experiment: 'Experiments & art', app: 'Apps', tool: 'Tools', website: 'Sites', other: 'Other' },
+  },
+  card: { playable: 'Playable', open: 'Open', viewSource: 'Source', by: 'by', screenshotAlt: 'gameplay screenshot', details: 'Details' },
+  criteria: {
+    eyebrow: 'What gets listed',
+    heading: ['A good entry tells you', 'what you are getting into'],
+    lead: 'Every work is recorded against the same fields, so an entry is never just a link and a marketing line.',
+    rows: [
+      { term: 'Work and creator', detail: 'The title, plus a link to the original creator or team.' },
+      { term: 'What you do', detail: 'One sentence on the core mechanic. No vague promotion.' },
+      { term: 'Where to play', detail: 'A live demo, or a public source repository with run instructions.' },
+      { term: 'Real screenshot', detail: 'At least one genuine capture of the core gameplay, publicly reachable.' },
+      { term: 'Platform and terms', detail: 'Browser / desktop / mobile, and any payment, login or hardware requirement.' },
+      { term: 'What Astra did', detail: 'A creator statement, dev log or public record of the model’s involvement.' },
+      { term: 'Build notes', detail: 'Source, stack and process — as much as the creator can share.' },
+    ],
+    note: 'Model usage is recorded from what creators state publicly; unsupported attribution is never written up as established fact. Playable prototypes are welcome, and open source is not a requirement.',
+  },
+  how: {
+    eyebrow: 'Get listed',
+    heading: ['Built something?', 'Four steps to get it up'],
+    lead: 'This is a community list. Anyone can nominate their own work or someone else’s, as long as the original creator is credited.',
+    cta: 'Submit a work',
+    steps: [
+      { title: 'Build something people can try', body: 'Games, interactive experiments and art sandboxes all count. Prototypes are fine, open source is optional — but it has to actually run.' },
+      { title: 'Leave a trace of Astra', body: 'A dev log, the original prompts, an iteration record — anything showing which parts GPT-6 Astra worked on. Unsupported claims are not written up as fact.' },
+      { title: 'Open one issue', body: 'Include a demo link or a source repo with run instructions, one real screenshot, and the platform and access requirements.' },
+      { title: 'Merged upstream, live here', body: 'Once the upstream README merges, this site follows within minutes. Nobody has to touch the website data again.' },
+    ],
+  },
+  cta: {
+    heading: ['What did you build', 'with Astra?'],
+    lead: 'A working prototype is enough. Say what it does, where to try it and what the model contributed — the catalogue handles the rest.',
+    submit: 'Submit your work',
+    github: 'View on GitHub',
+  },
+  detail: {
+    back: 'Back to catalogue',
+    play: 'Play it',
+    source: 'View source',
+    repository: 'Repository',
+    author: 'Creator',
+    category: 'Category',
+    listedUnder: 'Listed under',
+    notFound: 'That work is not in the catalogue',
+    notFoundBody: 'It may have been removed upstream, or the link may have changed.',
+    upstreamNote: 'Everything on this page comes from the upstream README. This site does not edit it.',
+    otherWorks: 'Keep looking',
+    metadata: 'Details',
+  },
+  footer: {
+    disclaimer: 'A community-maintained list of work made with GPT-6 Astra. Not affiliated with OpenAI. Being listed means worth exploring — it is not a benchmark or an endorsement.',
+    license: 'The list’s own text and visuals are released under CC0 1.0. Linked works remain under their own licences.',
+    catalogue: 'Catalogue',
+    participate: 'Take part',
+    project: 'Project',
+    links: {
+      works: 'Catalogue', how: 'Get listed', upstream: 'Upstream README', submit: 'Submit a game',
+      brokenLink: 'Report a broken link', contributing: 'Contributing guide', mainRepo: 'Main repository', siteSource: 'Website source',
+    },
+  },
+};
+
+export default dictionary;

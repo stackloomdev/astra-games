@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Feito com GPT-6 Astra',
+    tagline: 'Jogos que valem a pena. Ideias que valem ser construídas.',
+    description:
+      'Uma seleção de jogos, experimentos interativos e sandboxes artísticos feitos com GPT-6 Astra. O catálogo acompanha em tempo real a lista original awesome-gpt-6-astra.',
+  },
+  nav: { works: 'Catálogo', how: 'Como entrar', about: 'Sobre', language: 'Idioma', skipToContent: 'Pular para o conteúdo' },
+  hero: {
+    liveBadge: 'O catálogo acompanha o README original ao vivo',
+    staleBadge: 'Exibindo o catálogo mais recente em cache',
+    headline: ['Jogos que valem a pena.', 'Ideias que valem ser construídas.'],
+    lead: 'Jogos, experimentos interativos e sandboxes artísticos feitos com GPT-6 Astra. Cada entrada diz o que você joga, onde jogar e o que o modelo realmente fez.',
+    browse: 'Ver o catálogo',
+    submit: 'Envie seu trabalho',
+    statWorks: 'Trabalhos listados',
+    statAuthors: 'Criadores',
+    statPlayable: 'Jogáveis agora',
+    lastChecked: 'Última verificação',
+  },
+  marquee: ['Voo de um botão', 'Física de corpo mole', 'Tower defense na ilha', 'Corrida de karts', 'Arte de partículas', 'Mundos esféricos', 'Arte procedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL puro', 'Testes one-shot', 'Desenvolvimento iterativo'],
+  works: {
+    eyebrow: 'Catálogo',
+    heading: ['Aqui tudo é jogável mesmo —', 'não é uma pilha de links mortos'],
+    lead: 'O catálogo é lido direto de {readme}. Adições e correções na origem aparecem aqui em minutos; este site não guarda uma segunda cópia da lista.',
+    upstreamReadme: 'o README original',
+    search: 'Buscar trabalhos, criadores ou mecânicas',
+    emptyTitle: 'Nada corresponde',
+    emptyBody: 'Tente outra palavra-chave, ou',
+    reset: 'limpe os filtros',
+    categories: { all: 'Tudo', game: 'Jogos', experiment: 'Experimentos e arte', app: 'Apps', tool: 'Ferramentas', website: 'Sites', other: 'Outros' },
+  },
+  card: { playable: 'Jogável', open: 'Abrir', viewSource: 'Código', by: 'por', screenshotAlt: 'captura do jogo', details: 'Detalhes' },
+  criteria: {
+    eyebrow: 'O que entra na lista',
+    heading: ['Uma boa entrada diz', 'no que você está se metendo'],
+    lead: 'Todo trabalho é registrado com os mesmos campos, para que uma entrada nunca seja só um link e uma frase de propaganda.',
+    rows: [
+      { term: 'Trabalho e criador', detail: 'O título e um link para o criador ou equipe original.' },
+      { term: 'O que se faz', detail: 'Uma frase sobre a mecânica central. Sem promoção vaga.' },
+      { term: 'Onde jogar', detail: 'Uma demo pública, ou um repositório público com instruções de execução.' },
+      { term: 'Captura real', detail: 'Pelo menos uma captura genuína do núcleo do jogo, publicamente acessível.' },
+      { term: 'Plataforma e condições', detail: 'Navegador / desktop / mobile, e qualquer exigência de pagamento, login ou hardware.' },
+      { term: 'O que a Astra fez', detail: 'Uma declaração do criador, um log de desenvolvimento ou um registro público.' },
+      { term: 'Notas de construção', detail: 'Código, stack e processo — tudo o que o criador puder compartilhar.' },
+    ],
+    note: 'O uso do modelo é registrado conforme o que os criadores declaram publicamente; atribuição sem base nunca é apresentada como fato estabelecido. Protótipos jogáveis são bem-vindos e código aberto não é exigido.',
+  },
+  how: {
+    eyebrow: 'Como entrar',
+    heading: ['Construiu alguma coisa?', 'Quatro passos e está no ar'],
+    lead: 'Esta é uma lista comunitária. Qualquer pessoa pode indicar o próprio trabalho ou o de outra, desde que o criador original seja creditado.',
+    cta: 'Enviar um trabalho',
+    steps: [
+      { title: 'Faça algo que dê para experimentar', body: 'Jogos, experimentos interativos e sandboxes artísticos valem. Protótipos são bem-vindos e código aberto é opcional — mas precisa rodar de verdade.' },
+      { title: 'Deixe rastro da Astra', body: 'Um log de desenvolvimento, os prompts originais, um histórico de iterações — algo que mostre em que partes o GPT-6 Astra trabalhou. Sem base, nada vira fato.' },
+      { title: 'Abra uma issue', body: 'Com link da demo ou repositório com instruções, uma captura real, e a plataforma e condições de acesso.' },
+      { title: 'Mesclado na origem, no ar aqui', body: 'Quando o README original é mesclado, este site acompanha em minutos. Ninguém precisa mexer nos dados do site.' },
+    ],
+  },
+  cta: {
+    heading: ['O que você construiu', 'com a Astra?'],
+    lead: 'Um protótipo que funciona já basta. Diga o que ele faz, onde experimentar e o que o modelo contribuiu — o catálogo cuida do resto.',
+    submit: 'Envie seu trabalho',
+    github: 'Ver no GitHub',
+  },
+  detail: {
+    back: 'Voltar ao catálogo',
+    play: 'Jogar',
+    source: 'Ver o código',
+    repository: 'Repositório',
+    author: 'Criador',
+    category: 'Categoria',
+    listedUnder: 'Seção original',
+    notFound: 'Esse trabalho não está no catálogo',
+    notFoundBody: 'Ele pode ter sido removido na origem, ou o link pode ter mudado.',
+    upstreamNote: 'Todo o conteúdo desta página vem do README original. Este site não o edita.',
+    otherWorks: 'Continuar explorando',
+    metadata: 'Ficha',
+  },
+  footer: {
+    disclaimer: 'Lista mantida pela comunidade de trabalhos feitos com GPT-6 Astra. Sem vínculo com a OpenAI. Estar na lista significa que vale explorar — não é benchmark nem recomendação oficial.',
+    license: 'O texto e os visuais da própria lista são publicados sob CC0 1.0. Os trabalhos vinculados mantêm suas próprias licenças.',
+    catalogue: 'Catálogo',
+    participate: 'Participar',
+    project: 'Projeto',
+    links: {
+      works: 'Catálogo', how: 'Como entrar', upstream: 'README original', submit: 'Enviar um jogo',
+      brokenLink: 'Relatar link quebrado', contributing: 'Guia de contribuição', mainRepo: 'Repositório principal', siteSource: 'Código do site',
+    },
+  },
+};
+
+export default dictionary;

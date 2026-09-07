@@ -1,5 +1,6 @@
 interface MarqueeProps {
   items: string[];
+  label: string;
   durationSeconds?: number;
 }
 
@@ -8,11 +9,11 @@ interface MarqueeProps {
  * exactly -50%, so the loop is seamless without measuring anything at runtime.
  * The duplicate is hidden from assistive tech.
  */
-export default function Marquee({ items, durationSeconds = 46 }: MarqueeProps) {
+export default function Marquee({ items, label, durationSeconds = 46 }: MarqueeProps) {
   const row = (ariaHidden: boolean) => (
     <ul
       className="flex shrink-0 items-center"
-      {...(ariaHidden ? { 'aria-hidden': 'true' } : { 'aria-label': '收录主题' })}
+      {...(ariaHidden ? { 'aria-hidden': 'true' } : { 'aria-label': label })}
     >
       {items.map((item, index) => (
         <li key={`${item}-${index}`} className="flex items-center">

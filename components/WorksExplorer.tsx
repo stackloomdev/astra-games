@@ -3,7 +3,8 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useMemo, useState } from 'react';
 import type { Work, WorkCategory } from '@/lib/catalog';
-import { CATEGORIES } from '@/lib/taxonomy';
+import type { Dictionary, Locale } from '@/lib/i18n';
+import { CATEGORY_ORDER } from '@/lib/taxonomy';
 import WorkCard from './WorkCard';
 
 type Filter = WorkCategory | 'all';
@@ -14,7 +15,15 @@ type Filter = WorkCategory | 'all';
  * grid re-flows with a layout animation, which collapses to an instant swap
  * under reduced motion.
  */
-export default function WorksExplorer({ works }: { works: Work[] }) {
+export default function WorksExplorer({
+  works,
+  dict,
+  locale,
+}: {
+  works: Work[];
+  dict: Dictionary;
+  locale: Locale;
+}) {
   const [filter, setFilter] = useState<Filter>('all');
   const [query, setQuery] = useState('');
   const reduceMotion = useReducedMotion();
@@ -26,7 +35,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   }, [works]);
 
   // Categories with no entries are hidden rather than shown as dead pills.
-  const rail = CATEGORIES.filter((category) => (counts.get(category.id) ?? 0) > 0);
+  const rail = CATEGORY_ORDER.filter((category) => (counts.get(category) ?? 0) > 0);
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -46,16 +55,16 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         <div
           className="no-scrollbar -mx-1 flex items-center gap-1 overflow-x-auto px-1"
           role="tablist"
-          aria-label="作品分类"
+          aria-label={dict.works.eyebrow}
         >
           {rail.map((category) => {
-            const active = filter === category.id;
+            const active = filter === category;
             return (
               <button
-                key={category.id}
+                key={category}
                 role="tab"
                 aria-selected={active}
-                onClick={() => setFilter(category.id)}
+                onClick={() => setFilter(category)}
                 className={`relative shrink-0 rounded-[var(--radius-standard)] px-[14px] py-[9px] t-body-med transition-colors duration-200 ${
                   active
                     ? 'text-[var(--palette-text-primary)]'
@@ -63,13 +72,13 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-[7px]">
-                  {category.zh}
+                  {dict.works.categories[category]}
                   <span
                     className={`t-badge tabular-nums ${
                       active ? 'text-[var(--palette-rausch)]' : 'text-[var(--palette-text-tertiary)]'
                     }`}
                   >
-                    {counts.get(category.id) ?? 0}
+                    {counts.get(category) ?? 0}
                   </span>
                 </span>
                 {active ? (
@@ -90,7 +99,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         </div>
 
         <label className="relative flex w-full items-center lg:w-[300px]">
-          <span className="sr-only">搜索作品</span>
+          <span className="sr-only">{dict.works.search}</span>
           <svg
             viewBox="0 0 16 16"
             width="15"
@@ -99,7 +108,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
             stroke="currentColor"
             strokeWidth="1.8"
             aria-hidden="true"
-            className="pointer-events-none absolute left-[14px] text-[var(--palette-text-tertiary)]"
+            className="pointer-events-none absolute start-[14px] text-[var(--palette-text-tertiary)]"
           >
             <circle cx="7" cy="7" r="4.6" />
             <path d="M10.6 10.6L14 14" strokeLinecap="round" />
@@ -107,8 +116,8 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索作品、作者或玩法"
-            className="w-full rounded-[var(--radius-large)] border border-[var(--palette-border)] bg-[var(--palette-bg-raised)] py-[11px] pl-10 pr-4 t-body text-[var(--palette-text-primary)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--palette-text-tertiary)] focus:border-[var(--palette-rausch)] focus:shadow-[0_0_0_2px_rgb(255_56_92/0.22)]"
+            placeholder={dict.works.search}
+            className="w-full rounded-[var(--radius-large)] border border-[var(--palette-border)] bg-[var(--palette-bg-raised)] py-[11px] pe-4 ps-10 t-body text-[var(--palette-text-primary)] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--palette-text-tertiary)] focus:border-[var(--palette-rausch)] focus:shadow-[0_0_0_2px_rgb(255_56_92/0.22)]"
           />
         </label>
       </div>
@@ -138,16 +147,16 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
                 }
                 className="h-full"
               >
-                <WorkCard work={work} index={index} />
+                <WorkCard work={work} index={index} dict={dict} locale={locale} />
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
       ) : (
         <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--palette-border-strong)] py-20 text-center">
-          <p className="t-feature">没有匹配的作品</p>
+          <p className="t-feature">{dict.works.emptyTitle}</p>
           <p className="t-body mt-2 text-[var(--palette-text-secondary)]">
-            换个关键词，或者{' '}
+            {dict.works.emptyBody}{' '}
             <button
               onClick={() => {
                 setQuery('');
@@ -155,7 +164,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
               }}
               className="text-[var(--palette-rausch)] underline underline-offset-4"
             >
-              重置筛选
+              {dict.works.reset}
             </button>
           </p>
         </div>

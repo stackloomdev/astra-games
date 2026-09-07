@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Dibuat dengan GPT-6 Astra',
+    tagline: 'Game yang layak dimainkan. Ide yang layak dibangun.',
+    description:
+      'Kumpulan pilihan game, eksperimen interaktif, dan sandbox seni yang dibuat dengan GPT-6 Astra. Katalog mengikuti daftar hulu awesome-gpt-6-astra secara real time.',
+  },
+  nav: { works: 'Katalog', how: 'Cara masuk daftar', about: 'Tentang', language: 'Bahasa', skipToContent: 'Lompat ke konten' },
+  hero: {
+    liveBadge: 'Katalog mengikuti README hulu secara langsung',
+    staleBadge: 'Menampilkan katalog tersimpan terakhir',
+    headline: ['Game yang layak dimainkan.', 'Ide yang layak dibangun.'],
+    lead: 'Game, eksperimen interaktif, dan sandbox seni yang dibuat dengan GPT-6 Astra. Setiap entri menjelaskan apa yang dimainkan, di mana memainkannya, dan apa yang benar-benar dikerjakan modelnya.',
+    browse: 'Lihat katalog',
+    submit: 'Kirim karyamu',
+    statWorks: 'Karya terdaftar',
+    statAuthors: 'Kreator',
+    statPlayable: 'Bisa langsung dimainkan',
+    lastChecked: 'Terakhir diperiksa',
+  },
+  marquee: ['Terbang satu tombol', 'Fisika soft-body', 'Tower defense pulau', 'Balap gokart', 'Seni partikel', 'Dunia berbentuk bola', 'Seni prosedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL murni', 'Uji one-shot', 'Pengembangan iteratif'],
+  works: {
+    eyebrow: 'Katalog',
+    heading: ['Semua di sini benar-benar bisa dimainkan —', 'bukan tumpukan tautan mati'],
+    lead: 'Katalog dibaca langsung dari {readme}. Penambahan dan perubahan di hulu muncul di sini dalam hitungan menit; situs ini tidak menyimpan salinan kedua dari daftarnya.',
+    upstreamReadme: 'README hulu',
+    search: 'Cari karya, kreator, atau mekanik',
+    emptyTitle: 'Tidak ada yang cocok',
+    emptyBody: 'Coba kata kunci lain, atau',
+    reset: 'atur ulang filter',
+    categories: { all: 'Semua', game: 'Game', experiment: 'Eksperimen & seni', app: 'Aplikasi', tool: 'Alat', website: 'Situs', other: 'Lainnya' },
+  },
+  card: { playable: 'Bisa dimainkan', open: 'Buka', viewSource: 'Kode', by: 'oleh', screenshotAlt: 'tangkapan layar permainan', details: 'Detail' },
+  criteria: {
+    eyebrow: 'Yang masuk daftar',
+    heading: ['Entri yang baik memberi tahu', 'apa yang akan kamu hadapi'],
+    lead: 'Setiap karya dicatat memakai kolom yang sama, supaya sebuah entri tidak pernah tinggal satu tautan dan satu kalimat promosi.',
+    rows: [
+      { term: 'Karya dan kreator', detail: 'Judulnya, plus tautan ke kreator atau tim aslinya.' },
+      { term: 'Inti permainan', detail: 'Satu kalimat tentang mekanik utamanya. Tanpa promosi yang mengambang.' },
+      { term: 'Tempat mencobanya', detail: 'Demo publik, atau repositori sumber publik dengan petunjuk menjalankan.' },
+      { term: 'Tangkapan layar asli', detail: 'Minimal satu tangkapan nyata dari inti permainan, dapat diakses publik.' },
+      { term: 'Platform dan syarat', detail: 'Peramban / desktop / seluler, serta kebutuhan pembayaran, login, atau perangkat khusus.' },
+      { term: 'Peran Astra', detail: 'Pernyataan kreator, catatan pengembangan, atau jejak publik keterlibatan model.' },
+      { term: 'Catatan pembuatan', detail: 'Kode, tumpukan teknologi, dan prosesnya — sebanyak yang bisa dibagikan kreator.' },
+    ],
+    note: 'Penggunaan model dicatat berdasarkan pernyataan publik kreator; atribusi tanpa dasar tidak pernah ditulis sebagai fakta yang sudah pasti. Prototipe yang bisa dimainkan diterima, dan sumber terbuka bukan syarat.',
+  },
+  how: {
+    eyebrow: 'Cara masuk daftar',
+    heading: ['Sudah membangun sesuatu?', 'Empat langkah dan tayang'],
+    lead: 'Ini daftar komunitas. Siapa pun boleh mengusulkan karyanya sendiri atau karya orang lain, asalkan kreator aslinya dicantumkan.',
+    cta: 'Kirim karya',
+    steps: [
+      { title: 'Buat sesuatu yang bisa dicoba', body: 'Game, eksperimen interaktif, dan sandbox seni semuanya dihitung. Prototipe diterima, sumber terbuka opsional — tapi harus benar-benar jalan.' },
+      { title: 'Tinggalkan jejak Astra', body: 'Catatan pengembangan, prompt aslinya, riwayat iterasi — apa pun yang menunjukkan bagian mana yang dikerjakan GPT-6 Astra. Yang tanpa dasar tidak ditulis sebagai fakta.' },
+      { title: 'Buka satu issue', body: 'Sertakan tautan demo atau repositori dengan petunjuk menjalankan, satu tangkapan layar asli, serta platform dan syarat aksesnya.' },
+      { title: 'Ter-merge di hulu, tayang di sini', body: 'Begitu README hulu ter-merge, situs ini menyusul dalam hitungan menit. Tidak ada yang perlu menyentuh data situs lagi.' },
+    ],
+  },
+  cta: {
+    heading: ['Apa yang kamu bangun', 'dengan Astra?'],
+    lead: 'Prototipe yang jalan sudah cukup. Sebutkan apa fungsinya, di mana mencobanya, dan apa kontribusi modelnya — sisanya diurus katalog.',
+    submit: 'Kirim karyamu',
+    github: 'Lihat di GitHub',
+  },
+  detail: {
+    back: 'Kembali ke katalog',
+    play: 'Mainkan',
+    source: 'Lihat kode',
+    repository: 'Repositori',
+    author: 'Kreator',
+    category: 'Kategori',
+    listedUnder: 'Bagian di hulu',
+    notFound: 'Karya itu tidak ada di katalog',
+    notFoundBody: 'Mungkin sudah dihapus di hulu, atau tautannya berubah.',
+    upstreamNote: 'Semua isi halaman ini berasal dari README hulu. Situs ini tidak menyuntingnya.',
+    otherWorks: 'Lanjut menjelajah',
+    metadata: 'Info karya',
+  },
+  footer: {
+    disclaimer: 'Daftar karya buatan GPT-6 Astra yang dikelola komunitas. Tidak berafiliasi dengan OpenAI. Masuk daftar berarti layak dijelajahi — bukan tolok ukur maupun rekomendasi resmi.',
+    license: 'Teks dan visual milik daftar ini dirilis di bawah CC0 1.0. Karya yang ditautkan tetap memakai lisensinya masing-masing.',
+    catalogue: 'Katalog',
+    participate: 'Ikut serta',
+    project: 'Proyek',
+    links: {
+      works: 'Katalog', how: 'Cara masuk daftar', upstream: 'README hulu', submit: 'Kirim game',
+      brokenLink: 'Laporkan tautan rusak', contributing: 'Panduan kontribusi', mainRepo: 'Repositori utama', siteSource: 'Kode situs',
+    },
+  },
+};
+
+export default dictionary;

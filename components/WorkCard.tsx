@@ -2,27 +2,31 @@
 
 import { useRef, useState } from 'react';
 import type { Work } from '@/lib/catalog';
-import { gradientFor, hostOf, monogram } from '@/lib/taxonomy';
-
-const CATEGORY_LABEL: Record<string, string> = {
-  game: '游戏',
-  experiment: '实验 · 艺术',
-  app: '应用',
-  tool: '工具',
-  website: '网站',
-  other: '作品',
-};
+import type { Dictionary, Locale } from '@/lib/i18n';
+import { previewPath } from '@/lib/preview-version';
+import { gradientFor, monogram } from '@/lib/taxonomy';
+import { workHref } from '@/lib/work-url';
 
 /**
  * Airbnb listing-card geometry — 20px radius, three-layer shadow, image area on
  * top, details below — with a pointer-tracked tilt and spotlight. The tilt is
  * suppressed on touch and under reduced motion; the card is a plain link there.
  */
-export default function WorkCard({ work, index }: { work: Work; index: number }) {
+interface WorkCardProps {
+  work: Work;
+  index: number;
+  dict: Dictionary;
+  locale: Locale;
+}
+
+export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
   const ref = useRef<HTMLElement>(null);
-  const [imageFailed, setImageFailed] = useState(false);
-  const href = work.demoUrl ?? work.sourceUrl ?? '#';
-  const showImage = Boolean(work.imageUrl) && !imageFailed;
+  const [coverFailed, setCoverFailed] = useState(false);
+  const href = workHref(locale, work);
+  // /api/preview walks author artwork → verified screenshot → the demo page's
+  // Open Graph image → the GitHub repository card, and 404s when it finds
+  // nothing. Only that 404 falls through to the generated cover below.
+  const cover = previewPath(work, locale);
 
   const interactive = () =>
     typeof window !== 'undefined' &&
@@ -61,16 +65,16 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
       >
         {/* --- Cover ---------------------------------------------------- */}
         <div className="relative aspect-[16/10] overflow-hidden bg-[var(--palette-bg-inset)]">
-          {showImage ? (
-            // Upstream artwork is arbitrary remote media, so it stays a plain
-            // <img> rather than going through the Next image optimizer.
+          {!coverFailed ? (
+            // The cover is arbitrary remote media proxied through our own route,
+            // so it stays a plain <img> rather than the Next image optimizer.
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={work.imageUrl as string}
-              alt={`${work.name} 实机画面`}
+              src={cover}
+              alt={`${work.name} — ${dict.card.screenshotAlt}`}
               loading="lazy"
               decoding="async"
-              onError={() => setImageFailed(true)}
+              onError={() => setCoverFailed(true)}
               className="h-full w-full object-cover transition-transform duration-700 [transition-timing-function:var(--ease-out-soft)] group-hover:scale-[1.07]"
             />
           ) : (
@@ -93,14 +97,14 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
             className="absolute inset-0 bg-gradient-to-t from-[var(--palette-bg-raised)] via-transparent to-transparent"
           />
 
-          <span className="absolute left-3 top-3 rounded-[var(--radius-badge)] bg-black/55 px-[10px] py-[5px] t-badge text-white backdrop-blur-sm">
-            {CATEGORY_LABEL[work.category] ?? '作品'}
+          <span className="absolute start-3 top-3 rounded-[var(--radius-badge)] bg-black/55 px-[10px] py-[5px] t-badge text-white backdrop-blur-sm">
+            {dict.works.categories[work.category] ?? dict.works.categories.other}
           </span>
 
           {work.demoUrl ? (
-            <span className="absolute right-3 top-3 flex items-center gap-[6px] rounded-[var(--radius-badge)] bg-[var(--palette-rausch)] px-[10px] py-[5px] t-badge text-white">
+            <span className="absolute end-3 top-3 flex items-center gap-[6px] rounded-[var(--radius-badge)] bg-[var(--palette-rausch)] px-[10px] py-[5px] t-badge text-white">
               <span className="h-[5px] w-[5px] rounded-full bg-white" />
-              可试玩
+              {dict.card.playable}
             </span>
           ) : null}
         </div>
@@ -119,10 +123,10 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
 
           <div className="mt-auto flex items-center justify-between gap-3 border-t border-[var(--palette-border)] pt-3">
             <span className="t-small truncate text-[var(--palette-text-tertiary)]">
-              {work.author.name ? `by ${work.author.name}` : hostOf(href)}
+              {work.author.name ? `${dict.card.by} ${work.author.name}` : work.sourceCategory}
             </span>
             <span className="flex shrink-0 items-center gap-[6px] t-small text-[var(--palette-text-secondary)] transition-colors duration-300 group-hover:text-[var(--palette-rausch)]">
-              {work.demoUrl ? '打开' : '看源码'}
+              {dict.card.details}
               <svg
                 viewBox="0 0 16 16"
                 width="12"
@@ -131,7 +135,7 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
                 stroke="currentColor"
                 strokeWidth="2"
                 aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-[3px]"
+                className="transition-transform duration-300 group-hover:translate-x-[3px] rtl:-scale-x-100"
               >
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -150,14 +154,11 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
         />
       </div>
 
-      {/* Full-card target — Airbnb's whole-card tap area. */}
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer noopener"
-        className="absolute inset-0 rounded-[var(--radius-card)]"
-      >
-        <span className="sr-only">{`打开 ${work.name}`}</span>
+      {/* Full-card target — Airbnb's whole-card tap area. Goes to the detail
+          page rather than straight off-site, so the entry's platform notes and
+          model-involvement record are reachable before the demo is. */}
+      <a href={href} className="absolute inset-0 rounded-[var(--radius-card)]">
+        <span className="sr-only">{`${work.name} — ${dict.card.details}`}</span>
       </a>
     </article>
   );

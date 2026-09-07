@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Gebaut mit GPT-6 Astra',
+    tagline: 'Spiele, die sich lohnen. Ideen, die gebaut gehören.',
+    description:
+      'Eine kuratierte Sammlung von Spielen, interaktiven Experimenten und Kunst-Sandboxes, gebaut mit GPT-6 Astra. Der Katalog folgt der Upstream-Liste awesome-gpt-6-astra in Echtzeit.',
+  },
+  nav: { works: 'Katalog', how: 'Aufgenommen werden', about: 'Über', language: 'Sprache', skipToContent: 'Zum Inhalt springen' },
+  hero: {
+    liveBadge: 'Der Katalog folgt der Upstream-README live',
+    staleBadge: 'Zeigt den zuletzt zwischengespeicherten Katalog',
+    headline: ['Spiele, die sich lohnen.', 'Ideen, die gebaut gehören.'],
+    lead: 'Spiele, interaktive Experimente und Kunst-Sandboxes mit GPT-6 Astra. Jeder Eintrag sagt, was man spielt, wo man es spielt und was das Modell tatsächlich getan hat.',
+    browse: 'Katalog ansehen',
+    submit: 'Arbeit einreichen',
+    statWorks: 'Gelistete Arbeiten',
+    statAuthors: 'Kreative',
+    statPlayable: 'Sofort spielbar',
+    lastChecked: 'Zuletzt geprüft',
+  },
+  marquee: ['Ein-Tasten-Flug', 'Soft-Body-Physik', 'Insel-Tower-Defense', 'Kart-Rennen', 'Partikelkunst', 'Kugelwelten', 'Prozedurale Grafik', 'Web Audio', 'Three.js', 'Canvas 2D', 'Reines WebGL', 'One-Shot-Tests', 'Iterative Entwicklung'],
+  works: {
+    eyebrow: 'Katalog',
+    heading: ['Hier ist alles spielbar —', 'kein Haufen toter Links'],
+    lead: 'Der Katalog wird direkt aus {readme} gelesen. Änderungen upstream erscheinen hier binnen Minuten; diese Seite hält keine zweite Kopie der Liste.',
+    upstreamReadme: 'der Upstream-README',
+    search: 'Arbeiten, Kreative oder Mechaniken suchen',
+    emptyTitle: 'Nichts gefunden',
+    emptyBody: 'Anderes Stichwort versuchen, oder',
+    reset: 'Filter zurücksetzen',
+    categories: { all: 'Alle', game: 'Spiele', experiment: 'Experimente & Kunst', app: 'Apps', tool: 'Werkzeuge', website: 'Websites', other: 'Sonstiges' },
+  },
+  card: { playable: 'Spielbar', open: 'Öffnen', viewSource: 'Quellcode', by: 'von', screenshotAlt: 'Screenshot aus dem Spiel', details: 'Details' },
+  criteria: {
+    eyebrow: 'Aufnahmekriterien',
+    heading: ['Ein guter Eintrag sagt,', 'worauf man sich einlässt'],
+    lead: 'Jede Arbeit wird nach denselben Feldern erfasst, damit ein Eintrag nie nur aus einem Link und einer Werbezeile besteht.',
+    rows: [
+      { term: 'Arbeit und Kreative', detail: 'Der Titel sowie ein Link zu Urheber oder Team.' },
+      { term: 'Worum es geht', detail: 'Ein Satz zur Kernmechanik. Keine vage Werbung.' },
+      { term: 'Wo spielbar', detail: 'Eine öffentliche Demo oder ein öffentliches Repository mit Startanleitung.' },
+      { term: 'Echter Screenshot', detail: 'Mindestens eine echte Aufnahme des Kern-Gameplays, öffentlich erreichbar.' },
+      { term: 'Plattform und Bedingungen', detail: 'Browser / Desktop / Mobil sowie Bezahl-, Login- oder Hardware-Anforderungen.' },
+      { term: 'Was Astra tat', detail: 'Eine Aussage der Kreativen, ein Dev-Log oder ein öffentlicher Nachweis.' },
+      { term: 'Entstehungsnotizen', detail: 'Quellcode, Tech-Stack und Prozess — so viel, wie geteilt werden kann.' },
+    ],
+    note: 'Die Modellnutzung wird nach den öffentlichen Angaben der Kreativen erfasst; unbelegte Zuschreibungen werden nie als gesicherte Tatsache dargestellt. Spielbare Prototypen sind willkommen, Open Source ist keine Bedingung.',
+  },
+  how: {
+    eyebrow: 'Aufgenommen werden',
+    heading: ['Etwas gebaut?', 'Vier Schritte bis zum Eintrag'],
+    lead: 'Das ist eine Community-Liste. Jede Person darf eigene oder fremde Arbeiten vorschlagen, solange die Urheber genannt werden.',
+    cta: 'Arbeit einreichen',
+    steps: [
+      { title: 'Baue etwas Erlebbares', body: 'Spiele, interaktive Experimente, Kunst-Sandboxes — alles zählt. Prototypen sind willkommen, Open Source optional — aber es muss wirklich laufen.' },
+      { title: 'Hinterlasse eine Astra-Spur', body: 'Ein Dev-Log, die ursprünglichen Prompts, eine Iterationshistorie — irgendetwas, das zeigt, woran GPT-6 Astra gearbeitet hat. Unbelegtes wird nicht als Fakt geführt.' },
+      { title: 'Öffne ein Issue', body: 'Mit Demo-Link oder Repository samt Startanleitung, einem echten Screenshot sowie Plattform und Zugangsbedingungen.' },
+      { title: 'Upstream gemerged, hier live', body: 'Sobald die Upstream-README gemerged ist, folgt diese Seite binnen Minuten. Niemand muss die Website-Daten anfassen.' },
+    ],
+  },
+  cta: {
+    heading: ['Was hast du', 'mit Astra gebaut?'],
+    lead: 'Ein laufender Prototyp reicht. Sag, was er tut, wo man ihn ausprobiert und was das Modell beigetragen hat — den Rest übernimmt der Katalog.',
+    submit: 'Arbeit einreichen',
+    github: 'Auf GitHub ansehen',
+  },
+  detail: {
+    back: 'Zurück zum Katalog',
+    play: 'Spielen',
+    source: 'Quellcode ansehen',
+    repository: 'Repository',
+    author: 'Kreative',
+    category: 'Kategorie',
+    listedUnder: 'Upstream-Rubrik',
+    notFound: 'Diese Arbeit steht nicht im Katalog',
+    notFoundBody: 'Sie wurde vielleicht upstream entfernt, oder der Link hat sich geändert.',
+    upstreamNote: 'Alles auf dieser Seite stammt aus der Upstream-README. Diese Seite bearbeitet es nicht.',
+    otherWorks: 'Weiterstöbern',
+    metadata: 'Angaben',
+  },
+  footer: {
+    disclaimer: 'Eine von der Community gepflegte Liste von Arbeiten mit GPT-6 Astra. Nicht mit OpenAI verbunden. Ein Eintrag heißt „einen Blick wert“ — kein Benchmark und keine offizielle Empfehlung.',
+    license: 'Text und Grafiken der Liste selbst stehen unter CC0 1.0. Verlinkte Arbeiten behalten ihre eigenen Lizenzen.',
+    catalogue: 'Katalog',
+    participate: 'Mitmachen',
+    project: 'Projekt',
+    links: {
+      works: 'Katalog', how: 'Aufgenommen werden', upstream: 'Upstream-README', submit: 'Spiel einreichen',
+      brokenLink: 'Toten Link melden', contributing: 'Beitragsleitfaden', mainRepo: 'Haupt-Repository', siteSource: 'Quellcode der Website',
+    },
+  },
+};
+
+export default dictionary;

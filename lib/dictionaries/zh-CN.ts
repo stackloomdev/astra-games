@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — GPT-6 Astra 作品精选',
+    tagline: '值得玩的游戏，值得做的点子',
+    description:
+      '用 GPT-6 Astra 做出来的游戏、交互实验与艺术沙盒精选。目录实时同步上游 awesome-gpt-6-astra，收录即可玩。',
+  },
+  nav: { works: '作品目录', how: '如何收录', about: '关于', language: '语言', skipToContent: '跳到主要内容' },
+  hero: {
+    liveBadge: '目录实时同步上游 README',
+    staleBadge: '目录暂用最近缓存',
+    headline: ['值得玩的游戏，', '值得做的点子。'],
+    lead: '用 GPT-6 Astra 做出来的游戏、交互实验与艺术沙盒精选。每一条都写清楚玩什么、在哪里玩、模型参与了什么。',
+    browse: '浏览作品目录',
+    submit: '提交你的作品',
+    statWorks: '收录作品',
+    statAuthors: '参与创作者',
+    statPlayable: '可直接试玩',
+    lastChecked: '最近核对',
+  },
+  marquee: ['单键飞行', '半流体物理', '海岛塔防', '卡丁车竞速', '粒子艺术', '球形世界探索', '程序化美术', 'Web Audio', 'Three.js', 'Canvas 2D', '原生 WebGL', 'One Shot 测试', '多轮迭代'],
+  works: {
+    eyebrow: '作品目录',
+    heading: ['收录即可玩，', '不是一堆死链接'],
+    lead: '目录直接解析 {readme}，上游增删改后这里几分钟内自动跟上，本站不保存第二份作品数据。',
+    upstreamReadme: '上游 README',
+    search: '搜索作品、作者或玩法',
+    emptyTitle: '没有匹配的作品',
+    emptyBody: '换个关键词，或者',
+    reset: '重置筛选',
+    categories: { all: '全部', game: '游戏', experiment: '实验与艺术', app: '应用', tool: '工具', website: '网站', other: '其他' },
+  },
+  card: { playable: '可试玩', open: '打开', viewSource: '看源码', by: '作者', screenshotAlt: '实机画面', details: '查看详情' },
+  criteria: {
+    eyebrow: '收录标准',
+    heading: ['一条好推荐，', '让人一眼知道玩什么'],
+    lead: '每个作品都按同一套字段记录，避免只剩一个链接和一句空泛的宣传。',
+    rows: [
+      { term: '游戏与作者', detail: '作品名称，以及原作者或团队的链接。' },
+      { term: '玩法亮点', detail: '一句话说清核心玩法，不写空泛的宣传语。' },
+      { term: '体验入口', detail: '可直接试玩的地址，或包含运行说明的公开源码仓库。' },
+      { term: '实机截图', detail: '至少一张展示核心玩法的真实截图，图片地址需可公开访问。' },
+      { term: '平台与条件', detail: '浏览器 / 桌面 / 移动端，并注明付费、登录或特殊硬件要求。' },
+      { term: 'Astra 的参与', detail: '作者说明、开发日志或公开记录，写明模型参与了哪些工作。' },
+      { term: '开发资料', detail: '源码、技术栈与制作过程，能提供多少就提供多少。' },
+    ],
+    note: '模型使用情况按作者公开说明记录；没有依据的归因不会被写成已确认事实。可玩的原型也欢迎，不要求每个作品都开源。',
+  },
+  how: {
+    eyebrow: '如何收录',
+    heading: ['做完了，', '四步就能挂上来'],
+    lead: '这是一份社区清单。任何人都可以推荐自己或他人的公开作品，只要注明原作者。',
+    cta: '提交作品',
+    steps: [
+      { title: '做出可以体验的东西', body: '游戏、交互实验、艺术沙盒都算。原型也欢迎，不要求开源，但要能真的跑起来。' },
+      { title: '留下 Astra 的痕迹', body: '开发日志、原始 Prompt、迭代记录 —— 说明 GPT-6 Astra 具体参与了哪部分工作。没有依据的归因不会被写成事实。' },
+      { title: '提交一条 Issue', body: '附上试玩地址或带运行说明的源码仓库、一张实机截图，以及平台和使用条件。' },
+      { title: '合入目录，自动上线', body: '上游 README 合并后，本站在几分钟内自动同步，不需要任何人再改一次网站数据。' },
+    ],
+  },
+  cta: {
+    heading: ['你用 Astra', '做了什么？'],
+    lead: '一个能跑的原型就够了。写清楚玩法、入口和模型参与了什么，剩下的交给目录。',
+    submit: '提交你的作品',
+    github: '在 GitHub 上查看',
+  },
+  detail: {
+    back: '返回目录',
+    play: '开始试玩',
+    source: '查看源码',
+    repository: '代码仓库',
+    author: '作者',
+    category: '分类',
+    listedUnder: '上游栏目',
+    notFound: '没有找到这个作品',
+    notFoundBody: '它可能已经从上游目录中移除，或者链接已经变化。',
+    upstreamNote: '本页内容全部来自上游 README，本站不做二次编辑。',
+    otherWorks: '继续看看',
+    metadata: '作品信息',
+  },
+  footer: {
+    disclaimer: '社区维护的 GPT-6 Astra 作品清单，与 OpenAI 无隶属关系。收录表示值得探索，不代表性能评测或官方推荐。',
+    license: '清单文字与视觉素材以 CC0 1.0 贡献至公有领域；链接指向的作品仍遵循各自许可。',
+    catalogue: '目录',
+    participate: '参与',
+    project: '项目',
+    links: {
+      works: '作品目录', how: '如何收录', upstream: '上游 README', submit: '提交游戏',
+      brokenLink: '反馈失效链接', contributing: '贡献指南', mainRepo: '主仓库', siteSource: '官网源码',
+    },
+  },
+};
+
+export default dictionary;

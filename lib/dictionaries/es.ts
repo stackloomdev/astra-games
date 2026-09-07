@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Hecho con GPT-6 Astra',
+    tagline: 'Juegos que valen la pena. Ideas que vale la pena construir.',
+    description:
+      'Una selección de juegos, experimentos interactivos y sandboxes artísticos hechos con GPT-6 Astra. El catálogo sigue en tiempo real la lista original awesome-gpt-6-astra.',
+  },
+  nav: { works: 'Catálogo', how: 'Cómo entrar', about: 'Acerca de', language: 'Idioma', skipToContent: 'Ir al contenido' },
+  hero: {
+    liveBadge: 'El catálogo sigue el README original en vivo',
+    staleBadge: 'Mostrando el último catálogo en caché',
+    headline: ['Juegos que valen la pena.', 'Ideas que vale la pena construir.'],
+    lead: 'Juegos, experimentos interactivos y sandboxes artísticos hechos con GPT-6 Astra. Cada entrada dice a qué juegas, dónde jugarlo y qué hizo realmente el modelo.',
+    browse: 'Ver el catálogo',
+    submit: 'Envía tu obra',
+    statWorks: 'Obras listadas',
+    statAuthors: 'Creadores',
+    statPlayable: 'Jugables ahora',
+    lastChecked: 'Última verificación',
+  },
+  marquee: ['Vuelo de un botón', 'Física blanda', 'Defensa de torres isleña', 'Carreras de karts', 'Arte de partículas', 'Mundos esféricos', 'Arte procedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL puro', 'Pruebas one-shot', 'Desarrollo iterativo'],
+  works: {
+    eyebrow: 'Catálogo',
+    heading: ['Aquí todo se juega de verdad,', 'no es un montón de enlaces muertos'],
+    lead: 'El catálogo se analiza directamente desde {readme}. Lo que se añade o corrige aguas arriba aparece aquí en minutos; este sitio no guarda una segunda copia de la lista.',
+    upstreamReadme: 'el README original',
+    search: 'Buscar obras, creadores o mecánicas',
+    emptyTitle: 'No hay coincidencias',
+    emptyBody: 'Prueba otra palabra clave, o',
+    reset: 'restablece los filtros',
+    categories: { all: 'Todo', game: 'Juegos', experiment: 'Experimentos y arte', app: 'Apps', tool: 'Herramientas', website: 'Sitios', other: 'Otros' },
+  },
+  card: { playable: 'Jugable', open: 'Abrir', viewSource: 'Código', by: 'por', screenshotAlt: 'captura del juego', details: 'Detalles' },
+  criteria: {
+    eyebrow: 'Qué se lista',
+    heading: ['Una buena entrada te dice', 'en qué te estás metiendo'],
+    lead: 'Cada obra se registra con los mismos campos, para que una entrada nunca se quede en un enlace y una frase publicitaria.',
+    rows: [
+      { term: 'Obra y creador', detail: 'El título y un enlace al creador o equipo original.' },
+      { term: 'Qué se hace', detail: 'Una frase sobre la mecánica central. Sin promoción vaga.' },
+      { term: 'Dónde jugarlo', detail: 'Una demo pública, o un repositorio público con instrucciones de ejecución.' },
+      { term: 'Captura real', detail: 'Al menos una captura auténtica del núcleo del juego, accesible públicamente.' },
+      { term: 'Plataforma y condiciones', detail: 'Navegador / escritorio / móvil, y cualquier requisito de pago, cuenta o hardware.' },
+      { term: 'Qué hizo Astra', detail: 'Una declaración del creador, un registro de desarrollo o una constancia pública.' },
+      { term: 'Notas de construcción', detail: 'Código, stack y proceso — todo lo que el creador pueda compartir.' },
+    ],
+    note: 'El uso del modelo se registra según lo que declaran públicamente los creadores; una atribución sin respaldo nunca se presenta como hecho establecido. Los prototipos jugables son bienvenidos y el código abierto no es obligatorio.',
+  },
+  how: {
+    eyebrow: 'Cómo entrar',
+    heading: ['¿Construiste algo?', 'Cuatro pasos y está dentro'],
+    lead: 'Es una lista comunitaria. Cualquiera puede proponer su obra o la de otra persona, siempre que se acredite al creador original.',
+    cta: 'Enviar una obra',
+    steps: [
+      { title: 'Haz algo que se pueda probar', body: 'Juegos, experimentos interactivos y sandboxes artísticos cuentan. Los prototipos valen y el código abierto es opcional, pero tiene que funcionar de verdad.' },
+      { title: 'Deja rastro de Astra', body: 'Un registro de desarrollo, los prompts originales, un historial de iteraciones: algo que muestre en qué partes trabajó GPT-6 Astra. Lo no respaldado no se da por hecho.' },
+      { title: 'Abre una issue', body: 'Con el enlace a la demo o un repositorio con instrucciones, una captura real, y la plataforma y condiciones de acceso.' },
+      { title: 'Fusionado arriba, publicado aquí', body: 'Cuando el README original se fusiona, este sitio lo sigue en minutos. Nadie tiene que tocar los datos de la web.' },
+    ],
+  },
+  cta: {
+    heading: ['¿Qué construiste', 'con Astra?'],
+    lead: 'Con un prototipo que funcione basta. Di qué hace, dónde probarlo y qué aportó el modelo; del resto se encarga el catálogo.',
+    submit: 'Envía tu obra',
+    github: 'Ver en GitHub',
+  },
+  detail: {
+    back: 'Volver al catálogo',
+    play: 'Jugar',
+    source: 'Ver el código',
+    repository: 'Repositorio',
+    author: 'Creador',
+    category: 'Categoría',
+    listedUnder: 'Sección original',
+    notFound: 'Esa obra no está en el catálogo',
+    notFoundBody: 'Puede que se haya eliminado aguas arriba, o que el enlace haya cambiado.',
+    upstreamNote: 'Todo el contenido de esta página viene del README original. Este sitio no lo edita.',
+    otherWorks: 'Seguir explorando',
+    metadata: 'Ficha',
+  },
+  footer: {
+    disclaimer: 'Lista mantenida por la comunidad de obras hechas con GPT-6 Astra. Sin relación con OpenAI. Estar listado significa que vale la pena explorarlo: no es un benchmark ni una recomendación oficial.',
+    license: 'El texto y los recursos visuales propios de la lista se publican bajo CC0 1.0. Las obras enlazadas conservan sus propias licencias.',
+    catalogue: 'Catálogo',
+    participate: 'Participar',
+    project: 'Proyecto',
+    links: {
+      works: 'Catálogo', how: 'Cómo entrar', upstream: 'README original', submit: 'Enviar un juego',
+      brokenLink: 'Reportar enlace roto', contributing: 'Guía de contribución', mainRepo: 'Repositorio principal', siteSource: 'Código del sitio',
+    },
+  },
+};
+
+export default dictionary;

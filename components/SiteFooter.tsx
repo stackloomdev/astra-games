@@ -1,48 +1,59 @@
-const UPSTREAM = 'https://github.com/MartinDelophy/awesome-gpt-6-astra';
+import type { Dictionary } from '@/lib/i18n';
+import {
+  BROKEN_LINK_ISSUE, COMMUNITY, CONTRIBUTING, SITE_REPO, SUBMIT_ISSUE, UPSTREAM_REPO,
+} from '@/lib/links';
 
-const LINKS = [
-  {
-    heading: '目录',
-    items: [
-      { label: '作品目录', href: '#works' },
-      { label: '如何收录', href: '#how' },
-      { label: '上游 README', href: `${UPSTREAM}#readme`, external: true },
-    ],
-  },
-  {
-    heading: '参与',
-    items: [
-      { label: '提交游戏', href: `${UPSTREAM}/issues/new?template=submit-game.yml`, external: true },
-      { label: '反馈失效链接', href: `${UPSTREAM}/issues/new?template=broken-link.yml`, external: true },
-      { label: '贡献指南', href: `${UPSTREAM}/blob/main/CONTRIBUTING.md`, external: true },
-    ],
-  },
-  {
-    heading: '项目',
-    items: [
-      { label: '主仓库', href: UPSTREAM, external: true },
-      { label: '官网源码', href: 'https://github.com/stackloomdev/astra-games', external: true },
-      { label: 'LINUX DO', href: 'https://linux.do/', external: true },
-    ],
-  },
-];
+export default function SiteFooter({
+  dict,
+  homeHref,
+  readmeUrl,
+}: {
+  dict: Dictionary;
+  homeHref: string;
+  readmeUrl: string;
+}) {
+  const columns = [
+    {
+      heading: dict.footer.catalogue,
+      items: [
+        { label: dict.footer.links.works, href: `${homeHref}#works` },
+        { label: dict.footer.links.how, href: `${homeHref}#how` },
+        { label: dict.footer.links.upstream, href: readmeUrl, external: true },
+      ],
+    },
+    {
+      heading: dict.footer.participate,
+      items: [
+        { label: dict.footer.links.submit, href: SUBMIT_ISSUE, external: true },
+        { label: dict.footer.links.brokenLink, href: BROKEN_LINK_ISSUE, external: true },
+        { label: dict.footer.links.contributing, href: CONTRIBUTING, external: true },
+      ],
+    },
+    {
+      heading: dict.footer.project,
+      items: [
+        { label: dict.footer.links.mainRepo, href: UPSTREAM_REPO, external: true },
+        { label: dict.footer.links.siteSource, href: SITE_REPO, external: true },
+        { label: 'LINUX DO', href: COMMUNITY, external: true },
+      ],
+    },
+  ];
 
-export default function SiteFooter() {
   return (
     <footer id="about" className="relative overflow-hidden border-t border-[var(--palette-border)]">
       <div className="shell py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <p className="t-ui-semi tracking-[-0.44px]">Astra Games</p>
-            <p className="t-body mt-3 max-w-[38ch] text-[var(--palette-text-secondary)]">
-              社区维护的 GPT-6 Astra 作品清单，与 OpenAI 无隶属关系。收录表示值得探索，不代表性能评测或官方推荐。
+            <p className="t-body mt-3 max-w-[42ch] text-[var(--palette-text-secondary)]">
+              {dict.footer.disclaimer}
             </p>
-            <p className="t-small mt-5 text-[var(--palette-text-tertiary)]">
-              清单文字与视觉素材以 CC0 1.0 贡献至公有领域；链接指向的作品仍遵循各自许可。
+            <p className="t-small mt-5 max-w-[42ch] text-[var(--palette-text-tertiary)]">
+              {dict.footer.license}
             </p>
           </div>
 
-          {LINKS.map((column) => (
+          {columns.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
               <p className="t-micro text-[var(--palette-text-tertiary)]">{column.heading}</p>
               <ul className="mt-4 flex flex-col gap-[10px]">

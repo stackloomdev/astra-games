@@ -1,29 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-const STEPS = [
-  {
-    n: '01',
-    title: '做出可以体验的东西',
-    body: '游戏、交互实验、艺术沙盒都算。原型也欢迎，不要求开源，但要能真的跑起来。',
-  },
-  {
-    n: '02',
-    title: '留下 Astra 的痕迹',
-    body: '开发日志、原始 Prompt、迭代记录 —— 说明 GPT-6 Astra 具体参与了哪部分工作。没有依据的归因不会被写成事实。',
-  },
-  {
-    n: '03',
-    title: '提交一条 Issue',
-    body: '附上试玩地址或带运行说明的源码仓库、一张实机截图，以及平台和使用条件。',
-  },
-  {
-    n: '04',
-    title: '合入目录，自动上线',
-    body: '上游 README 合并后，本站在几分钟内自动同步，不需要任何人再改一次网站数据。',
-  },
-];
+import type { Dictionary } from '@/lib/i18n';
 
 /**
  * Scroll-driven timeline. A gradient rail draws itself as the section passes
@@ -36,7 +14,7 @@ const STEPS = [
  * whose ScrollTrigger never activates — a hidden tab, a failed load — would
  * leave the steps stranded at quarter opacity.
  */
-export default function ProcessTimeline() {
+export default function ProcessTimeline({ dict }: { dict: Dictionary }) {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,27 +89,29 @@ export default function ProcessTimeline() {
   }, []);
 
   return (
-    <div ref={root} className="relative pl-9 sm:pl-12">
+    <div ref={root} className="relative ps-9 sm:ps-12">
       {/* Rail track + the portion that draws in on scroll. */}
       <div
         aria-hidden="true"
-        className="absolute bottom-6 left-[9px] top-3 w-px bg-[var(--palette-border)] sm:left-3"
+        className="absolute bottom-6 start-[9px] top-3 w-px bg-[var(--palette-border)] sm:start-3"
       />
       <div
         data-rail
         aria-hidden="true"
-        className="absolute bottom-6 left-[9px] top-3 w-px origin-top bg-gradient-to-b from-[var(--palette-rausch)] via-[var(--palette-luxe-lift)] to-transparent sm:left-3"
+        className="absolute bottom-6 start-[9px] top-3 w-px origin-top bg-gradient-to-b from-[var(--palette-rausch)] via-[var(--palette-luxe-lift)] to-transparent sm:start-3"
       />
 
       <ol className="flex flex-col gap-12">
-        {STEPS.map((step) => (
-          <li key={step.n} data-step className="relative">
+        {dict.how.steps.map((step, index) => (
+          <li key={step.title} data-step className="relative">
             <span
               data-dot
               aria-hidden="true"
-              className="absolute -left-9 top-[9px] h-[9px] w-[9px] rounded-full bg-[var(--palette-control)] ring-4 ring-[var(--palette-bg)] sm:-left-12 sm:ml-[3px]"
+              className="absolute -start-9 top-[9px] h-[9px] w-[9px] rounded-full bg-[var(--palette-control)] ring-4 ring-[var(--palette-bg)] sm:-start-12 sm:ms-[3px]"
             />
-            <span className="t-micro text-[var(--palette-rausch)]">{step.n}</span>
+            <span className="t-micro text-[var(--palette-rausch)]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             <h3 className="t-h2 mt-2">{step.title}</h3>
             <p className="t-body mt-[10px] max-w-[52ch] text-[var(--palette-text-secondary)]">
               {step.body}

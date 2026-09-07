@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — GPT-6 Astra で作られた作品集',
+    tagline: '遊ぶ価値のあるゲームを、作る価値のあるアイデアを。',
+    description:
+      'GPT-6 Astra で作られたゲーム、インタラクティブ実験、アート・サンドボックスの厳選リスト。カタログは上流の awesome-gpt-6-astra をリアルタイムに追随します。',
+  },
+  nav: { works: 'カタログ', how: '掲載方法', about: 'このサイトについて', language: '言語', skipToContent: '本文へスキップ' },
+  hero: {
+    liveBadge: 'カタログは上流 README をリアルタイム同期',
+    staleBadge: '直近のキャッシュを表示しています',
+    headline: ['遊ぶ価値のあるゲームを、', '作る価値のあるアイデアを。'],
+    lead: 'GPT-6 Astra で作られたゲーム、インタラクティブ実験、アート・サンドボックス。各エントリーには何をどこで遊べるか、モデルが何をしたかが書かれています。',
+    browse: 'カタログを見る',
+    submit: '作品を投稿する',
+    statWorks: '掲載作品',
+    statAuthors: '制作者',
+    statPlayable: 'すぐ遊べる',
+    lastChecked: '最終確認',
+  },
+  marquee: ['ワンボタン飛行', 'ソフトボディ物理', '島のタワーディフェンス', 'カートレース', 'パーティクルアート', '球状ワールド探索', 'プロシージャル生成', 'Web Audio', 'Three.js', 'Canvas 2D', '生の WebGL', 'ワンショット検証', '反復開発'],
+  works: {
+    eyebrow: 'カタログ',
+    heading: ['掲載作品はすべて遊べます。', 'リンク切れの山ではありません'],
+    lead: 'カタログは {readme} を直接解析しています。上流での追加・変更は数分でここに反映され、このサイトはリストの複製を持ちません。',
+    upstreamReadme: '上流の README',
+    search: '作品・制作者・遊び方で検索',
+    emptyTitle: '該当する作品がありません',
+    emptyBody: '別のキーワードを試すか、',
+    reset: '絞り込みをリセット',
+    categories: { all: 'すべて', game: 'ゲーム', experiment: '実験・アート', app: 'アプリ', tool: 'ツール', website: 'サイト', other: 'その他' },
+  },
+  card: { playable: '遊べる', open: '開く', viewSource: 'ソース', by: '制作', screenshotAlt: 'プレイ画面', details: '詳細' },
+  criteria: {
+    eyebrow: '掲載基準',
+    heading: ['良いエントリーは、', '何が待っているかを伝えます'],
+    lead: 'すべての作品を同じ項目で記録します。リンクと宣伝文だけのエントリーは作りません。',
+    rows: [
+      { term: '作品と制作者', detail: 'タイトルと、原作者またはチームへのリンク。' },
+      { term: '遊びの中心', detail: 'コアメカニクスを一文で。曖昧な宣伝文は書きません。' },
+      { term: '体験する場所', detail: '公開デモ、または実行手順を含む公開ソースリポジトリ。' },
+      { term: '実機スクリーンショット', detail: 'コアプレイを写した実際の画面を最低一枚、公開アクセス可能な形で。' },
+      { term: 'プラットフォームと条件', detail: 'ブラウザ / デスクトップ / モバイル、課金・ログイン・特殊ハードの要否。' },
+      { term: 'Astra の関与', detail: '制作者の説明、開発ログ、公開記録などモデルの関与を示すもの。' },
+      { term: '開発資料', detail: 'ソース、技術スタック、制作過程 — 共有できる範囲で。' },
+    ],
+    note: 'モデルの利用状況は制作者の公開説明に基づいて記録します。根拠のない帰属を確定事実として書くことはありません。遊べるプロトタイプも歓迎で、オープンソースは必須ではありません。',
+  },
+  how: {
+    eyebrow: '掲載方法',
+    heading: ['作ったなら、', '4 ステップで掲載できます'],
+    lead: 'これはコミュニティのリストです。原作者を明記すれば、自分の作品も他人の作品も推薦できます。',
+    cta: '作品を投稿',
+    steps: [
+      { title: '体験できるものを作る', body: 'ゲーム、インタラクティブ実験、アート・サンドボックスすべて対象です。プロトタイプも歓迎、オープンソースは任意 — ただし実際に動くこと。' },
+      { title: 'Astra の痕跡を残す', body: '開発ログ、元のプロンプト、反復の記録 — GPT-6 Astra がどの部分を担ったかを示すもの。根拠のない主張は事実として扱いません。' },
+      { title: 'Issue を 1 件立てる', body: 'デモ URL または実行手順つきのソースリポジトリ、実機スクリーンショット 1 枚、プラットフォームと利用条件を添えてください。' },
+      { title: 'マージされれば自動で公開', body: '上流 README がマージされれば、このサイトは数分で追随します。サイト側のデータを触る必要はありません。' },
+    ],
+  },
+  cta: {
+    heading: ['Astra で何を', '作りましたか？'],
+    lead: '動くプロトタイプで十分です。何ができて、どこで試せて、モデルが何をしたか — あとはカタログが引き受けます。',
+    submit: '作品を投稿する',
+    github: 'GitHub で見る',
+  },
+  detail: {
+    back: 'カタログに戻る',
+    play: 'プレイする',
+    source: 'ソースを見る',
+    repository: 'リポジトリ',
+    author: '制作者',
+    category: 'カテゴリ',
+    listedUnder: '上流の分類',
+    notFound: 'この作品は見つかりません',
+    notFoundBody: '上流から削除されたか、リンクが変わった可能性があります。',
+    upstreamNote: 'このページの内容はすべて上流 README のものです。当サイトでは編集しません。',
+    otherWorks: 'ほかの作品',
+    metadata: '作品情報',
+  },
+  footer: {
+    disclaimer: 'GPT-6 Astra で作られた作品のコミュニティ管理リストです。OpenAI とは無関係です。掲載は探索する価値があることを示すもので、性能評価や公式推奨ではありません。',
+    license: 'リスト自身のテキストとビジュアルは CC0 1.0 で公開しています。リンク先の作品は各自のライセンスに従います。',
+    catalogue: 'カタログ',
+    participate: '参加する',
+    project: 'プロジェクト',
+    links: {
+      works: 'カタログ', how: '掲載方法', upstream: '上流 README', submit: 'ゲームを投稿',
+      brokenLink: 'リンク切れを報告', contributing: '貢献ガイド', mainRepo: 'メインリポジトリ', siteSource: 'サイトのソース',
+    },
+  },
+};
+
+export default dictionary;

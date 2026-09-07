@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — GPT-6 Astra로 만든 작품 모음',
+    tagline: '해볼 만한 게임, 만들어볼 만한 아이디어.',
+    description:
+      'GPT-6 Astra로 만든 게임, 인터랙티브 실험, 아트 샌드박스 큐레이션. 카탈로그는 상위 awesome-gpt-6-astra 목록을 실시간으로 따라갑니다.',
+  },
+  nav: { works: '카탈로그', how: '등재 방법', about: '소개', language: '언어', skipToContent: '본문으로 건너뛰기' },
+  hero: {
+    liveBadge: '카탈로그가 상위 README를 실시간 동기화합니다',
+    staleBadge: '가장 최근 캐시를 표시하는 중입니다',
+    headline: ['해볼 만한 게임,', '만들어볼 만한 아이디어.'],
+    lead: 'GPT-6 Astra로 만든 게임, 인터랙티브 실험, 아트 샌드박스. 모든 항목에 무엇을 하는지, 어디서 해보는지, 모델이 무엇을 했는지 적혀 있습니다.',
+    browse: '카탈로그 보기',
+    submit: '작품 제출하기',
+    statWorks: '등재 작품',
+    statAuthors: '제작자',
+    statPlayable: '바로 플레이 가능',
+    lastChecked: '최근 확인',
+  },
+  marquee: ['원버튼 비행', '소프트바디 물리', '섬 타워 디펜스', '카트 레이싱', '파티클 아트', '구형 월드 탐험', '프로시저럴 아트', 'Web Audio', 'Three.js', 'Canvas 2D', '순수 WebGL', '원샷 테스트', '반복 개발'],
+  works: {
+    eyebrow: '카탈로그',
+    heading: ['여기 있는 건 다 플레이됩니다.', '죽은 링크 더미가 아닙니다'],
+    lead: '카탈로그는 {readme}를 그대로 파싱합니다. 상위에서 추가·수정하면 몇 분 안에 반영되며, 이 사이트는 목록 사본을 따로 두지 않습니다.',
+    upstreamReadme: '상위 README',
+    search: '작품, 제작자, 플레이 방식 검색',
+    emptyTitle: '일치하는 작품이 없습니다',
+    emptyBody: '다른 키워드를 써보거나,',
+    reset: '필터 초기화',
+    categories: { all: '전체', game: '게임', experiment: '실험·아트', app: '앱', tool: '도구', website: '사이트', other: '기타' },
+  },
+  card: { playable: '플레이 가능', open: '열기', viewSource: '소스', by: '제작', screenshotAlt: '실제 플레이 화면', details: '자세히' },
+  criteria: {
+    eyebrow: '등재 기준',
+    heading: ['좋은 항목은', '무엇을 하게 될지 알려줍니다'],
+    lead: '모든 작품을 같은 항목으로 기록합니다. 링크 하나와 홍보 문구만 남는 항목은 만들지 않습니다.',
+    rows: [
+      { term: '작품과 제작자', detail: '제목과 원 제작자 또는 팀 링크.' },
+      { term: '핵심 플레이', detail: '핵심 메커닉을 한 문장으로. 막연한 홍보 문구는 쓰지 않습니다.' },
+      { term: '체험 경로', detail: '공개 데모, 또는 실행 방법이 포함된 공개 소스 저장소.' },
+      { term: '실제 스크린샷', detail: '핵심 플레이를 담은 진짜 화면 최소 한 장, 공개 접근 가능해야 합니다.' },
+      { term: '플랫폼과 조건', detail: '브라우저 / 데스크톱 / 모바일, 그리고 결제·로그인·특수 하드웨어 요구 여부.' },
+      { term: 'Astra의 참여', detail: '제작자 설명, 개발 로그, 공개 기록 등 모델 참여를 보여주는 근거.' },
+      { term: '개발 자료', detail: '소스, 기술 스택, 제작 과정 — 공유할 수 있는 만큼.' },
+    ],
+    note: '모델 사용 여부는 제작자의 공개 설명에 근거해 기록합니다. 근거 없는 귀속을 확정된 사실로 쓰지 않습니다. 플레이 가능한 프로토타입도 환영하며 오픈소스는 필수가 아닙니다.',
+  },
+  how: {
+    eyebrow: '등재 방법',
+    heading: ['만들었다면,', '네 단계면 올라갑니다'],
+    lead: '커뮤니티 목록입니다. 원 제작자를 밝히면 자기 작품도 남의 작품도 추천할 수 있습니다.',
+    cta: '작품 제출',
+    steps: [
+      { title: '체험 가능한 것을 만드세요', body: '게임, 인터랙티브 실험, 아트 샌드박스 모두 해당합니다. 프로토타입도 환영이고 오픈소스는 선택이지만, 실제로 돌아가야 합니다.' },
+      { title: 'Astra의 흔적을 남기세요', body: '개발 로그, 원본 프롬프트, 반복 기록 — GPT-6 Astra가 어느 부분을 맡았는지 보여주는 것. 근거 없는 주장은 사실로 다루지 않습니다.' },
+      { title: 'Issue 하나를 여세요', body: '데모 주소 또는 실행 방법이 담긴 소스 저장소, 실제 스크린샷 한 장, 플랫폼과 이용 조건을 함께 적어주세요.' },
+      { title: '머지되면 자동으로 공개', body: '상위 README가 머지되면 이 사이트는 몇 분 안에 따라갑니다. 사이트 데이터를 손볼 필요가 없습니다.' },
+    ],
+  },
+  cta: {
+    heading: ['Astra로 무엇을', '만드셨나요?'],
+    lead: '돌아가는 프로토타입이면 충분합니다. 무엇을 하고, 어디서 해보고, 모델이 무엇을 했는지만 적으면 나머지는 카탈로그가 합니다.',
+    submit: '작품 제출하기',
+    github: 'GitHub에서 보기',
+  },
+  detail: {
+    back: '카탈로그로 돌아가기',
+    play: '플레이하기',
+    source: '소스 보기',
+    repository: '저장소',
+    author: '제작자',
+    category: '분류',
+    listedUnder: '상위 분류',
+    notFound: '해당 작품을 찾을 수 없습니다',
+    notFoundBody: '상위에서 삭제되었거나 링크가 바뀌었을 수 있습니다.',
+    upstreamNote: '이 페이지의 내용은 모두 상위 README에서 온 것이며, 이 사이트는 편집하지 않습니다.',
+    otherWorks: '더 둘러보기',
+    metadata: '작품 정보',
+  },
+  footer: {
+    disclaimer: 'GPT-6 Astra로 만든 작품의 커뮤니티 관리 목록입니다. OpenAI와 무관합니다. 등재는 탐색할 가치가 있다는 뜻이며 성능 평가나 공식 추천이 아닙니다.',
+    license: '목록 자체의 텍스트와 비주얼은 CC0 1.0으로 공개됩니다. 링크된 작품은 각자의 라이선스를 따릅니다.',
+    catalogue: '카탈로그',
+    participate: '참여',
+    project: '프로젝트',
+    links: {
+      works: '카탈로그', how: '등재 방법', upstream: '상위 README', submit: '게임 제출',
+      brokenLink: '깨진 링크 신고', contributing: '기여 가이드', mainRepo: '메인 저장소', siteSource: '사이트 소스',
+    },
+  },
+};
+
+export default dictionary;

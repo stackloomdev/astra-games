@@ -1,40 +1,38 @@
+import { notFound } from 'next/navigation';
+import CriteriaSection from '@/components/CriteriaSection';
 import Hero from '@/components/Hero';
+import MagneticButton from '@/components/MagneticButton';
 import Marquee from '@/components/Marquee';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import Reveal from '@/components/Reveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import WorksExplorer from '@/components/WorksExplorer';
-import MagneticButton from '@/components/MagneticButton';
-import { loadCatalog, README_URL } from '@/lib/catalog';
+import { loadCatalogFor } from '@/lib/catalog-service';
+import { LOCALES, getDictionary, isLocale, localeEntry, type Locale } from '@/lib/i18n';
+import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 
 // Matches the catalogue service's own five-minute freshness window, so the
 // rendered page and the JSON API never drift apart by more than one interval.
 export const revalidate = 300;
 
-const UPSTREAM = 'https://github.com/MartinDelophy/awesome-gpt-6-astra';
-const SUBMIT = `${UPSTREAM}/issues/new?template=submit-game.yml`;
-
-const MARQUEE = [
-  '单键飞行', '半流体物理', '海岛塔防', '卡丁车竞速', '粒子艺术',
-  '球形世界探索', '程序化美术', 'Web Audio', 'Three.js', 'Canvas 2D',
-  '原生 WebGL', 'One Shot 测试', '多轮迭代',
-];
-
-function formatDate(iso: string | null): string | null {
+function formatDate(iso: string | null, locale: Locale): string | null {
   if (!iso) return null;
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return null;
-  return new Intl.DateTimeFormat('zh-CN', {
+  return new Intl.DateTimeFormat(localeEntry(locale).htmlLang, {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    timeZone: 'Asia/Shanghai',
   }).format(date);
 }
 
-export default async function HomePage() {
-  const catalog = await loadCatalog();
+export default async function HomePage({ params }: PageProps<'/[locale]'>) {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) notFound();
+  const locale = raw as Locale;
+
+  const [dict, catalog] = await Promise.all([getDictionary(locale), loadCatalogFor(locale)]);
   const works = catalog.works;
 
   const authorCount = new Set(
@@ -42,43 +40,50 @@ export default async function HomePage() {
   ).size;
   const playableCount = works.filter((work) => work.demoUrl).length;
 
+  const homeHref = `/${locale}`;
+  const localeHrefs = Object.fromEntries(LOCALES.map((entry) => [entry.code, `/${entry.code}`]));
+
+  // The lead sentence names the upstream file inline; splitting on the token
+  // keeps the link inside the sentence in every language's word order.
+  const [leadBefore, leadAfter] = dict.works.lead.split('{readme}');
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
       <main>
         <Hero
+          dict={dict}
           workCount={works.length}
           authorCount={authorCount}
           playableCount={playableCount}
-          checkedAt={formatDate(catalog.source.lastSuccessfulAt ?? catalog.source.checkedAt)}
+          checkedAt={formatDate(catalog.source.lastSuccessfulAt ?? catalog.source.checkedAt, locale)}
           stale={catalog.source.stale}
         />
 
-        <Marquee items={MARQUEE} />
+        <Marquee items={dict.marquee} label={dict.works.eyebrow} />
 
         {/* --- Catalogue ---------------------------------------------------- */}
         <section id="works" className="shell scroll-mt-24 py-24 sm:py-32">
           <Reveal>
             <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="t-micro text-[var(--palette-rausch)]">作品目录</p>
-                <h2 className="t-section phrase mt-3 max-w-[18ch]">
-                  <span>收录即可玩，</span>
-                  <span>不是一堆死链接</span>
+                <p className="t-micro text-[var(--palette-rausch)]">{dict.works.eyebrow}</p>
+                <h2 className="t-section phrase mt-3 max-w-[20ch]">
+                  <span>{dict.works.heading[0]}</span> <span>{dict.works.heading[1]}</span>
                 </h2>
               </div>
-              <p className="t-body max-w-[42ch] text-[var(--palette-text-secondary)]">
-                目录直接解析{' '}
+              <p className="t-body max-w-[46ch] text-[var(--palette-text-secondary)]">
+                {leadBefore}
                 <a
-                  href={README_URL}
+                  href={catalog.source.url}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="text-[var(--palette-text-primary)] underline decoration-[var(--palette-rausch)] decoration-2 underline-offset-4"
                 >
-                  上游 README
+                  {dict.works.upstreamReadme}
                 </a>
-                ，上游增删改后这里几分钟内自动跟上，本站不保存第二份作品数据。
+                {leadAfter}
               </p>
             </div>
           </Reveal>
@@ -88,14 +93,16 @@ export default async function HomePage() {
               role="status"
               className="mb-8 rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] bg-white/[0.03] px-4 py-3 t-body text-[var(--palette-text-secondary)]"
             >
-              {catalog.source.error}
+              {dict.hero.staleBadge}
             </p>
           ) : null}
 
           <Reveal threshold={0.05}>
-            <WorksExplorer works={works} />
+            <WorksExplorer works={works} dict={dict} locale={locale} />
           </Reveal>
         </section>
+
+        <CriteriaSection dict={dict} />
 
         {/* --- How it works -------------------------------------------------- */}
         <section
@@ -110,22 +117,21 @@ export default async function HomePage() {
           <div className="shell relative grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal>
               <div className="lg:sticky lg:top-28">
-                <p className="t-micro text-[var(--palette-rausch)]">如何收录</p>
-                <h2 className="t-section phrase mt-3 max-w-[14ch]">
-                  <span>做完了，</span>
-                  <span>四步就能挂上来</span>
+                <p className="t-micro text-[var(--palette-rausch)]">{dict.how.eyebrow}</p>
+                <h2 className="t-section phrase mt-3 max-w-[16ch]">
+                  <span>{dict.how.heading[0]}</span> <span>{dict.how.heading[1]}</span>
                 </h2>
-                <p className="t-body mt-5 max-w-[38ch] text-[var(--palette-text-secondary)]">
-                  这是一份社区清单。任何人都可以推荐自己或他人的公开作品，只要注明原作者。
+                <p className="t-body mt-5 max-w-[40ch] text-[var(--palette-text-secondary)]">
+                  {dict.how.lead}
                 </p>
                 <div className="mt-8">
-                  <MagneticButton href={SUBMIT} external>
-                    提交作品
+                  <MagneticButton href={SUBMIT_ISSUE} external>
+                    {dict.how.cta}
                   </MagneticButton>
                 </div>
               </div>
             </Reveal>
-            <ProcessTimeline />
+            <ProcessTimeline dict={dict} />
           </div>
         </section>
 
@@ -139,19 +145,18 @@ export default async function HomePage() {
                 style={{ background: 'radial-gradient(circle, #ff385c 0%, transparent 66%)' }}
               />
               <div className="relative">
-                <h2 className="t-section phrase mx-auto max-w-[20ch]">
-                  <span>你用 Astra&nbsp;</span>
-                  <span>做了什么？</span>
+                <h2 className="t-section phrase mx-auto max-w-[22ch]">
+                  <span>{dict.cta.heading[0]}</span> <span>{dict.cta.heading[1]}</span>
                 </h2>
-                <p className="t-feature mx-auto mt-5 max-w-[46ch] font-normal text-[var(--palette-text-secondary)]">
-                  一个能跑的原型就够了。写清楚玩法、入口和模型参与了什么，剩下的交给目录。
+                <p className="t-feature mx-auto mt-5 max-w-[48ch] font-normal text-[var(--palette-text-secondary)]">
+                  {dict.cta.lead}
                 </p>
                 <div className="mt-9 flex flex-wrap justify-center gap-3">
-                  <MagneticButton href={SUBMIT} external>
-                    提交你的作品
+                  <MagneticButton href={SUBMIT_ISSUE} external>
+                    {dict.cta.submit}
                   </MagneticButton>
-                  <MagneticButton href={UPSTREAM} variant="ghost" external>
-                    在 GitHub 上查看
+                  <MagneticButton href={UPSTREAM_REPO} variant="ghost" external>
+                    {dict.cta.github}
                   </MagneticButton>
                 </div>
               </div>
@@ -160,7 +165,7 @@ export default async function HomePage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter dict={dict} homeHref={homeHref} readmeUrl={catalog.source.url} />
     </>
   );
 }

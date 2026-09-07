@@ -1,13 +1,13 @@
+import type { Dictionary } from '@/lib/i18n';
+import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import CountUp from './CountUp';
 import KineticHeadline from './KineticHeadline';
 import MagneticButton from './MagneticButton';
 import Reveal from './Reveal';
 import StarField from './StarField';
 
-const UPSTREAM = 'https://github.com/MartinDelophy/awesome-gpt-6-astra';
-const SUBMIT = `${UPSTREAM}/issues/new?template=submit-game.yml`;
-
 interface HeroProps {
+  dict: Dictionary;
   workCount: number;
   authorCount: number;
   playableCount: number;
@@ -16,6 +16,7 @@ interface HeroProps {
 }
 
 export default function Hero({
+  dict,
   workCount,
   authorCount,
   playableCount,
@@ -23,9 +24,9 @@ export default function Hero({
   stale,
 }: HeroProps) {
   const stats = [
-    { value: workCount, suffix: '', label: '收录作品' },
-    { value: authorCount, suffix: '', label: '参与创作者' },
-    { value: playableCount, suffix: '', label: '可直接试玩' },
+    { value: workCount, label: dict.hero.statWorks },
+    { value: authorCount, label: dict.hero.statAuthors },
+    { value: playableCount, label: dict.hero.statPlayable },
   ];
 
   return (
@@ -53,10 +54,10 @@ export default function Hero({
       <div className="shell flex min-h-[max(620px,92svh)] flex-col justify-center pb-20 pt-14 sm:pt-16">
         <Reveal>
           <a
-            href={UPSTREAM}
+            href={UPSTREAM_REPO}
             target="_blank"
             rel="noreferrer noopener"
-            className="group inline-flex items-center gap-[10px] rounded-[var(--radius-badge)] border border-[var(--palette-border-strong)] bg-white/[0.04] py-[7px] pl-[9px] pr-4 backdrop-blur-sm transition-[border-color,background-color] duration-300 hover:border-[var(--palette-rausch)] hover:bg-white/[0.08]"
+            className="group inline-flex items-center gap-[10px] rounded-[var(--radius-badge)] border border-[var(--palette-border-strong)] bg-white/[0.04] py-[7px] pe-4 ps-[9px] backdrop-blur-sm transition-[border-color,background-color] duration-300 hover:border-[var(--palette-rausch)] hover:bg-white/[0.08]"
           >
             <span className="relative flex h-[7px] w-[7px]">
               <span
@@ -71,7 +72,7 @@ export default function Hero({
               />
             </span>
             <span className="t-badge text-[var(--palette-text-secondary)]">
-              {stale ? '目录暂用最近缓存' : '目录实时同步上游 README'}
+              {stale ? dict.hero.staleBadge : dict.hero.liveBadge}
             </span>
             <svg
               viewBox="0 0 16 16"
@@ -81,7 +82,7 @@ export default function Hero({
               stroke="currentColor"
               strokeWidth="1.8"
               aria-hidden="true"
-              className="text-[var(--palette-text-tertiary)] transition-transform duration-300 group-hover:translate-x-[3px]"
+              className="text-[var(--palette-text-tertiary)] transition-transform duration-300 group-hover:translate-x-[3px] rtl:-scale-x-100"
             >
               <path d="M6 3.5L10.5 8 6 12.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -90,22 +91,21 @@ export default function Hero({
 
         <KineticHeadline
           className="t-display mt-6 max-w-[19ch] text-balance"
-          lines={['Games worth playing.', 'Ideas worth building.']}
+          lines={dict.hero.headline}
           accentLine={1}
           startDelay={140}
         />
 
         <Reveal delay={620}>
-          <p className="t-feature mt-6 max-w-[46ch] font-normal text-[var(--palette-text-secondary)]">
-            用 <span className="text-[var(--palette-text-primary)]">GPT-6 Astra</span>{' '}
-            做出来的游戏、交互实验与艺术沙盒精选。每一条都写清楚玩什么、在哪里玩、模型参与了什么。
+          <p className="t-feature mt-6 max-w-[48ch] font-normal text-[var(--palette-text-secondary)]">
+            {dict.hero.lead}
           </p>
         </Reveal>
 
         <Reveal delay={740}>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <MagneticButton href="#works">
-              浏览作品目录
+              {dict.hero.browse}
               <svg
                 viewBox="0 0 16 16"
                 width="14"
@@ -114,12 +114,13 @@ export default function Hero({
                 stroke="currentColor"
                 strokeWidth="2"
                 aria-hidden="true"
+                className="rtl:-scale-x-100"
               >
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </MagneticButton>
-            <MagneticButton href={SUBMIT} variant="ghost" external>
-              提交你的作品
+            <MagneticButton href={SUBMIT_ISSUE} variant="ghost" external>
+              {dict.hero.submit}
             </MagneticButton>
           </div>
         </Reveal>
@@ -130,15 +131,15 @@ export default function Hero({
               <div key={stat.label}>
                 <dt className="t-micro text-[var(--palette-text-tertiary)]">{stat.label}</dt>
                 <dd className="mt-[6px] text-[2.25rem] font-bold leading-none tracking-[-0.035em]">
-                  <CountUp to={stat.value} suffix={stat.suffix} />
+                  <CountUp to={stat.value} />
                 </dd>
               </div>
             ))}
             {checkedAt ? (
-              <div className="ml-auto self-end">
-                <dt className="sr-only">最近核对</dt>
+              <div className="ms-auto self-end">
+                <dt className="sr-only">{dict.hero.lastChecked}</dt>
                 <dd className="t-small text-[var(--palette-text-tertiary)]">
-                  最近核对 {checkedAt}
+                  {dict.hero.lastChecked} {checkedAt}
                 </dd>
               </div>
             ) : null}

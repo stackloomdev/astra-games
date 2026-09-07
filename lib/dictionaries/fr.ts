@@ -1,0 +1,96 @@
+import type { Dictionary } from './types';
+
+const dictionary: Dictionary = {
+  meta: {
+    title: 'Astra Games — Créé avec GPT-6 Astra',
+    tagline: 'Des jeux qui valent le détour. Des idées qui valent d’être construites.',
+    description:
+      'Une sélection de jeux, d’expériences interactives et de bacs à sable artistiques réalisés avec GPT-6 Astra. Le catalogue suit en temps réel la liste amont awesome-gpt-6-astra.',
+  },
+  nav: { works: 'Catalogue', how: 'Être référencé', about: 'À propos', language: 'Langue', skipToContent: 'Aller au contenu' },
+  hero: {
+    liveBadge: 'Le catalogue suit le README amont en direct',
+    staleBadge: 'Affichage du dernier catalogue en cache',
+    headline: ['Des jeux qui valent le détour.', 'Des idées qui valent d’être construites.'],
+    lead: 'Des jeux, des expériences interactives et des bacs à sable artistiques faits avec GPT-6 Astra. Chaque entrée dit à quoi on joue, où y jouer et ce que le modèle a réellement fait.',
+    browse: 'Parcourir le catalogue',
+    submit: 'Proposer votre création',
+    statWorks: 'Œuvres référencées',
+    statAuthors: 'Créateurs',
+    statPlayable: 'Jouables tout de suite',
+    lastChecked: 'Dernière vérification',
+  },
+  marquee: ['Vol à un bouton', 'Physique molle', 'Tower defense insulaire', 'Course de karts', 'Art particulaire', 'Mondes sphériques', 'Art procédural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL natif', 'Tests one-shot', 'Itérations longues'],
+  works: {
+    eyebrow: 'Catalogue',
+    heading: ['Tout ici se joue vraiment —', 'pas un tas de liens morts'],
+    lead: 'Le catalogue est analysé directement depuis {readme}. Les ajouts et corrections en amont arrivent ici en quelques minutes ; ce site ne conserve aucune copie de la liste.',
+    upstreamReadme: 'le README amont',
+    search: 'Rechercher une œuvre, un créateur, un principe',
+    emptyTitle: 'Aucun résultat',
+    emptyBody: 'Essayez un autre mot-clé, ou',
+    reset: 'réinitialisez les filtres',
+    categories: { all: 'Tout', game: 'Jeux', experiment: 'Expériences et art', app: 'Applis', tool: 'Outils', website: 'Sites', other: 'Autres' },
+  },
+  card: { playable: 'Jouable', open: 'Ouvrir', viewSource: 'Source', by: 'par', screenshotAlt: 'capture de jeu', details: 'Détails' },
+  criteria: {
+    eyebrow: 'Critères de référencement',
+    heading: ['Une bonne fiche vous dit', 'où vous mettez les pieds'],
+    lead: 'Chaque œuvre est décrite avec les mêmes champs, pour qu’une entrée ne se réduise jamais à un lien et une phrase promotionnelle.',
+    rows: [
+      { term: 'Œuvre et créateur', detail: 'Le titre, et un lien vers le créateur ou l’équipe d’origine.' },
+      { term: 'Ce qu’on y fait', detail: 'Une phrase sur la mécanique centrale. Pas de promotion vague.' },
+      { term: 'Où y jouer', detail: 'Une démo publique, ou un dépôt public avec les instructions d’exécution.' },
+      { term: 'Vraie capture', detail: 'Au moins une capture réelle du cœur du jeu, accessible publiquement.' },
+      { term: 'Plateforme et conditions', detail: 'Navigateur / bureau / mobile, et toute exigence de paiement, de compte ou de matériel.' },
+      { term: 'Le rôle d’Astra', detail: 'Une déclaration du créateur, un journal de développement ou une trace publique.' },
+      { term: 'Notes de fabrication', detail: 'Source, pile technique et processus — autant que le créateur peut partager.' },
+    ],
+    note: 'L’usage du modèle est consigné d’après les déclarations publiques des créateurs ; une attribution sans preuve n’est jamais présentée comme un fait établi. Les prototypes jouables sont les bienvenus et l’open source n’est pas exigé.',
+  },
+  how: {
+    eyebrow: 'Être référencé',
+    heading: ['Vous avez construit quelque chose ?', 'Quatre étapes suffisent'],
+    lead: 'C’est une liste communautaire. N’importe qui peut proposer sa création ou celle d’un autre, tant que le créateur d’origine est crédité.',
+    cta: 'Proposer une œuvre',
+    steps: [
+      { title: 'Faites quelque chose de jouable', body: 'Jeux, expériences interactives, bacs à sable artistiques : tout compte. Les prototypes sont acceptés, l’open source est facultatif — mais ça doit vraiment tourner.' },
+      { title: 'Laissez une trace d’Astra', body: 'Un journal de développement, les prompts d’origine, un historique d’itérations — tout ce qui montre sur quelles parties GPT-6 Astra a travaillé. Sans preuve, rien n’est présenté comme un fait.' },
+      { title: 'Ouvrez une issue', body: 'Joignez un lien de démo ou un dépôt avec instructions, une vraie capture d’écran, ainsi que la plateforme et les conditions d’accès.' },
+      { title: 'Fusionné en amont, en ligne ici', body: 'Une fois le README amont fusionné, ce site suit en quelques minutes. Personne n’a besoin de retoucher les données du site.' },
+    ],
+  },
+  cta: {
+    heading: ['Qu’avez-vous construit', 'avec Astra ?'],
+    lead: 'Un prototype qui tourne suffit. Dites ce qu’il fait, où l’essayer et ce que le modèle a apporté — le catalogue s’occupe du reste.',
+    submit: 'Proposer votre création',
+    github: 'Voir sur GitHub',
+  },
+  detail: {
+    back: 'Retour au catalogue',
+    play: 'Y jouer',
+    source: 'Voir la source',
+    repository: 'Dépôt',
+    author: 'Créateur',
+    category: 'Catégorie',
+    listedUnder: 'Rubrique amont',
+    notFound: 'Cette œuvre n’est pas au catalogue',
+    notFoundBody: 'Elle a peut-être été retirée en amont, ou le lien a changé.',
+    upstreamNote: 'Tout le contenu de cette page vient du README amont. Ce site ne le modifie pas.',
+    otherWorks: 'Continuer à explorer',
+    metadata: 'Informations',
+  },
+  footer: {
+    disclaimer: 'Liste communautaire d’œuvres réalisées avec GPT-6 Astra. Sans lien avec OpenAI. Être référencé signifie « à explorer » — ce n’est ni un benchmark ni une recommandation officielle.',
+    license: 'Le texte et les visuels propres à la liste sont publiés sous CC0 1.0. Les œuvres liées restent sous leurs propres licences.',
+    catalogue: 'Catalogue',
+    participate: 'Participer',
+    project: 'Projet',
+    links: {
+      works: 'Catalogue', how: 'Être référencé', upstream: 'README amont', submit: 'Proposer un jeu',
+      brokenLink: 'Signaler un lien mort', contributing: 'Guide de contribution', mainRepo: 'Dépôt principal', siteSource: 'Source du site',
+    },
+  },
+};
+
+export default dictionary;
