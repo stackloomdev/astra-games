@@ -89,6 +89,30 @@ npm run snapshot   # 从线上刷新两份快照
 
 URL 来自社区编辑的 README，所以抓取是收紧的：只允许 HTTPS，DNS 只解析一次并把地址钉死在该请求上，私有地址段一律拒绝，限制大小、重定向次数和总时间预算。作品 ID 由标题哈希得出，而标题是翻译过的，所以请求要带 `l=` 指明语言。
 
+## SEO 与 GEO
+
+| 信号 | 位置 |
+| --- | --- |
+| title / description / canonical | 每种语言各一份，来自 `lib/dictionaries/` |
+| hreflang | 12 语言互指 + `x-default` 指向英文 |
+| Open Graph 分享卡 | `app/[locale]/opengraph-image.tsx`，1200×630，带实时作品数 |
+| 结构化数据 | `lib/structured-data.ts` |
+| sitemap | 96 条（12 首页 + 12×7 详情），每条带 hreflang |
+| robots | 通配 + 13 个 AI 抓取器显式放行 |
+| `/llms.txt` | 从实时目录生成的纯文本简报 |
+
+结构化数据用 schema.org：首页是 `CollectionPage` + `ItemList`，每条作品按分类映射为 `VideoGame` / `SoftwareApplication` / `CreativeWork`；详情页额外带 `BreadcrumbList`。
+
+**只写目录真正记录的字段。** 没有 `offers`、没有 `aggregateRating`、没有 `isAccessibleForFree` —— 这些上游没有逐条核实，编出来既会被搜索引擎判为虚假标记，也会被回答引擎当成事实复述出去。
+
+同理，sitemap **不带 `lastmod`**。这个服务唯一有的时间戳是「上次读取上游的时间」，每几分钟刷新一次，跟内容有没有变无关；发布它等于告诉爬虫每个页面都在持续变更。真实变更时间需要持久化状态，我们没有，所以宁可不写。
+
+`/api/` 整体不进索引，但 `/api/preview` 单独放行 —— 结构化数据和 OG 标签里的封面图都指向它，挡掉的话富媒体结果和分享卡就都没有图。
+
+`/llms.txt` 除了列作品，还明确写了三件容易被误读的事：收录不等于评测或背书、项目与 OpenAI 无隶属关系、模型归因来自作者自述且未逐条核实。这些正是摘要最容易说错的地方。
+
+**没做 `keywords` meta**：主流搜索引擎二十年前就不再使用它。
+
 ## 部署
 
 Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空。

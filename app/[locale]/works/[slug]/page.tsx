@@ -4,11 +4,13 @@ import MagneticButton from '@/components/MagneticButton';
 import Reveal from '@/components/Reveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+import StructuredData from '@/components/StructuredData';
 import WorkCard from '@/components/WorkCard';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { DEFAULT_LOCALE, LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SITE_URL } from '@/lib/links';
 import { previewPath } from '@/lib/preview-version';
+import { workGraph } from '@/lib/structured-data';
 import { gradientFor, hostOf, monogram } from '@/lib/taxonomy';
 import { findWorkBySlug, workSlug } from '@/lib/work-url';
 
@@ -69,6 +71,9 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
 
   return (
     <>
+      <StructuredData
+        data={workGraph({ work, locale, dict, previewUrl: previewPath(work, locale) })}
+      />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
       <main className="pt-[68px]">

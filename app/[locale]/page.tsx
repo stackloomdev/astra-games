@@ -7,10 +7,13 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import Reveal from '@/components/Reveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+import StructuredData from '@/components/StructuredData';
 import WorksExplorer from '@/components/WorksExplorer';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { LOCALES, getDictionary, isLocale, localeEntry, type Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
+import { previewPath } from '@/lib/preview-version';
+import { homeGraph } from '@/lib/structured-data';
 
 // Matches the catalogue service's own five-minute freshness window, so the
 // rendered page and the JSON API never drift apart by more than one interval.
@@ -49,6 +52,14 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <>
+      <StructuredData
+        data={homeGraph({
+          locale,
+          dict,
+          catalog,
+          previewUrlFor: (work) => previewPath(work, locale),
+        })}
+      />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
       <main>
