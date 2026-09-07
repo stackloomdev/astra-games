@@ -1,69 +1,166 @@
-import Image from "next/image";
+import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
+import ProcessTimeline from '@/components/ProcessTimeline';
+import Reveal from '@/components/Reveal';
+import SiteFooter from '@/components/SiteFooter';
+import SiteHeader from '@/components/SiteHeader';
+import WorksExplorer from '@/components/WorksExplorer';
+import MagneticButton from '@/components/MagneticButton';
+import { loadCatalog, README_URL } from '@/lib/catalog';
 
-export default function Home() {
+// Matches the catalogue service's own five-minute freshness window, so the
+// rendered page and the JSON API never drift apart by more than one interval.
+export const revalidate = 300;
+
+const UPSTREAM = 'https://github.com/MartinDelophy/awesome-gpt-6-astra';
+const SUBMIT = `${UPSTREAM}/issues/new?template=submit-game.yml`;
+
+const MARQUEE = [
+  '单键飞行', '半流体物理', '海岛塔防', '卡丁车竞速', '粒子艺术',
+  '球形世界探索', '程序化美术', 'Web Audio', 'Three.js', 'Canvas 2D',
+  '原生 WebGL', 'One Shot 测试', '多轮迭代',
+];
+
+function formatDate(iso: string | null): string | null {
+  if (!iso) return null;
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Shanghai',
+  }).format(date);
+}
+
+export default async function HomePage() {
+  const catalog = await loadCatalog();
+  const works = catalog.works;
+
+  const authorCount = new Set(
+    works.map((work) => work.author.name.trim().toLowerCase()).filter(Boolean),
+  ).size;
+  const playableCount = works.filter((work) => work.demoUrl).length;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <SiteHeader />
+
+      <main>
+        <Hero
+          workCount={works.length}
+          authorCount={authorCount}
+          playableCount={playableCount}
+          checkedAt={formatDate(catalog.source.lastSuccessfulAt ?? catalog.source.checkedAt)}
+          stale={catalog.source.stale}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        <Marquee items={MARQUEE} />
+
+        {/* --- Catalogue ---------------------------------------------------- */}
+        <section id="works" className="shell scroll-mt-24 py-24 sm:py-32">
+          <Reveal>
+            <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="t-micro text-[var(--palette-rausch)]">作品目录</p>
+                <h2 className="t-section phrase mt-3 max-w-[18ch]">
+                  <span>收录即可玩，</span>
+                  <span>不是一堆死链接</span>
+                </h2>
+              </div>
+              <p className="t-body max-w-[42ch] text-[var(--palette-text-secondary)]">
+                目录直接解析{' '}
+                <a
+                  href={README_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-[var(--palette-text-primary)] underline decoration-[var(--palette-rausch)] decoration-2 underline-offset-4"
+                >
+                  上游 README
+                </a>
+                ，上游增删改后这里几分钟内自动跟上，本站不保存第二份作品数据。
+              </p>
+            </div>
+          </Reveal>
+
+          {catalog.source.stale && catalog.source.error ? (
+            <p
+              role="status"
+              className="mb-8 rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] bg-white/[0.03] px-4 py-3 t-body text-[var(--palette-text-secondary)]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              {catalog.source.error}
+            </p>
+          ) : null}
+
+          <Reveal threshold={0.05}>
+            <WorksExplorer works={works} />
+          </Reveal>
+        </section>
+
+        {/* --- How it works -------------------------------------------------- */}
+        <section
+          id="how"
+          className="relative scroll-mt-24 overflow-hidden border-y border-[var(--palette-border)] bg-[var(--palette-bg-inset)] py-24 sm:py-32"
+        >
+          <div
+            aria-hidden="true"
+            className="aurora-blob left-[-10%] top-[10%] h-[34rem] w-[34rem] opacity-[0.18]"
+            style={{ background: 'radial-gradient(circle, #8b5cf6 0%, transparent 68%)' }}
+          />
+          <div className="shell relative grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+            <Reveal>
+              <div className="lg:sticky lg:top-28">
+                <p className="t-micro text-[var(--palette-rausch)]">如何收录</p>
+                <h2 className="t-section phrase mt-3 max-w-[14ch]">
+                  <span>做完了，</span>
+                  <span>四步就能挂上来</span>
+                </h2>
+                <p className="t-body mt-5 max-w-[38ch] text-[var(--palette-text-secondary)]">
+                  这是一份社区清单。任何人都可以推荐自己或他人的公开作品，只要注明原作者。
+                </p>
+                <div className="mt-8">
+                  <MagneticButton href={SUBMIT} external>
+                    提交作品
+                  </MagneticButton>
+                </div>
+              </div>
+            </Reveal>
+            <ProcessTimeline />
+          </div>
+        </section>
+
+        {/* --- Closing CTA --------------------------------------------------- */}
+        <section className="shell py-24 sm:py-32">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[var(--radius-large)] border border-[var(--palette-border)] bg-[var(--palette-bg-raised)] px-8 py-16 text-center elev-card sm:px-16">
+              <div
+                aria-hidden="true"
+                className="aurora-blob left-1/2 top-[-30%] h-[30rem] w-[30rem] -translate-x-1/2 opacity-[0.28]"
+                style={{ background: 'radial-gradient(circle, #ff385c 0%, transparent 66%)' }}
+              />
+              <div className="relative">
+                <h2 className="t-section phrase mx-auto max-w-[20ch]">
+                  <span>你用 Astra&nbsp;</span>
+                  <span>做了什么？</span>
+                </h2>
+                <p className="t-feature mx-auto mt-5 max-w-[46ch] font-normal text-[var(--palette-text-secondary)]">
+                  一个能跑的原型就够了。写清楚玩法、入口和模型参与了什么，剩下的交给目录。
+                </p>
+                <div className="mt-9 flex flex-wrap justify-center gap-3">
+                  <MagneticButton href={SUBMIT} external>
+                    提交你的作品
+                  </MagneticButton>
+                  <MagneticButton href={UPSTREAM} variant="ghost" external>
+                    在 GitHub 上查看
+                  </MagneticButton>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </section>
       </main>
-    </div>
+
+      <SiteFooter />
+    </>
   );
 }

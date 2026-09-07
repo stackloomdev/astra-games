@@ -1,26 +1,297 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   ASTRA GAMES — Design tokens
+   Typographic system, spacing, radius and elevation are ported 1:1 from the
+   Airbnb design language (see DESIGN.md). Surfaces are inverted for a dark,
+   cinematic canvas; the brand accents stay inside Airbnb's Rausch / Luxe /
+   Plus family so no new hues enter the system.
+   ========================================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Palette: brand (Airbnb Rausch / Luxe / Plus, unchanged hues) ------ */
+  --palette-rausch: #ff385c;        /* singular primary accent            */
+  --palette-rausch-deep: #e00b41;   /* pressed / dark variant             */
+  --palette-luxe: #460479;          /* premium tier, used in gradients    */
+  --palette-luxe-lift: #8b5cf6;     /* luxe lifted for dark legibility    */
+  --palette-plus: #92174d;          /* plus tier, gradient partner        */
+
+  /* --- Palette: surfaces (inverted, warm — never pure black) ------------- */
+  --palette-bg: #0d0b0f;            /* page ground, warm near-black       */
+  --palette-bg-raised: #151219;     /* cards, raised panels               */
+  --palette-bg-hover: #1c1822;      /* hover surface                      */
+  --palette-bg-inset: #0a080c;      /* wells, inset areas                 */
+  --palette-control: #211d29;       /* circular nav controls (≈ #f2f2f2)  */
+
+  /* --- Palette: text (warm off-white, mirrors the #222222 warmth rule) --- */
+  --palette-text-primary: #f6f3f0;
+  --palette-text-secondary: #a9a2b4; /* mirrors #6a6a6a                   */
+  --palette-text-tertiary: #6f687c;
+  --palette-text-disabled: rgb(255 255 255 / 0.24);
+
+  /* --- Borders & dividers ------------------------------------------------ */
+  --palette-border: rgb(255 255 255 / 0.10);
+  --palette-border-strong: rgb(255 255 255 / 0.18);
+
+  /* --- Elevation: Airbnb's three-layer graduated stack, inverted --------- */
+  --shadow-card:
+    rgb(255 255 255 / 0.06) 0 0 0 1px,
+    rgb(0 0 0 / 0.36) 0 2px 6px,
+    rgb(0 0 0 / 0.52) 0 4px 8px;
+  --shadow-hover:
+    rgb(255 255 255 / 0.12) 0 0 0 1px,
+    rgb(0 0 0 / 0.40) 0 8px 20px,
+    rgb(255 56 92 / 0.16) 0 4px 28px;
+  --shadow-focus: rgb(255 255 255 / 0.92) 0 0 0 2px;
+
+  /* --- Radius scale (Airbnb: 4 / 8 / 14 / 20 / 32 / 50%) ---------------- */
+  --radius-subtle: 4px;
+  --radius-standard: 8px;
+  --radius-badge: 14px;
+  --radius-card: 20px;
+  --radius-large: 32px;
+
+  /* --- Spacing: 8px base, Airbnb's stops ------------------------------- */
+  --space-2: 2px;  --space-3: 3px;  --space-4: 4px;  --space-6: 6px;
+  --space-8: 8px;  --space-10: 10px; --space-11: 11px; --space-12: 12px;
+  --space-15: 15px; --space-16: 16px; --space-22: 22px; --space-24: 24px;
+  --space-32: 32px;
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 720ms;
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--palette-bg);
+  --color-bg-raised: var(--palette-bg-raised);
+  --color-bg-hover: var(--palette-bg-hover);
+  --color-bg-inset: var(--palette-bg-inset);
+  --color-control: var(--palette-control);
+  --color-ink: var(--palette-text-primary);
+  --color-ink-2: var(--palette-text-secondary);
+  --color-ink-3: var(--palette-text-tertiary);
+  --color-rausch: var(--palette-rausch);
+  --color-rausch-deep: var(--palette-rausch-deep);
+  --color-luxe: var(--palette-luxe);
+  --color-luxe-lift: var(--palette-luxe-lift);
+  --color-plus: var(--palette-plus);
+  --color-line: var(--palette-border);
+  --color-line-strong: var(--palette-border-strong);
+
+  --radius-subtle: var(--radius-subtle);
+  --radius-standard: var(--radius-standard);
+  --radius-badge: var(--radius-badge);
+  --radius-card: var(--radius-card);
+  --radius-large: var(--radius-large);
+
+  --font-sans: var(--font-figtree), var(--font-noto-sc), -apple-system,
+    system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================================
+   Typography — Airbnb hierarchy, verbatim sizes / weights / tracking.
+   Weight floor is 500: no thin weights on any heading.
+   ========================================================================= */
+
+.t-display {
+  /* Hero only. Extends the 28px section heading up the same curve,
+     with tracking scaled proportionally past Airbnb's -0.44px stop. */
+  font-size: clamp(2.5rem, 5.6vw, 4.75rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.t-h1      { font-size: 1.75rem; font-weight: 700; line-height: 1.43; }
+.t-h2      { font-size: 1.375rem; font-weight: 600; line-height: 1.18; letter-spacing: -0.44px; }
+.t-h2-med  { font-size: 1.375rem; font-weight: 500; line-height: 1.18; letter-spacing: -0.44px; }
+.t-sub     { font-size: 1.3125rem; font-weight: 700; line-height: 1.43; }
+.t-feature { font-size: 1.25rem; font-weight: 600; line-height: 1.20; letter-spacing: -0.18px; }
+.t-ui      { font-size: 1rem; font-weight: 500; line-height: 1.25; }
+.t-ui-semi { font-size: 1rem; font-weight: 600; line-height: 1.25; }
+.t-body    { font-size: 0.875rem; font-weight: 400; line-height: 1.43; }
+.t-body-med{ font-size: 0.875rem; font-weight: 500; line-height: 1.29; }
+.t-small   { font-size: 0.8125rem; font-weight: 400; line-height: 1.23; }
+.t-tag     { font-size: 0.75rem; font-weight: 500; line-height: 1.33; }
+.t-badge   { font-size: 0.6875rem; font-weight: 600; line-height: 1.18; font-feature-settings: "salt"; }
+/* Airbnb's micro role is 8px; lifted to 11px because uppercase micro-type at
+   8px fails contrast on a dark ground. Weight, tracking and case are kept. */
+.t-micro   { font-size: 0.6875rem; font-weight: 700; line-height: 1.25; letter-spacing: 0.32px; text-transform: uppercase; }
+
+/* Section heading that scales for a marketing canvas while keeping the
+   700 weight and negative tracking of the Airbnb display roles. */
+.t-section {
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+}
+
+/* ============================================================================
+   Base
+   ========================================================================= */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--palette-bg);
+  color: var(--palette-text-primary);
+  font-family: var(--font-figtree), var(--font-noto-sc), -apple-system, system-ui, sans-serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+img, svg { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--palette-rausch);
+  outline-offset: 3px;
+  border-radius: var(--radius-subtle);
+}
+
+::selection { background: var(--palette-rausch); color: #fff; }
+
+/* Container — mirrors Airbnb's 1128 / 1440 / 1920 breakpoint ladder. */
+.shell {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 48px);
+}
+
+/* ============================================================================
+   Animation primitives
+   ========================================================================= */
+
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-6%, -4%, 0) scale(1);    }
+  33%  { transform: translate3d(6%, 3%, 0) scale(1.14);   }
+  66%  { transform: translate3d(-3%, 6%, 0) scale(0.94);  }
+  100% { transform: translate3d(-6%, -4%, 0) scale(1);    }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.85); opacity: 0.7; }
+  70%  { transform: scale(1.55); opacity: 0;   }
+  100% { transform: scale(1.55); opacity: 0;   }
+}
+
+@keyframes shimmer-sweep {
+  from { transform: translateX(-140%) skewX(-18deg); }
+  to   { transform: translateX(260%) skewX(-18deg); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes caret-blink {
+  0%, 45%   { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+
+/* Scroll-reveal: elements start hidden and are released by IntersectionObserver
+   (see components/Reveal.tsx) so nothing depends on JS to become readable —
+   the .is-in fallback below is applied when motion is disabled. */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity var(--dur-slow) var(--ease-out-soft),
+    transform var(--dur-slow) var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+  animation: aurora-drift 26s var(--ease-in-out-soft) infinite;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x var(--marquee-duration, 42s) linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* Three-layer elevation helpers */
+.elev-card  { box-shadow: var(--shadow-card); }
+.elev-hover { box-shadow: var(--shadow-hover); }
+
+/* Gradient text confined to the Rausch → Plus → Luxe family */
+.grad-brand {
+  background-image: linear-gradient(
+    100deg,
+    var(--palette-rausch) 0%,
+    #ff6b8a 26%,
+    var(--palette-luxe-lift) 62%,
+    var(--palette-rausch) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline grid backdrop */
+.grid-veil {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 78% 62% at 50% 42%, #000 32%, transparent 78%);
+}
+
+/* CJK has no word boundaries, so a display heading will otherwise break at an
+   arbitrary character ("做完了，四 / 步就能挂上来"). Headings written as a series
+   of <span> phrases keep each phrase whole and only break between them. */
+.phrase > span { display: inline-block; }
+
+/* Hide scrollbar on the category pill rail (Airbnb pattern) */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ============================================================================
+   Reduced motion — every decorative animation stops, nothing is left hidden.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .aurora-blob { animation: none; }
+  .marquee-track { animation: none; }
 }
