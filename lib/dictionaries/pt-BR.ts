@@ -23,7 +23,7 @@ const dictionary: Dictionary = {
   marquee: ['Voo de um botão', 'Física de corpo mole', 'Tower defense na ilha', 'Corrida de karts', 'Arte de partículas', 'Mundos esféricos', 'Arte procedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL puro', 'Testes one-shot', 'Desenvolvimento iterativo'],
   works: {
     eyebrow: 'Catálogo',
-    heading: ['Aqui tudo é jogável mesmo —', 'não é uma pilha de links mortos'],
+    heading: ['Aqui tudo é jogável mesmo\u00A0—', 'não é uma pilha de links mortos'],
     lead: 'O catálogo é lido direto de {readme}. Adições e correções na origem aparecem aqui em minutos; este site não guarda uma segunda cópia da lista.',
     upstreamReadme: 'o README original',
     search: 'Buscar trabalhos, criadores ou mecânicas',

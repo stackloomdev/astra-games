@@ -23,7 +23,7 @@ const dictionary: Dictionary = {
   marquee: ['Ein-Tasten-Flug', 'Soft-Body-Physik', 'Insel-Tower-Defense', 'Kart-Rennen', 'Partikelkunst', 'Kugelwelten', 'Prozedurale Grafik', 'Web Audio', 'Three.js', 'Canvas 2D', 'Reines WebGL', 'One-Shot-Tests', 'Iterative Entwicklung'],
   works: {
     eyebrow: 'Katalog',
-    heading: ['Hier ist alles spielbar —', 'kein Haufen toter Links'],
+    heading: ['Hier ist alles spielbar\u00A0—', 'kein Haufen toter Links'],
     lead: 'Der Katalog wird direkt aus {readme} gelesen. Änderungen upstream erscheinen hier binnen Minuten; diese Seite hält keine zweite Kopie der Liste.',
     upstreamReadme: 'der Upstream-README',
     search: 'Arbeiten, Kreative oder Mechaniken suchen',

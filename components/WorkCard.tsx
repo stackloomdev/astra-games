@@ -101,18 +101,40 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
             {dict.works.categories[work.category] ?? dict.works.categories.other}
           </span>
 
+          {/* Straight to the demo, skipping the detail page. z-2 puts it above
+              the title's stretched hit area (z-1), so a click here plays rather
+              than opening the entry. It replaces the old "playable" badge:
+              a button says the same thing and also does something about it. */}
           {work.demoUrl ? (
-            <span className="absolute end-3 top-3 flex items-center gap-[6px] rounded-[var(--radius-badge)] bg-[var(--palette-rausch)] px-[10px] py-[5px] t-badge text-white">
-              <span className="h-[5px] w-[5px] rounded-full bg-white" />
-              {dict.card.playable}
-            </span>
+            <a
+              href={work.demoUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="absolute bottom-3 start-3 z-[2] inline-flex min-h-[40px] items-center gap-[7px] rounded-[var(--radius-large)] bg-[var(--palette-rausch)] px-[14px] t-body-med text-white max-sm:min-h-[44px] shadow-[0_2px_10px_rgb(0_0_0/0.35)] transition-[background-color,transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:bg-[var(--palette-rausch-deep)] hover:shadow-[0_6px_18px_rgb(255_56_92/0.45)] focus-visible:outline-offset-4 group-hover:-translate-y-[2px]"
+            >
+              {/* Playback glyphs are not mirrored in RTL: the triangle points the way
+                  the media advances, not the way the text reads. */}
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
+                <path d="M4.4 2.6a.8.8 0 0 1 1.22-.68l7 5.4a.8.8 0 0 1 0 1.36l-7 5.4A.8.8 0 0 1 4.4 13.4z" />
+              </svg>
+              {dict.detail.play}
+            </a>
           ) : null}
         </div>
 
         {/* --- Details --------------------------------------------------- */}
         <div className="flex flex-1 flex-col gap-[10px] p-[18px]">
+          {/* The title is the card's real link. Its ::after stretches over the
+              whole card, so the entire surface opens the entry — Airbnb's
+              full-card tap target — while leaving room for controls stacked
+              above it. */}
           <h3 className="t-feature line-clamp-2 transition-colors duration-300 group-hover:text-[var(--palette-rausch)]">
-            {work.name}
+            <a
+              href={href}
+              className="after:absolute after:inset-0 after:z-[1] after:rounded-[var(--radius-card)] after:content-['']"
+            >
+              {work.name}
+            </a>
           </h3>
 
           {work.description ? (
@@ -154,12 +176,6 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
         />
       </div>
 
-      {/* Full-card target — Airbnb's whole-card tap area. Goes to the detail
-          page rather than straight off-site, so the entry's platform notes and
-          model-involvement record are reachable before the demo is. */}
-      <a href={href} className="absolute inset-0 rounded-[var(--radius-card)]">
-        <span className="sr-only">{`${work.name} — ${dict.card.details}`}</span>
-      </a>
     </article>
   );
 }

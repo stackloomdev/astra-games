@@ -23,7 +23,7 @@ const dictionary: Dictionary = {
   marquee: ['Terbang satu tombol', 'Fisika soft-body', 'Tower defense pulau', 'Balap gokart', 'Seni partikel', 'Dunia berbentuk bola', 'Seni prosedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL murni', 'Uji one-shot', 'Pengembangan iteratif'],
   works: {
     eyebrow: 'Katalog',
-    heading: ['Semua di sini benar-benar bisa dimainkan —', 'bukan tumpukan tautan mati'],
+    heading: ['Semua di sini benar-benar bisa dimainkan\u00A0—', 'bukan tumpukan tautan mati'],
     lead: 'Katalog dibaca langsung dari {readme}. Penambahan dan perubahan di hulu muncul di sini dalam hitungan menit; situs ini tidak menyimpan salinan kedua dari daftarnya.',
     upstreamReadme: 'README hulu',
     search: 'Cari karya, kreator, atau mekanik',

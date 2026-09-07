@@ -23,7 +23,7 @@ const dictionary: Dictionary = {
   marquee: ['One-button flight', 'Soft-body physics', 'Island tower defence', 'Kart racing', 'Particle art', 'Spherical worlds', 'Procedural art', 'Web Audio', 'Three.js', 'Canvas 2D', 'Raw WebGL', 'One-shot tests', 'Iterative builds'],
   works: {
     eyebrow: 'Catalogue',
-    heading: ['Everything here is playable —', 'not a pile of dead links'],
+    heading: ['Everything here is playable\u00A0—', 'not a pile of dead links'],
     lead: 'The catalogue is parsed straight from {readme}. Additions and edits upstream show up here within minutes; this site keeps no second copy of the list.',
     upstreamReadme: 'the upstream README',
     search: 'Search works, creators or mechanics',
