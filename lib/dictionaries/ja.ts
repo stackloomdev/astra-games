@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'リスト自身のテキストとビジュアルは CC0 1.0 で公開しています。リンク先の作品は各自のライセンスに従います。',
     catalogue: 'カタログ',
     participate: '参加する',
-    project: 'プロジェクト',
     links: {
       works: 'カタログ', how: '掲載方法', upstream: '上流 README', submit: 'ゲームを投稿',
-      brokenLink: 'リンク切れを報告', contributing: '貢献ガイド', mainRepo: 'メインリポジトリ', siteSource: 'サイトのソース',
+      brokenLink: 'リンク切れを報告', contributing: '貢献ガイド', mainRepo: 'メインリポジトリ',
     },
   },
 };

@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'نصوص القائمة وموادها البصرية منشورة تحت CC0 1.0، وتبقى الأعمال المرتبطة خاضعة لتراخيصها الخاصة.',
     catalogue: 'الفهرس',
     participate: 'المشاركة',
-    project: 'المشروع',
     links: {
       works: 'الفهرس', how: 'كيف تُدرَج', upstream: 'README الأصلي', submit: 'أرسل لعبة',
-      brokenLink: 'أبلغ عن رابط معطّل', contributing: 'دليل المساهمة', mainRepo: 'المستودع الرئيسي', siteSource: 'مصدر الموقع',
+      brokenLink: 'أبلغ عن رابط معطّل', contributing: 'دليل المساهمة', mainRepo: 'المستودع الرئيسي',
     },
   },
 };

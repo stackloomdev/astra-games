@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'Собственные тексты и графика списка опубликованы под CC0 1.0. Работы по ссылкам сохраняют свои лицензии.',
     catalogue: 'Каталог',
     participate: 'Участие',
-    project: 'Проект',
     links: {
       works: 'Каталог', how: 'Как попасть', upstream: 'Исходный README', submit: 'Прислать игру',
-      brokenLink: 'Сообщить о битой ссылке', contributing: 'Руководство для участников', mainRepo: 'Основной репозиторий', siteSource: 'Исходники сайта',
+      brokenLink: 'Сообщить о битой ссылке', contributing: 'Руководство для участников', mainRepo: 'Основной репозиторий',
     },
   },
 };

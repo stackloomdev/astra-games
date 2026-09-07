@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'सूची के अपने पाठ और दृश्य सामग्री CC0 1.0 के तहत जारी हैं। लिंक की गई रचनाएँ अपने-अपने लाइसेंस के अधीन रहती हैं।',
     catalogue: 'सूची',
     participate: 'भागीदारी',
-    project: 'परियोजना',
     links: {
       works: 'सूची', how: 'कैसे शामिल हों', upstream: 'अपस्ट्रीम README', submit: 'गेम भेजें',
-      brokenLink: 'टूटा लिंक बताएँ', contributing: 'योगदान गाइड', mainRepo: 'मुख्य रिपॉज़िटरी', siteSource: 'साइट का सोर्स',
+      brokenLink: 'टूटा लिंक बताएँ', contributing: 'योगदान गाइड', mainRepo: 'मुख्य रिपॉज़िटरी',
     },
   },
 };

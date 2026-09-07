@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'The list’s own text and visuals are released under CC0 1.0. Linked works remain under their own licences.',
     catalogue: 'Catalogue',
     participate: 'Take part',
-    project: 'Project',
     links: {
       works: 'Catalogue', how: 'Get listed', upstream: 'Upstream README', submit: 'Submit a game',
-      brokenLink: 'Report a broken link', contributing: 'Contributing guide', mainRepo: 'Main repository', siteSource: 'Website source',
+      brokenLink: 'Report a broken link', contributing: 'Contributing guide', mainRepo: 'Main repository',
     },
   },
 };

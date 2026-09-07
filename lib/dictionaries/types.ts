@@ -88,7 +88,6 @@ export interface Dictionary {
     license: string;
     catalogue: string;
     participate: string;
-    project: string;
     links: {
       works: string;
       how: string;
@@ -97,7 +96,6 @@ export interface Dictionary {
       brokenLink: string;
       contributing: string;
       mainRepo: string;
-      siteSource: string;
     };
   };
 }

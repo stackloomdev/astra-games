@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'Teks dan visual milik daftar ini dirilis di bawah CC0 1.0. Karya yang ditautkan tetap memakai lisensinya masing-masing.',
     catalogue: 'Katalog',
     participate: 'Ikut serta',
-    project: 'Proyek',
     links: {
       works: 'Katalog', how: 'Cara masuk daftar', upstream: 'README hulu', submit: 'Kirim game',
-      brokenLink: 'Laporkan tautan rusak', contributing: 'Panduan kontribusi', mainRepo: 'Repositori utama', siteSource: 'Kode situs',
+      brokenLink: 'Laporkan tautan rusak', contributing: 'Panduan kontribusi', mainRepo: 'Repositori utama',
     },
   },
 };

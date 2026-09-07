@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: '清单文字与视觉素材以 CC0 1.0 贡献至公有领域；链接指向的作品仍遵循各自许可。',
     catalogue: '目录',
     participate: '参与',
-    project: '项目',
     links: {
       works: '作品目录', how: '如何收录', upstream: '上游 README', submit: '提交游戏',
-      brokenLink: '反馈失效链接', contributing: '贡献指南', mainRepo: '主仓库', siteSource: '官网源码',
+      brokenLink: '反馈失效链接', contributing: '贡献指南', mainRepo: '主仓库',
     },
   },
 };

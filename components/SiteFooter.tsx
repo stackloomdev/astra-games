@@ -1,7 +1,5 @@
 import type { Dictionary } from '@/lib/i18n';
-import {
-  BROKEN_LINK_ISSUE, COMMUNITY, CONTRIBUTING, SITE_REPO, SUBMIT_ISSUE, UPSTREAM_REPO,
-} from '@/lib/links';
+import { BROKEN_LINK_ISSUE, CONTRIBUTING, SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 
 export default function SiteFooter({
   dict,
@@ -19,6 +17,7 @@ export default function SiteFooter({
         { label: dict.footer.links.works, href: `${homeHref}#works` },
         { label: dict.footer.links.how, href: `${homeHref}#how` },
         { label: dict.footer.links.upstream, href: readmeUrl, external: true },
+        { label: dict.footer.links.mainRepo, href: UPSTREAM_REPO, external: true },
       ],
     },
     {
@@ -29,20 +28,12 @@ export default function SiteFooter({
         { label: dict.footer.links.contributing, href: CONTRIBUTING, external: true },
       ],
     },
-    {
-      heading: dict.footer.project,
-      items: [
-        { label: dict.footer.links.mainRepo, href: UPSTREAM_REPO, external: true },
-        { label: dict.footer.links.siteSource, href: SITE_REPO, external: true },
-        { label: 'LINUX DO', href: COMMUNITY, external: true },
-      ],
-    },
   ];
 
   return (
     <footer id="about" className="relative overflow-hidden border-t border-[var(--palette-border)]">
       <div className="shell py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+        <div className="grid gap-12 md:grid-cols-[1.6fr_repeat(2,1fr)]">
           <div>
             <p className="t-ui-semi tracking-[-0.44px]">Astra Games</p>
             <p className="t-body mt-3 max-w-[42ch] text-[var(--palette-text-secondary)]">

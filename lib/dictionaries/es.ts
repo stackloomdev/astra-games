@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: 'El texto y los recursos visuales propios de la lista se publican bajo CC0 1.0. Las obras enlazadas conservan sus propias licencias.',
     catalogue: 'Catálogo',
     participate: 'Participar',
-    project: 'Proyecto',
     links: {
       works: 'Catálogo', how: 'Cómo entrar', upstream: 'README original', submit: 'Enviar un juego',
-      brokenLink: 'Reportar enlace roto', contributing: 'Guía de contribución', mainRepo: 'Repositorio principal', siteSource: 'Código del sitio',
+      brokenLink: 'Reportar enlace roto', contributing: 'Guía de contribución', mainRepo: 'Repositorio principal',
     },
   },
 };

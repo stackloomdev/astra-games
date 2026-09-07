@@ -85,10 +85,9 @@ const dictionary: Dictionary = {
     license: '목록 자체의 텍스트와 비주얼은 CC0 1.0으로 공개됩니다. 링크된 작품은 각자의 라이선스를 따릅니다.',
     catalogue: '카탈로그',
     participate: '참여',
-    project: '프로젝트',
     links: {
       works: '카탈로그', how: '등재 방법', upstream: '상위 README', submit: '게임 제출',
-      brokenLink: '깨진 링크 신고', contributing: '기여 가이드', mainRepo: '메인 저장소', siteSource: '사이트 소스',
+      brokenLink: '깨진 링크 신고', contributing: '기여 가이드', mainRepo: '메인 저장소',
     },
   },
 };
