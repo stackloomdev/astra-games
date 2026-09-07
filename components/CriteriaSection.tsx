@@ -13,7 +13,7 @@ export default function CriteriaSection({ dict }: { dict: Dictionary }) {
         <Reveal>
           <div className="lg:sticky lg:top-28">
             <p className="t-micro text-[var(--palette-rausch)]">{dict.criteria.eyebrow}</p>
-            <h2 className="t-section phrase mt-3 max-w-[16ch]">
+            <h2 className="t-section phrase mt-3 max-w-[22ch]">
               <span>{dict.criteria.heading[0]}</span>{' '}
               <span>{dict.criteria.heading[1]}</span>
             </h2>

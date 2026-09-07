@@ -6,7 +6,7 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import WorkCard from '@/components/WorkCard';
 import { loadCatalogFor } from '@/lib/catalog-service';
-import { LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
+import { DEFAULT_LOCALE, LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SITE_URL } from '@/lib/links';
 import { previewPath } from '@/lib/preview-version';
 import { gradientFor, hostOf, monogram } from '@/lib/taxonomy';
@@ -49,8 +49,11 @@ export async function generateMetadata({
 export default async function WorkPage({ params }: PageProps<'/[locale]/works/[slug]'>) {
   const { locale: rawLocale, slug } = await params;
   const resolved = await resolve(rawLocale, slug);
-  const dict = await getDictionary(isLocale(rawLocale) ? (rawLocale as Locale) : 'zh-CN');
-  const homeHref = `/${isLocale(rawLocale) ? rawLocale : 'zh-CN'}`;
+  // The chrome still has to render if the slug does not resolve, so it falls
+  // back to the primary language rather than failing before notFound() runs.
+  const chromeLocale = isLocale(rawLocale) ? (rawLocale as Locale) : DEFAULT_LOCALE;
+  const dict = await getDictionary(chromeLocale);
+  const homeHref = `/${chromeLocale}`;
   const localeHrefs = Object.fromEntries(LOCALES.map((entry) => [entry.code, `/${entry.code}`]));
 
   if (!resolved) notFound();

@@ -4,8 +4,8 @@
  * presentation details the UI needs.
  */
 export const LOCALES = [
-  { code: 'zh-CN', readme: 'README.zh-CN.md', label: '简体中文', htmlLang: 'zh-CN', dir: 'ltr' },
   { code: 'en', readme: 'README.md', label: 'English', htmlLang: 'en', dir: 'ltr' },
+  { code: 'zh-CN', readme: 'README.zh-CN.md', label: '简体中文', htmlLang: 'zh-CN', dir: 'ltr' },
   { code: 'ja', readme: 'README.ja.md', label: '日本語', htmlLang: 'ja', dir: 'ltr' },
   { code: 'ko', readme: 'README.ko.md', label: '한국어', htmlLang: 'ko', dir: 'ltr' },
   { code: 'fr', readme: 'README.fr.md', label: 'Français', htmlLang: 'fr', dir: 'ltr' },
@@ -21,7 +21,10 @@ export const LOCALES = [
 export type Locale = (typeof LOCALES)[number]['code'];
 export type LocaleEntry = (typeof LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = 'zh-CN';
+/** The site's primary language: what `/` resolves to when nothing better
+ *  matches, what `x-default` points at, and what pages without route params
+ *  (such as not-found) speak. */
+export const DEFAULT_LOCALE: Locale = 'en';
 
 export const LOCALE_CODES = LOCALES.map((locale) => locale.code);
 
@@ -30,7 +33,11 @@ export function isLocale(value: string): value is Locale {
 }
 
 export function localeEntry(code: Locale): LocaleEntry {
-  return LOCALES.find((locale) => locale.code === code) ?? LOCALES[0];
+  return (
+    LOCALES.find((locale) => locale.code === code) ??
+    LOCALES.find((locale) => locale.code === DEFAULT_LOCALE) ??
+    LOCALES[0]
+  );
 }
 
 /** Locale → the upstream README the catalogue is read from for that language. */

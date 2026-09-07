@@ -69,7 +69,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
             <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="t-micro text-[var(--palette-rausch)]">{dict.works.eyebrow}</p>
-                <h2 className="t-section phrase mt-3 max-w-[20ch]">
+                <h2 className="t-section phrase mt-3 max-w-[24ch]">
                   <span>{dict.works.heading[0]}</span> <span>{dict.works.heading[1]}</span>
                 </h2>
               </div>
@@ -118,7 +118,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
             <Reveal>
               <div className="lg:sticky lg:top-28">
                 <p className="t-micro text-[var(--palette-rausch)]">{dict.how.eyebrow}</p>
-                <h2 className="t-section phrase mt-3 max-w-[16ch]">
+                <h2 className="t-section phrase mt-3 max-w-[20ch]">
                   <span>{dict.how.heading[0]}</span> <span>{dict.how.heading[1]}</span>
                 </h2>
                 <p className="t-body mt-5 max-w-[40ch] text-[var(--palette-text-secondary)]">

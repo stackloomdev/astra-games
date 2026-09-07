@@ -1,0 +1,409 @@
+{
+  "works": [
+    {
+      "id": "work-1820f5c8123c417b",
+      "name": "Mosswing",
+      "description": "3D 单键飞行，控制小翼穿越障碍间隙得分。",
+      "category": "game",
+      "sourceCategory": "动作与街机",
+      "author": {
+        "name": "Ayi1337",
+        "url": "https://github.com/Ayi1337"
+      },
+      "demoUrl": "https://mosswing-quiet-flight.jack-514.chatgpt.site/",
+      "sourceUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/mosswing/src",
+      "repoUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "作者",
+          "text": "Ayi1337",
+          "links": [
+            {
+              "text": "Ayi1337",
+              "url": "https://github.com/Ayi1337"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "浏览器，面向移动端设计。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "作者的 One Shot 测试与原始 Prompt。",
+          "links": [
+            {
+              "text": "作者的 One Shot 测试与原始 Prompt",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/README.md"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码 · 单文件 HTML",
+          "links": [
+            {
+              "text": "源码",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/mosswing/src"
+            },
+            {
+              "text": "单文件 HTML",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/mosswing/mosswing.html"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 0
+    },
+    {
+      "id": "work-34ce9c1c38500685",
+      "name": "Magic Carpet Wizard — A Thousand Skies",
+      "description": "驾驶魔毯探索球形世界，穿环、施法，并挑战敌人与 Boss。",
+      "category": "game",
+      "sourceCategory": "动作与街机",
+      "author": {
+        "name": "threapchills",
+        "url": "https://github.com/threapchills"
+      },
+      "demoUrl": "https://threapchills.github.io/MagicCarpetWizard/",
+      "sourceUrl": "https://github.com/threapchills/MagicCarpetWizard",
+      "repoUrl": "https://github.com/threapchills/MagicCarpetWizard",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "作者",
+          "text": "threapchills",
+          "links": [
+            {
+              "text": "threapchills",
+              "url": "https://github.com/threapchills"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "桌面浏览器，键鼠操作，需要 WebGL 2。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "作者在仓库 About 中说明由 GPT-6 Astra 制作。",
+          "links": [
+            {
+              "text": "仓库 About",
+              "url": "https://github.com/threapchills/MagicCarpetWizard"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码与运行说明 · 技术：Three.js、Vite。",
+          "links": [
+            {
+              "text": "源码与运行说明",
+              "url": "https://github.com/threapchills/MagicCarpetWizard"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 1
+    },
+    {
+      "id": "work-41e81e3a2c05254a",
+      "name": "瓜体实验室",
+      "description": "把半流体水果的形变与碰撞融入西瓜合成玩法。",
+      "category": "game",
+      "sourceCategory": "解谜与益智",
+      "author": {
+        "name": "Ayi1337",
+        "url": "https://github.com/Ayi1337"
+      },
+      "demoUrl": "https://melon-game.jack-514.chatgpt.site/",
+      "sourceUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/melon-lab/src",
+      "repoUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "作者",
+          "text": "Ayi1337",
+          "links": [
+            {
+              "text": "Ayi1337",
+              "url": "https://github.com/Ayi1337"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "现代浏览器；作者另提供可下载后直接打开的单文件版本。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "作者的 One Shot 测试与原始 Prompt。",
+          "links": [
+            {
+              "text": "作者的 One Shot 测试与原始 Prompt",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/README.md"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码 · 单文件 HTML",
+          "links": [
+            {
+              "text": "源码",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/melon-lab/src"
+            },
+            {
+              "text": "单文件 HTML",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/melon-lab/%E7%93%9C%E4%BD%93%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 2
+    },
+    {
+      "id": "work-bbffbb275d6531b0",
+      "name": "最后的灯塔 / Last Beacon",
+      "description": "在微缩海岛上连接电网、布置并升级炮塔，以有限电力抵挡十波机械生物和最终 Boss，守住灯塔。",
+      "category": "game",
+      "sourceCategory": "策略与模拟",
+      "author": {
+        "name": "stackloomdev",
+        "url": "https://github.com/stackloomdev"
+      },
+      "demoUrl": "https://last-beacon.loupengju.cc/",
+      "sourceUrl": "https://github.com/stackloomdev/last-beacon",
+      "repoUrl": "https://github.com/stackloomdev/last-beacon",
+      "imageUrl": "https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/last-beacon/gameplay.png",
+      "details": [
+        {
+          "label": "作者",
+          "text": "stackloomdev",
+          "links": [
+            {
+              "text": "stackloomdev",
+              "url": "https://github.com/stackloomdev"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "现代桌面与手机浏览器，中英双语；免费，无需登录或 API Key；可选音效需要 Web Audio。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "作者的创作记录与模型参与说明 — 参与玩法设计、代码、程序化美术和测试；多轮迭代，非 one-shot 测试。",
+          "links": [
+            {
+              "text": "作者的创作记录与模型参与说明",
+              "url": "https://github.com/stackloomdev/last-beacon/blob/main/docs/CREATION.md"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码与运行说明 · 需求与迭代记录 · 技术：JavaScript、Canvas 2D、Web Audio。",
+          "links": [
+            {
+              "text": "源码与运行说明",
+              "url": "https://github.com/stackloomdev/last-beacon"
+            },
+            {
+              "text": "需求与迭代记录",
+              "url": "https://github.com/stackloomdev/last-beacon/blob/main/docs/PROMPT.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 3
+    },
+    {
+      "id": "work-17a2b6731a971ee9",
+      "name": "APEX CLUB — Bay Kart Grand Prix",
+      "description": "在海湾赛道参加三圈卡丁车竞速，选择六款赛车，利用漂移蓄力与出弯小喷争夺个人名次或 4v4 队伍积分。",
+      "category": "game",
+      "sourceCategory": "平台跳跃与竞速",
+      "author": {
+        "name": "MartinDelophy",
+        "url": "https://github.com/MartinDelophy"
+      },
+      "demoUrl": null,
+      "sourceUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/README.md",
+      "repoUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra",
+      "imageUrl": "https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/apex-club/gameplay.png",
+      "details": [
+        {
+          "label": "作者",
+          "text": "MartinDelophy（当前提交账号）。",
+          "links": [
+            {
+              "text": "MartinDelophy",
+              "url": "https://github.com/MartinDelophy"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "支持 WebGL 2 的桌面浏览器，键盘操作；免费，无需登录或 API Key；本地 HTTP 服务或静态网站启动，Three.js 已随源码提供。组队为 1 位玩家与 7 位 AI 的本地竞赛。",
+          "links": []
+        },
+        {
+          "label": "模型参与",
+          "text": "开发记录 — 通过 Codex 多轮迭代玩法、代码、程序化美术与测试；GPT-6 Astra 归因待创作者确认。",
+          "links": [
+            {
+              "text": "开发记录",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/CREATION.md"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码与运行说明 · 需求与迭代记录 · 技术：JavaScript、Three.js。",
+          "links": [
+            {
+              "text": "源码与运行说明",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/README.md"
+            },
+            {
+              "text": "需求与迭代记录",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/PROMPTS.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 4
+    },
+    {
+      "id": "work-ebba267de2d09448",
+      "name": "PELICAN PEDAL / 鹈鹕踏浪",
+      "description": "让鹈鹕骑着自行车穿行于不断变化的 3D 海岸，在三条车道间换道、跳跃与低头躲避障碍，连续收集小鱼获得连击，使用护盾、磁铁和六秒无敌冲刺。",
+      "category": "game",
+      "sourceCategory": "平台跳跃与竞速",
+      "author": {
+        "name": "chat01.ai",
+        "url": "https://chat01.ai/"
+      },
+      "demoUrl": "https://pelican-pedal.zecoba.workers.dev/",
+      "sourceUrl": "https://chat01.ai/zh/chat/01M1VJ5K55803V2YK3T2NKTX33",
+      "repoUrl": null,
+      "imageUrl": "https://github.com/user-attachments/assets/ec085afa-3c45-4de6-b03f-5c626f941546",
+      "details": [
+        {
+          "label": "作者",
+          "text": "chat01.ai（投稿中注明的作者）。",
+          "links": [
+            {
+              "text": "chat01.ai",
+              "url": "https://chat01.ai/"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "桌面与手机浏览器，支持键盘和触控；据投稿说明，免费且无需登录。试玩尚未独立核验。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Issue #10 — 投稿者称由一句提示词生成；所附开发记录尚未独立核验。",
+          "links": [
+            {
+              "text": "Issue #10",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/issues/10"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "分享的开发记录",
+          "links": [
+            {
+              "text": "分享的开发记录",
+              "url": "https://chat01.ai/zh/chat/01M1VJ5K55803V2YK3T2NKTX33"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 5
+    },
+    {
+      "id": "work-982fd33309fd57ba",
+      "name": "ORBITAL GARDEN · 轨道花园",
+      "description": "交互式粒子艺术沙盒：让 48,000 颗光点在花、引力环与星系之间变形，扰动雕塑并将瞬间导出为海报。",
+      "category": "experiment",
+      "sourceCategory": "实验玩法与多人游戏",
+      "author": {
+        "name": "jackroc",
+        "url": "https://github.com/jackroc"
+      },
+      "demoUrl": "https://orbital-garden.hp20230404.chatgpt.site/",
+      "sourceUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md",
+      "repoUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "作者",
+          "text": "jackroc",
+          "links": [
+            {
+              "text": "jackroc",
+              "url": "https://github.com/jackroc"
+            }
+          ]
+        },
+        {
+          "label": "平台",
+          "text": "支持 WebGL 的现代浏览器；点击作品名直接在线体验，免费，无需登录或 API Key；也可下载单文件 HTML 离线运行，可选环境音需要 Web Audio。",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "创作记录与模型参与说明 — 创作者使用 GPT-6 Astra ultra 完成构思、代码与文案，经过协作审阅；非 one-shot 测试。",
+          "links": [
+            {
+              "text": "创作记录与模型参与说明",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%9B%E4%BD%9C%E8%AE%B0%E5%BD%95"
+            }
+          ]
+        },
+        {
+          "label": "开发资料",
+          "text": "源码与运行说明 · 单文件 HTML · Prompt · 技术：原生 WebGL、Web Audio、Canvas 2D。",
+          "links": [
+            {
+              "text": "源码与运行说明",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md"
+            },
+            {
+              "text": "单文件 HTML",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/index.html"
+            },
+            {
+              "text": "Prompt",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/PROMPT.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 6
+    }
+  ],
+  "source": {
+    "repository": "MartinDelophy/awesome-gpt-6-astra",
+    "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/README.zh-CN.md",
+    "readmePath": "README.zh-CN.md",
+    "revision": "c45ef734bd36b456240246e5c04b8ff5cf8f7b2b",
+    "checkedAt": "2026-09-07T07:53:30.967Z",
+    "lastSuccessfulAt": "2026-09-07T07:53:30.967Z",
+    "stale": true,
+    "status": "fallback"
+  }
+}

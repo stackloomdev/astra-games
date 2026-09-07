@@ -1,0 +1,409 @@
+{
+  "works": [
+    {
+      "id": "work-1820f5c8123c417b",
+      "name": "Mosswing",
+      "description": "A 3D tap-to-flap game about flying through gaps and building your score.",
+      "category": "game",
+      "sourceCategory": "Action & arcade",
+      "author": {
+        "name": "Ayi1337",
+        "url": "https://github.com/Ayi1337"
+      },
+      "demoUrl": "https://mosswing-quiet-flight.jack-514.chatgpt.site/",
+      "sourceUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/mosswing/src",
+      "repoUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "Creator",
+          "text": "Ayi1337",
+          "links": [
+            {
+              "text": "Ayi1337",
+              "url": "https://github.com/Ayi1337"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Browser, designed for mobile.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Creator's one-shot tests and original prompts.",
+          "links": [
+            {
+              "text": "Creator's one-shot tests and original prompts",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/README.md"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source · Standalone HTML",
+          "links": [
+            {
+              "text": "Source",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/mosswing/src"
+            },
+            {
+              "text": "Standalone HTML",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/mosswing/mosswing.html"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 0
+    },
+    {
+      "id": "work-34ce9c1c38500685",
+      "name": "Magic Carpet Wizard — A Thousand Skies",
+      "description": "Fly a magic carpet through a spherical world, thread rings, cast spells, and fight enemies and bosses.",
+      "category": "game",
+      "sourceCategory": "Action & arcade",
+      "author": {
+        "name": "threapchills",
+        "url": "https://github.com/threapchills"
+      },
+      "demoUrl": "https://threapchills.github.io/MagicCarpetWizard/",
+      "sourceUrl": "https://github.com/threapchills/MagicCarpetWizard",
+      "repoUrl": "https://github.com/threapchills/MagicCarpetWizard",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "Creator",
+          "text": "threapchills",
+          "links": [
+            {
+              "text": "threapchills",
+              "url": "https://github.com/threapchills"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Desktop browser with mouse and keyboard; requires WebGL 2.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "The creator attributes the game to GPT-6 Astra in the repository About section.",
+          "links": [
+            {
+              "text": "repository About section",
+              "url": "https://github.com/threapchills/MagicCarpetWizard"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source and setup instructions · Built with: Three.js and Vite.",
+          "links": [
+            {
+              "text": "Source and setup instructions",
+              "url": "https://github.com/threapchills/MagicCarpetWizard"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 1
+    },
+    {
+      "id": "work-120cbe37c8862e6a",
+      "name": "瓜体实验室 / Melon Lab",
+      "description": "A watermelon merging game built around soft-body fruit deformation and collisions.",
+      "category": "game",
+      "sourceCategory": "Puzzles & brain games",
+      "author": {
+        "name": "Ayi1337",
+        "url": "https://github.com/Ayi1337"
+      },
+      "demoUrl": "https://melon-game.jack-514.chatgpt.site/",
+      "sourceUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/melon-lab/src",
+      "repoUrl": "https://github.com/Ayi1337/gpt6-astra-one-shot-games",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "Creator",
+          "text": "Ayi1337",
+          "links": [
+            {
+              "text": "Ayi1337",
+              "url": "https://github.com/Ayi1337"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Modern browser; the creator also provides a downloadable standalone HTML version.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Creator's one-shot tests and original prompts.",
+          "links": [
+            {
+              "text": "Creator's one-shot tests and original prompts",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/README.md"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source · Standalone HTML",
+          "links": [
+            {
+              "text": "Source",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/tree/main/melon-lab/src"
+            },
+            {
+              "text": "Standalone HTML",
+              "url": "https://github.com/Ayi1337/gpt6-astra-one-shot-games/blob/main/melon-lab/%E7%93%9C%E4%BD%93%E5%AE%9E%E9%AA%8C%E5%AE%A4.html"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 2
+    },
+    {
+      "id": "work-cb5d7ad521c7ac46",
+      "name": "Last Beacon / 最后的灯塔",
+      "description": "Connect a power grid across a miniature island, build and upgrade towers, and balance limited power to defend a lighthouse through ten waves and a final boss.",
+      "category": "game",
+      "sourceCategory": "Strategy & simulation",
+      "author": {
+        "name": "stackloomdev",
+        "url": "https://github.com/stackloomdev"
+      },
+      "demoUrl": "https://last-beacon.loupengju.cc/",
+      "sourceUrl": "https://github.com/stackloomdev/last-beacon",
+      "repoUrl": "https://github.com/stackloomdev/last-beacon",
+      "imageUrl": "https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/last-beacon/gameplay-en.png",
+      "details": [
+        {
+          "label": "Creator",
+          "text": "stackloomdev",
+          "links": [
+            {
+              "text": "stackloomdev",
+              "url": "https://github.com/stackloomdev"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Modern desktop and mobile browsers, with Chinese and English support; free, no login or API key. Optional sound requires Web Audio.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Creator's development log and model contribution — Used for gameplay design, code, procedural artwork, and tests through multiple iterations; not a one-shot test.",
+          "links": [
+            {
+              "text": "Creator's development log and model contribution",
+              "url": "https://github.com/stackloomdev/last-beacon/blob/main/docs/CREATION.md"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source and setup instructions · Requirements and iteration notes · Built with: JavaScript, Canvas 2D, and Web Audio.",
+          "links": [
+            {
+              "text": "Source and setup instructions",
+              "url": "https://github.com/stackloomdev/last-beacon"
+            },
+            {
+              "text": "Requirements and iteration notes",
+              "url": "https://github.com/stackloomdev/last-beacon/blob/main/docs/PROMPT.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 3
+    },
+    {
+      "id": "work-17a2b6731a971ee9",
+      "name": "APEX CLUB — Bay Kart Grand Prix",
+      "description": "Race three laps around Bay Circuit, choose from six karts, and charge corner-exit mini turbos to climb the solo rankings or score for a 4v4 team.",
+      "category": "game",
+      "sourceCategory": "Platformers & racing",
+      "author": {
+        "name": "MartinDelophy",
+        "url": "https://github.com/MartinDelophy"
+      },
+      "demoUrl": null,
+      "sourceUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/README.md",
+      "repoUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra",
+      "imageUrl": "https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/apex-club/gameplay.png",
+      "details": [
+        {
+          "label": "Creator",
+          "text": "MartinDelophy (submitting account).",
+          "links": [
+            {
+              "text": "MartinDelophy",
+              "url": "https://github.com/MartinDelophy"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Desktop browser with WebGL 2 and a keyboard; free, no login or API key. Runs from a local HTTP server or static host; Three.js is included locally. Team races are local: one human and seven AI racers.",
+          "links": []
+        },
+        {
+          "label": "Model participation",
+          "text": "Development record — Iterative Codex work on gameplay, code, procedural visuals and tests; GPT-6 Astra attribution awaits creator confirmation.",
+          "links": [
+            {
+              "text": "Development record",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/CREATION.md"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source and setup · Request and iteration summary · Built with: JavaScript, Three.js.",
+          "links": [
+            {
+              "text": "Source and setup",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/README.md"
+            },
+            {
+              "text": "Request and iteration summary",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/apex-club/PROMPTS.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 4
+    },
+    {
+      "id": "work-ebba267de2d09448",
+      "name": "PELICAN PEDAL / 鹈鹕踏浪",
+      "description": "Guide a cycling pelican along a changing 3D coastline: switch between three lanes, jump and duck around obstacles, collect fish combos, and use shields, magnets and a six-second invincible dash.",
+      "category": "game",
+      "sourceCategory": "Platformers & racing",
+      "author": {
+        "name": "chat01.ai",
+        "url": "https://chat01.ai/"
+      },
+      "demoUrl": "https://pelican-pedal.zecoba.workers.dev/",
+      "sourceUrl": "https://chat01.ai/zh/chat/01M1VJ5K55803V2YK3T2NKTX33",
+      "repoUrl": null,
+      "imageUrl": "https://github.com/user-attachments/assets/ec085afa-3c45-4de6-b03f-5c626f941546",
+      "details": [
+        {
+          "label": "Creator",
+          "text": "chat01.ai (credited in the submission).",
+          "links": [
+            {
+              "text": "chat01.ai",
+              "url": "https://chat01.ai/"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Desktop and mobile browsers, with keyboard or touch controls; free, no login, according to the submission. Demo not independently verified.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Issue #10 — The submitter reports generation with a single prompt; the linked development record has not been independently verified.",
+          "links": [
+            {
+              "text": "Issue #10",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/issues/10"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Shared development record",
+          "links": [
+            {
+              "text": "Shared development record",
+              "url": "https://chat01.ai/zh/chat/01M1VJ5K55803V2YK3T2NKTX33"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 5
+    },
+    {
+      "id": "work-982fd33309fd57ba",
+      "name": "ORBITAL GARDEN · 轨道花园",
+      "description": "An interactive particle-art sandbox: morph 48,000 light points between a flower, a gravity ring, and a galaxy, disturb the sculpture, and export a moment as a poster.",
+      "category": "experiment",
+      "sourceCategory": "Experimental & multiplayer",
+      "author": {
+        "name": "jackroc",
+        "url": "https://github.com/jackroc"
+      },
+      "demoUrl": "https://orbital-garden.hp20230404.chatgpt.site/",
+      "sourceUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md",
+      "repoUrl": "https://github.com/MartinDelophy/awesome-gpt-6-astra",
+      "imageUrl": null,
+      "details": [
+        {
+          "label": "Creator",
+          "text": "jackroc",
+          "links": [
+            {
+              "text": "jackroc",
+              "url": "https://github.com/jackroc"
+            }
+          ]
+        },
+        {
+          "label": "Platform",
+          "text": "Modern browser with WebGL; click the title to try it online. Free, no login or API key; the standalone HTML also works offline. Optional ambient sound requires Web Audio.",
+          "links": []
+        },
+        {
+          "label": "GPT-6 Astra",
+          "text": "Creation record and model contribution — The creator used GPT-6 Astra ultra for the concept, code, and copy, with collaborative review; not a one-shot test.",
+          "links": [
+            {
+              "text": "Creation record and model contribution",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md#%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%9B%E4%BD%9C%E8%AE%B0%E5%BD%95"
+            }
+          ]
+        },
+        {
+          "label": "Resources",
+          "text": "Source and setup instructions · Standalone HTML · Prompt · Built with: native WebGL, Web Audio, and Canvas 2D.",
+          "links": [
+            {
+              "text": "Source and setup instructions",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/README.md"
+            },
+            {
+              "text": "Standalone HTML",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/index.html"
+            },
+            {
+              "text": "Prompt",
+              "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/works/orbital-garden/PROMPT.md"
+            }
+          ]
+        }
+      ],
+      "sourceOrder": 6
+    }
+  ],
+  "source": {
+    "repository": "MartinDelophy/awesome-gpt-6-astra",
+    "url": "https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/README.md",
+    "readmePath": "README.md",
+    "revision": "b66a6c96ac8d13cb27aafd1108273c5bd1d1c50b",
+    "checkedAt": "2026-09-07T07:53:30.789Z",
+    "lastSuccessfulAt": "2026-09-07T07:53:30.789Z",
+    "stale": true,
+    "status": "fallback"
+  }
+}
