@@ -2,7 +2,7 @@ import type { Work } from '@/lib/catalog';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import CountUp from './CountUp';
-import HeroDeck from './HeroDeck';
+import HeroCarousel3D from './HeroCarousel3D';
 import KineticHeadline from './KineticHeadline';
 import MagneticButton from './MagneticButton';
 import Reveal from './Reveal';
@@ -138,7 +138,7 @@ export default function Hero({
           {/* Below lg the hero is already a full screen of copy; the deck would
               only push the stats off it. */}
           <Reveal delay={520} className="hidden lg:block">
-            <HeroDeck works={deckWorks} locale={locale} dict={dict} />
+            <HeroCarousel3D works={deckWorks} locale={locale} dict={dict} />
           </Reveal>
         </div>
 

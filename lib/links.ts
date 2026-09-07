@@ -3,4 +3,5 @@ export const UPSTREAM_REPO = 'https://github.com/MartinDelophy/awesome-gpt-6-ast
 export const SUBMIT_ISSUE = `${UPSTREAM_REPO}/issues/new?template=submit-game.yml`;
 export const BROKEN_LINK_ISSUE = `${UPSTREAM_REPO}/issues/new?template=broken-link.yml`;
 export const CONTRIBUTING = `${UPSTREAM_REPO}/blob/main/CONTRIBUTING.md`;
+export const X_PROFILE = 'https://x.com/marindeloph';
 export const SITE_URL = 'https://astragames.aigccreative.com';
