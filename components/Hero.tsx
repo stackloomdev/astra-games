@@ -1,6 +1,8 @@
-import type { Dictionary } from '@/lib/i18n';
+import type { Work } from '@/lib/catalog';
+import type { Dictionary, Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import CountUp from './CountUp';
+import HeroDeck from './HeroDeck';
 import KineticHeadline from './KineticHeadline';
 import MagneticButton from './MagneticButton';
 import Reveal from './Reveal';
@@ -8,6 +10,9 @@ import StarField from './StarField';
 
 interface HeroProps {
   dict: Dictionary;
+  locale: Locale;
+  /** Covers for the deck beside the headline. */
+  deckWorks: Work[];
   workCount: number;
   authorCount: number;
   playableCount: number;
@@ -17,6 +22,8 @@ interface HeroProps {
 
 export default function Hero({
   dict,
+  locale,
+  deckWorks,
   workCount,
   authorCount,
   playableCount,
@@ -52,6 +59,8 @@ export default function Hero({
       </div>
 
       <div className="shell flex min-h-[max(620px,92svh)] flex-col justify-center pb-20 pt-14 sm:pt-16">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+          <div>
         <Reveal>
           <a
             href={UPSTREAM_REPO}
@@ -90,7 +99,7 @@ export default function Hero({
         </Reveal>
 
         <KineticHeadline
-          className="t-display mt-6 max-w-[19ch] text-balance"
+          className="t-display mt-6 max-w-[15ch] text-balance lg:max-w-none lg:text-[clamp(2.5rem,4.1vw,3.75rem)]"
           lines={dict.hero.headline}
           accentLine={1}
           startDelay={140}
@@ -124,6 +133,14 @@ export default function Hero({
             </MagneticButton>
           </div>
         </Reveal>
+          </div>
+
+          {/* Below lg the hero is already a full screen of copy; the deck would
+              only push the stats off it. */}
+          <Reveal delay={520} className="hidden lg:block">
+            <HeroDeck works={deckWorks} locale={locale} dict={dict} />
+          </Reveal>
+        </div>
 
         <Reveal delay={880}>
           <dl className="mt-14 flex flex-wrap gap-x-12 gap-y-7 border-t border-[var(--palette-border)] pt-8">

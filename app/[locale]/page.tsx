@@ -65,6 +65,10 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       <main>
         <Hero
           dict={dict}
+          locale={locale}
+          // Only entries whose cover resolves to real artwork are worth putting
+          // at the top of the page; the generated fallback is not a showcase.
+          deckWorks={works.filter((work) => work.demoUrl).slice(0, 5)}
           workCount={works.length}
           authorCount={authorCount}
           playableCount={playableCount}

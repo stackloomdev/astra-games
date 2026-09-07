@@ -118,47 +118,49 @@
    Weight floor is 500: no thin weights on any heading.
    ========================================================================= */
 
-.t-display {
-  /* Hero only. Extends the 28px section heading up the same curve,
-     with tracking scaled proportionally past Airbnb's -0.44px stop. */
-  font-size: clamp(2.5rem, 5.6vw, 4.75rem);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-}
-.t-h1      { font-size: 1.75rem; font-weight: 700; line-height: 1.43; }
-.t-h2      { font-size: 1.375rem; font-weight: 600; line-height: 1.18; letter-spacing: -0.44px; }
-.t-h2-med  { font-size: 1.375rem; font-weight: 500; line-height: 1.18; letter-spacing: -0.44px; }
-.t-sub     { font-size: 1.3125rem; font-weight: 700; line-height: 1.43; }
-.t-feature { font-size: 1.25rem; font-weight: 600; line-height: 1.20; letter-spacing: -0.18px; }
-.t-ui      { font-size: 1rem; font-weight: 500; line-height: 1.25; }
-.t-ui-semi { font-size: 1rem; font-weight: 600; line-height: 1.25; }
-.t-body    { font-size: 0.875rem; font-weight: 400; line-height: 1.43; }
-.t-body-med{ font-size: 0.875rem; font-weight: 500; line-height: 1.29; }
-.t-small   { font-size: 0.8125rem; font-weight: 400; line-height: 1.23; }
-.t-tag     { font-size: 0.75rem; font-weight: 500; line-height: 1.33; }
-.t-badge   { font-size: 0.6875rem; font-weight: 600; line-height: 1.18; font-feature-settings: "salt"; }
-/* Airbnb's micro role is 8px; lifted to 11px because uppercase micro-type at
-   8px fails contrast on a dark ground. Weight, tracking and case are kept. */
-.t-micro   { font-size: 0.6875rem; font-weight: 700; line-height: 1.25; letter-spacing: 0.32px; text-transform: uppercase; }
+@layer components {
+  .t-display {
+    /* Hero only. Extends the 28px section heading up the same curve,
+       with tracking scaled proportionally past Airbnb's -0.44px stop. */
+    font-size: clamp(2.5rem, 5.6vw, 4.75rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .t-h1      { font-size: 1.75rem; font-weight: 700; line-height: 1.43; }
+  .t-h2      { font-size: 1.375rem; font-weight: 600; line-height: 1.18; letter-spacing: -0.44px; }
+  .t-h2-med  { font-size: 1.375rem; font-weight: 500; line-height: 1.18; letter-spacing: -0.44px; }
+  .t-sub     { font-size: 1.3125rem; font-weight: 700; line-height: 1.43; }
+  .t-feature { font-size: 1.25rem; font-weight: 600; line-height: 1.20; letter-spacing: -0.18px; }
+  .t-ui      { font-size: 1rem; font-weight: 500; line-height: 1.25; }
+  .t-ui-semi { font-size: 1rem; font-weight: 600; line-height: 1.25; }
+  .t-body    { font-size: 0.875rem; font-weight: 400; line-height: 1.43; }
+  .t-body-med{ font-size: 0.875rem; font-weight: 500; line-height: 1.29; }
+  .t-small   { font-size: 0.8125rem; font-weight: 400; line-height: 1.23; }
+  .t-tag     { font-size: 0.75rem; font-weight: 500; line-height: 1.33; }
+  .t-badge   { font-size: 0.6875rem; font-weight: 600; line-height: 1.18; font-feature-settings: "salt"; }
+  /* Airbnb's micro role is 8px; lifted to 11px because uppercase micro-type at
+     8px fails contrast on a dark ground. Weight, tracking and case are kept. */
+  .t-micro   { font-size: 0.6875rem; font-weight: 700; line-height: 1.25; letter-spacing: 0.32px; text-transform: uppercase; }
 
-/* Section heading that scales for a marketing canvas while keeping the
-   700 weight and negative tracking of the Airbnb display roles. */
-.t-section {
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.028em;
-}
+  /* Section heading that scales for a marketing canvas while keeping the
+     700 weight and negative tracking of the Airbnb display roles. */
+  .t-section {
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.028em;
+  }
 
-/* Per-language script face. `:lang()` matches the document language and any
-   region subtag, so zh-CN, zh-TW and zh-Hans all resolve together. */
-:root:lang(zh) { --font-script: var(--font-han-sc); }
-:root:lang(ja) { --font-script: var(--font-han-jp); }
-:root:lang(ko) { --font-script: var(--font-han-kr); }
-:root:lang(ar) { --font-script: var(--font-arabic); }
-:root:lang(hi) { --font-script: var(--font-devanagari); }
-:root:lang(ru) { --font-script: var(--font-cyrillic); }
+  /* Per-language script face. `:lang()` matches the document language and any
+     region subtag, so zh-CN, zh-TW and zh-Hans all resolve together. */
+  :root:lang(zh) { --font-script: var(--font-han-sc); }
+  :root:lang(ja) { --font-script: var(--font-han-jp); }
+  :root:lang(ko) { --font-script: var(--font-han-kr); }
+  :root:lang(ar) { --font-script: var(--font-arabic); }
+  :root:lang(hi) { --font-script: var(--font-devanagari); }
+  :root:lang(ru) { --font-script: var(--font-cyrillic); }
+}
 
 /* ============================================================================
    Base
