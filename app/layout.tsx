@@ -57,7 +57,26 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN" className={`${figtree.variable} ${notoSansSC.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/*
+          Entrance animations start from a hidden state, and the hero headline
+          carries that state as an inline style. Without scripting nothing would
+          ever release them, so the page would render blank. An `!important`
+          author rule outranks a plain inline style, which puts every animated
+          element straight into its resting state instead.
+        */}
+        <noscript>
+          <style>{`
+            .reveal { opacity: 1 !important; transform: none !important; }
+            [data-word] {
+              opacity: 1 !important;
+              transform: none !important;
+              filter: none !important;
+            }
+          `}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
