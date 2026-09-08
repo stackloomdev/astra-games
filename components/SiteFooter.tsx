@@ -1,7 +1,5 @@
 import type { Dictionary } from '@/lib/i18n';
-import {
-  BROKEN_LINK_ISSUE, CONTRIBUTING, SUBMIT_ISSUE, UPSTREAM_REPO, X_PROFILE,
-} from '@/lib/links';
+import { BROKEN_LINK_ISSUE, CONTRIBUTING, SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 
 export default function SiteFooter({
   dict,
@@ -44,20 +42,6 @@ export default function SiteFooter({
             <p className="t-small mt-5 max-w-[42ch] text-[var(--palette-text-tertiary)]">
               {dict.footer.license}
             </p>
-
-            {/* "X" is the same word everywhere, so it needs no dictionary entry;
-                the accessible name spells out where the link goes. */}
-            <a
-              href={X_PROFILE}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Astra Games on X"
-              className="mt-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--palette-border-strong)] text-[var(--palette-text-secondary)] transition-[border-color,background-color,color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05] hover:text-[var(--palette-text-primary)]"
-            >
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-                <path d="M13.6 10.6 21 2h-1.8l-6.4 7.4L7.7 2H2l7.8 11.3L2 22h1.8l6.8-7.9 5.4 7.9H22l-8.4-11.4zm-2.4 2.8-.8-1.1L4.4 3.3h2.7l5 7.2.8 1.1 6.5 9.3h-2.7l-5.5-7.9z" />
-              </svg>
-            </a>
           </div>
 
           {columns.map((column) => (

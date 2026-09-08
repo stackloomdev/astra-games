@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
-import { UPSTREAM_REPO } from '@/lib/links';
+import { UPSTREAM_REPO, X_PROFILE } from '@/lib/links';
 import LocaleSwitcher from './LocaleSwitcher';
 
 interface SiteHeaderProps {
@@ -85,6 +85,17 @@ export default function SiteHeader({ dict, locale, localeHrefs, homeHref }: Site
 
         <div className="flex shrink-0 items-center gap-2">
           <LocaleSwitcher current={locale} label={dict.nav.language} hrefs={localeHrefs} />
+          <a
+            href={X_PROFILE}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Astra Games on X"
+            className="inline-flex items-center gap-2 rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
+          >
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+              <path d="M13.6 10.6 21 2h-1.8l-6.4 7.4L7.7 2H2l7.8 11.3L2 22h1.8l6.8-7.9 5.4 7.9H22l-8.4-11.4zm-2.4 2.8-.8-1.1L4.4 3.3h2.7l5 7.2.8 1.1 6.5 9.3h-2.7l-5.5-7.9z" />
+            </svg>
+          </a>
           <a
             href={UPSTREAM_REPO}
             target="_blank"
