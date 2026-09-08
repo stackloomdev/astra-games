@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import '../globals.css';
@@ -77,9 +78,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           `}</style>
         </noscript>
         {children}
-        {/* Cookieless page analytics. It only reports from a Vercel
-            deployment; locally it is inert. */}
+        {/* Cookieless page analytics and real-user Core Web Vitals. Both only
+            report from a Vercel deployment; locally they are inert. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
