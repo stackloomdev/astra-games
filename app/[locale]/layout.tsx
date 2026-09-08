@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import '../globals.css';
@@ -76,6 +77,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           `}</style>
         </noscript>
         {children}
+        {/* Cookieless page analytics. It only reports from a Vercel
+            deployment; locally it is inert. */}
+        <Analytics />
       </body>
     </html>
   );
