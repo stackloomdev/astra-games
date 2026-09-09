@@ -4,8 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import type { Work } from '@/lib/catalog';
 import type { Dictionary, Locale } from '@/lib/i18n';
-import { previewPath } from '@/lib/preview-version';
-import { workHref } from '@/lib/work-url';
+import { optimizedPreview, workHref } from '@/lib/work-url';
 
 const ADVANCE_MS = 4200;
 const CARD_ASPECT = 1.6;
@@ -190,7 +189,9 @@ export default function HeroCarousel3D({
         const mirrorMaterial = makeMaterial(true);
 
         loader.load(
-          previewPath(work, locale),
+          // The card is never wider than a few hundred CSS pixels on screen;
+          // uploading the full screenshot would cost ~5 MB of VRAM per card.
+          optimizedPreview(work, locale, 640),
           (texture) => {
             if (disposed) {
               texture.dispose();

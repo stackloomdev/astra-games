@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import type { Work } from '@/lib/catalog';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { previewPath } from '@/lib/preview-version';
@@ -22,21 +23,33 @@ interface WorkCardProps {
 export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
   const ref = useRef<HTMLElement>(null);
   const [coverFailed, setCoverFailed] = useState(false);
+  // Read once on mount instead of on every pointer move.
+  const interactive = useRef(false);
+  // The card's box, captured when the pointer arrives. Measuring it on each
+  // move forces a synchronous layout, and with a grid this size that is the
+  // difference between a smooth hover and a stuttering one.
+  const box = useRef<DOMRect | null>(null);
+
+  useEffect(() => {
+    interactive.current =
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
   const href = workHref(locale, work);
   // /api/preview walks author artwork → verified screenshot → the demo page's
   // Open Graph image → the GitHub repository card, and 404s when it finds
   // nothing. Only that 404 falls through to the generated cover below.
   const cover = previewPath(work, locale);
 
-  const interactive = () =>
-    typeof window !== 'undefined' &&
-    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const onEnter = () => {
+    if (!interactive.current) return;
+    box.current = ref.current?.getBoundingClientRect() ?? null;
+  };
 
   const onMove = (event: React.MouseEvent<HTMLElement>) => {
     const node = ref.current;
-    if (!node || !interactive()) return;
-    const rect = node.getBoundingClientRect();
+    const rect = box.current;
+    if (!node || !rect || !interactive.current) return;
     const px = (event.clientX - rect.left) / rect.width;
     const py = (event.clientY - rect.top) / rect.height;
     node.style.setProperty('--tilt-x', `${(0.5 - py) * 7}deg`);
@@ -46,6 +59,7 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
   };
 
   const onLeave = () => {
+    box.current = null;
     const node = ref.current;
     if (!node) return;
     node.style.setProperty('--tilt-x', '0deg');
@@ -55,6 +69,7 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
   return (
     <article
       ref={ref}
+      onMouseEnter={onEnter}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className="group relative h-full [perspective:1200px]"
@@ -66,16 +81,19 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
         {/* --- Cover ---------------------------------------------------- */}
         <div className="relative aspect-[16/10] overflow-hidden bg-[var(--palette-bg-inset)]">
           {!coverFailed ? (
-            // The cover is arbitrary remote media proxied through our own route,
-            // so it stays a plain <img> rather than the Next image optimizer.
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            // Upstream covers are full screenshots — often 1440x950 — shown in a
+            // card under 400px wide. Served raw that is ~14x the pixels needed
+            // per card, and with dozens of cards the decode cost alone makes the
+            // page stutter. /api/preview is same-origin, so the optimiser can
+            // resize and re-encode it; `sizes` tells it which width each layout
+            // actually needs.
+            <Image
               src={cover}
               alt={`${work.name} — ${dict.card.screenshotAlt}`}
-              loading="lazy"
-              decoding="async"
+              fill
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 31vw"
               onError={() => setCoverFailed(true)}
-              className="h-full w-full object-cover transition-transform duration-700 [transition-timing-function:var(--ease-out-soft)] group-hover:scale-[1.07]"
+              className="object-cover transition-transform duration-700 [transition-timing-function:var(--ease-out-soft)] group-hover:scale-[1.07]"
             />
           ) : (
             <div

@@ -15,6 +15,15 @@ type Filter = WorkCategory | 'all';
  * grid re-flows with a layout animation, which collapses to an instant swap
  * under reduced motion.
  */
+/**
+ * Above this many cards the grid stops animating its reflow. A FLIP pass
+ * measures and re-positions every card in the list, so the cost of switching
+ * category grows with the catalogue — which has gone from six entries to over
+ * sixty in a few days. Past the threshold the cards still fade in and out;
+ * only the position choreography is dropped.
+ */
+const LAYOUT_ANIMATION_LIMIT = 24;
+
 export default function WorksExplorer({
   works,
   dict,
@@ -33,6 +42,8 @@ export default function WorksExplorer({
     for (const work of works) map.set(work.category, (map.get(work.category) ?? 0) + 1);
     return map;
   }, [works]);
+
+  const animateLayout = !reduceMotion && works.length <= LAYOUT_ANIMATION_LIMIT;
 
   // Categories with no entries are hidden rather than shown as dead pills.
   const rail = CATEGORY_ORDER.filter((category) => (counts.get(category) ?? 0) > 0);
@@ -125,14 +136,14 @@ export default function WorksExplorer({
       {/* --- Grid ---------------------------------------------------------- */}
       {visible.length ? (
         <motion.div
-          layout={!reduceMotion}
+          layout={animateLayout}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6"
         >
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence mode={animateLayout ? 'popLayout' : 'sync'} initial={false}>
             {visible.map((work, index) => (
               <motion.div
                 key={work.id}
-                layout={!reduceMotion}
+                layout={animateLayout}
                 initial={reduceMotion ? false : { opacity: 0, y: 22, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12, scale: 0.97 }}
@@ -142,7 +153,9 @@ export default function WorksExplorer({
                     : {
                         duration: 0.44,
                         ease: [0.22, 1, 0.36, 1],
-                        delay: Math.min(index, 8) * 0.035,
+                        // A stagger that keeps growing turns a long list into a
+                        // long wait, so it only applies while the list is short.
+                        delay: animateLayout ? Math.min(index, 8) * 0.035 : 0,
                       }
                 }
                 className="h-full"

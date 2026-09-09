@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import MagneticButton from '@/components/MagneticButton';
 import Reveal from '@/components/Reveal';
@@ -139,11 +140,13 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
             </div>
 
             <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] bg-[var(--palette-bg-inset)] elev-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={previewPath(work, locale)}
                 alt={`${work.name} — ${dict.card.screenshotAlt}`}
-                className="h-full w-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 1024px) 92vw, 40vw"
+                className="object-cover"
               />
               <span
                 aria-hidden="true"
