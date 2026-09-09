@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import '../globals.css';
 import { figtree } from '@/lib/fonts';
 import { DEFAULT_LOCALE, LOCALES, getDictionary, isLocale, localeEntry, type Locale } from '@/lib/i18n';
-import { SITE_URL } from '@/lib/links';
+import { GOOGLE_SITE_VERIFICATION, SITE_URL } from '@/lib/links';
 
 export const dynamicParams = false;
 
@@ -44,6 +44,10 @@ export async function generateMetadata({
     },
     twitter: { card: 'summary_large_image', title: dict.meta.title, description: dict.meta.description },
     robots: { index: true, follow: true },
+    // Renders <meta name="google-site-verification" …>. Emitted on every
+    // language, since `/` redirects by Accept-Language and Search Console may
+    // land on any of them.
+    verification: { google: GOOGLE_SITE_VERIFICATION },
   };
 }
 
