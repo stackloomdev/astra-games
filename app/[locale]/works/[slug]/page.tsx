@@ -12,6 +12,7 @@ import { SITE_URL } from '@/lib/links';
 import { previewPath } from '@/lib/preview-version';
 import { workGraph } from '@/lib/structured-data';
 import { gradientFor, hostOf, monogram } from '@/lib/taxonomy';
+import { workLanguageAlternates } from '@/lib/work-alternates';
 import { findWorkBySlug, workSlug } from '@/lib/work-url';
 
 export const revalidate = 300;
@@ -33,11 +34,17 @@ export async function generateMetadata({
   const resolved = await resolve(locale, slug);
   if (!resolved) return {};
   const { work } = resolved;
+  // Twelve translations of one entry, each under its own slug. Without this
+  // they read as competing duplicates rather than one page in many languages.
+  const languages = await workLanguageAlternates(work);
 
   return {
     title: work.name,
     description: work.description || undefined,
-    alternates: { canonical: `/${locale}/works/${workSlug(work)}` },
+    alternates: {
+      canonical: `/${locale}/works/${workSlug(work)}`,
+      ...(languages ? { languages } : {}),
+    },
     openGraph: {
       type: 'article',
       url: `${SITE_URL}/${locale}/works/${workSlug(work)}`,
