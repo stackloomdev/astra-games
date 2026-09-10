@@ -1,5 +1,4 @@
 import type { Work } from './catalog';
-import { IMAGE_OPTIMIZATION_ENABLED } from './image-optimization';
 import { previewPath } from './preview-version';
 
 /**
@@ -33,16 +32,13 @@ export function workHref(locale: string, work: Work): string {
 }
 
 /**
- * A cover at the width it will actually be drawn, through Next's image
- * optimiser. `next/image` does this for ordinary <img> elements, but a WebGL
- * texture or a hand-written tag has to ask for it: upstream screenshots are
- * around 1440x950, which is several megabytes of decode and VRAM for something
- * displayed a few hundred pixels wide.
+ * A cover at the width it will actually be drawn at.
+ *
+ * `next/image` gets this from the loader in lib/image-loader.ts; a WebGL
+ * texture has no loader, so it asks here. Source screenshots are around
+ * 1440x950 — several megabytes of decode and VRAM for something a few hundred
+ * pixels wide — and the width must be one /api/preview accepts.
  */
-export function optimizedPreview(work: Work, locale: string, width: number): string {
-  const original = previewPath(work, locale);
-  // With the optimizer disabled `/_next/image` is not served at all, so asking
-  // for it would 404 rather than fall back the way `next/image` does.
-  if (!IMAGE_OPTIMIZATION_ENABLED) return original;
-  return `/_next/image?url=${encodeURIComponent(original)}&w=${width}&q=75`;
+export function previewAtWidth(work: Work, locale: string, width: number): string {
+  return `${previewPath(work, locale)}&w=${width}`;
 }

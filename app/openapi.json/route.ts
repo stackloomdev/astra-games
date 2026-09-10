@@ -1,5 +1,6 @@
 import { REFRESH_SECONDS, REPOSITORY } from '@/lib/catalog';
 import { LOCALE_CODES } from '@/lib/i18n';
+import { DEVICE_SIZES, IMAGE_SIZES } from '@/lib/preview-sizes';
 import { SITE_URL, UPSTREAM_REPO } from '@/lib/links';
 
 export const runtime = 'nodejs';
@@ -80,6 +81,13 @@ export function GET() {
               required: false,
               description: 'Cache version. When present it must match the current entry, otherwise the response is 404.',
               schema: { type: 'string', pattern: '^[a-f0-9]{16}$' },
+            },
+            {
+              name: 'w',
+              in: 'query',
+              required: false,
+              description: 'Deliver the cover downscaled to this width in pixels, WebP when the Accept header allows it. Only the listed widths are served; anything else is a 400.',
+              schema: { type: 'integer', enum: [...IMAGE_SIZES, ...DEVICE_SIZES] },
             },
           ],
           responses: {
