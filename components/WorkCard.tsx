@@ -81,12 +81,9 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
         {/* --- Cover ---------------------------------------------------- */}
         <div className="relative aspect-[16/10] overflow-hidden bg-[var(--palette-bg-inset)]">
           {!coverFailed ? (
-            // Upstream covers are full screenshots — often 1440x950 — shown in a
-            // card under 400px wide. Served raw that is ~14x the pixels needed
-            // per card, and with dozens of cards the decode cost alone makes the
-            // page stutter. /api/preview is same-origin, so the optimiser can
-            // resize and re-encode it; `sizes` tells it which width each layout
-            // actually needs.
+            // Keep Image's lazy loading and fill layout. next.config.ts serves
+            // /api/preview directly so Vercel's transformation quota cannot
+            // hide valid covers; `sizes` applies if optimization is re-enabled.
             <Image
               src={cover}
               alt={`${work.name} — ${dict.card.screenshotAlt}`}

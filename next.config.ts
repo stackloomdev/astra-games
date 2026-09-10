@@ -2,6 +2,10 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
+    // Serve cached /api/preview images directly. Vercel's optimizer returns
+    // 402 once its transformation quota is exhausted, hiding valid covers.
+    unoptimized: true,
+    // Keep the settings below for a future opt-in to image optimization.
     // Covers come from /api/preview, which is same-origin but carries the work
     // id, cache version and locale as query params. `search` is omitted so any
     // of them is allowed — pinning it would break the moment a cover changes.
