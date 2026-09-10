@@ -1,4 +1,5 @@
 import type { Work } from './catalog';
+import { IMAGE_OPTIMIZATION_ENABLED } from './image-optimization';
 import { previewPath } from './preview-version';
 
 /**
@@ -39,6 +40,9 @@ export function workHref(locale: string, work: Work): string {
  * displayed a few hundred pixels wide.
  */
 export function optimizedPreview(work: Work, locale: string, width: number): string {
-  const source = encodeURIComponent(previewPath(work, locale));
-  return `/_next/image?url=${source}&w=${width}&q=75`;
+  const original = previewPath(work, locale);
+  // With the optimizer disabled `/_next/image` is not served at all, so asking
+  // for it would 404 rather than fall back the way `next/image` does.
+  if (!IMAGE_OPTIMIZATION_ENABLED) return original;
+  return `/_next/image?url=${encodeURIComponent(original)}&w=${width}&q=75`;
 }

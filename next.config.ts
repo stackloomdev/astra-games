@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next';
 
+import { IMAGE_OPTIMIZATION_ENABLED } from './lib/image-optimization';
+
 const nextConfig: NextConfig = {
   images: {
     // Serve cached /api/preview images directly. Vercel's optimizer returns
