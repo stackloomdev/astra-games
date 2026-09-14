@@ -6,7 +6,7 @@ import type { Work } from '@/lib/catalog';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { previewPath } from '@/lib/preview-version';
 import { gradientFor, monogram } from '@/lib/taxonomy';
-import { workHref } from '@/lib/work-url';
+import { builtCover, workHref } from '@/lib/work-url';
 
 /**
  * Airbnb listing-card geometry — 20px radius, three-layer shadow, image area on
@@ -36,10 +36,14 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }, []);
   const href = workHref(locale, work);
-  // /api/preview walks author artwork → verified screenshot → the demo page's
-  // Open Graph image → the GitHub repository card, and 404s when it finds
-  // nothing. Only that 404 falls through to the generated cover below.
-  const cover = previewPath(work, locale);
+  // Normally a static WebP made at build time (scripts/build-covers.mjs). A work
+  // added upstream since the last deployment has none yet and goes through
+  // /api/preview, which walks author artwork → verified screenshot → the demo
+  // page's Open Graph image → the GitHub repository card, passes the bytes
+  // through untouched, and 404s when it finds nothing. Only that 404 falls
+  // through to the generated cover below.
+  const built = builtCover(work);
+  const cover = built ?? previewPath(work, locale);
 
   const onEnter = () => {
     if (!interactive.current) return;
@@ -81,11 +85,11 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
         {/* --- Cover ---------------------------------------------------- */}
         <div className="relative aspect-[16/10] overflow-hidden bg-[var(--palette-bg-inset)]">
           {!coverFailed ? (
-            // `sizes` drives the srcset, which lib/image-loader.ts turns into
-            // /api/preview requests at those widths — a card never downloads
-            // the full 1440x950 source.
+            // For a built cover `sizes` chooses between its fixed widths (see
+            // lib/image-loader.ts); the pass-through has only the one size.
             <Image
               src={cover}
+              unoptimized={!built}
               alt={`${work.name} — ${dict.card.screenshotAlt}`}
               fill
               sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 31vw"

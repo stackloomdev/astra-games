@@ -1,17 +1,16 @@
 import type { ImageLoaderProps } from 'next/image';
+import { coverPath } from './preview-version';
 
 /**
- * Points `next/image` at /api/preview instead of /_next/image.
+ * Picks the width of a built cover. Those are static files at a few fixed
+ * widths — /covers/<key>-<width>.webp — and next.config.ts sets `deviceSizes`
+ * to exactly those widths, so every width Next asks for names a file that
+ * exists.
  *
- * The built-in optimiser is the obvious way to do this, but on Vercel it bills
- * against a transformation quota and starts answering 402 once that is spent,
- * which is how every cover on this site went blank. /api/preview already holds
- * the bytes and resizes them itself, so the srcset can just name a width and
- * pay ordinary function time for it.
+ * Nothing is resized here, or anywhere at request time. A cover without a
+ * built file is rendered `unoptimized`, which bypasses this loader.
  */
-export default function previewLoader({ src, width }: ImageLoaderProps): string {
-  // Covers are the only images here today, but a static asset added later must
-  // not be rewritten into a route that cannot serve it.
-  if (!src.startsWith('/api/preview?')) return src;
-  return `${src}&w=${width}`;
+export default function coverLoader({ src, width }: ImageLoaderProps): string {
+  const built = /^\/covers\/([a-f0-9]{16})-\d+\.webp$/.exec(src);
+  return built ? coverPath(built[1], width) : src;
 }

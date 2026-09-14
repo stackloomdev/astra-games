@@ -14,7 +14,7 @@ import { previewPath } from '@/lib/preview-version';
 import { workGraph } from '@/lib/structured-data';
 import { gradientFor, hostOf, monogram } from '@/lib/taxonomy';
 import { workLanguageAlternates } from '@/lib/work-alternates';
-import { findWorkBySlug, workSlug } from '@/lib/work-url';
+import { builtCover, findWorkBySlug, workSlug } from '@/lib/work-url';
 
 export const revalidate = 300;
 // Slugs come from a list that changes upstream without a redeploy, so pages are
@@ -68,6 +68,8 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
 
   if (!resolved) notFound();
   const { catalog, work, locale } = resolved;
+  // The build step's static WebP when there is one; see WorkCard.
+  const banner = builtCover(work);
 
   const related = catalog.works.filter((entry) => entry.id !== work.id).slice(0, 3);
   const facts = [
@@ -141,7 +143,8 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
 
             <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] bg-[var(--palette-bg-inset)] elev-card">
               <Image
-                src={previewPath(work, locale)}
+                src={banner ?? previewPath(work, locale)}
+                unoptimized={!banner}
                 alt={`${work.name} — ${dict.card.screenshotAlt}`}
                 fill
                 priority

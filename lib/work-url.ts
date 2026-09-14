@@ -1,5 +1,5 @@
 import type { Work } from './catalog';
-import { previewPath } from './preview-version';
+import { coverKey, coverPath, previewPath } from './preview-version';
 
 /**
  * Readable, stable detail-page slug: the work's name plus the first eight hex
@@ -31,14 +31,33 @@ export function workHref(locale: string, work: Work): string {
   return `/${locale}/works/${workSlug(work)}`;
 }
 
+// Filled in by next.config.ts from the manifest scripts/build-covers.mjs wrote,
+// and inlined into server and client bundles alike.
+const BUILT_COVERS = new Set((process.env.ASTRA_COVER_KEYS ?? '').split(',').filter(Boolean));
+const COVER_WIDTHS = (process.env.ASTRA_COVER_WIDTHS ?? '')
+  .split(',')
+  .map(Number)
+  .filter((width) => width > 0)
+  .sort((a, b) => a - b);
+
 /**
- * A cover at the width it will actually be drawn at.
- *
- * `next/image` gets this from the loader in lib/image-loader.ts; a WebGL
- * texture has no loader, so it asks here. Source screenshots are around
- * 1440x950 — several megabytes of decode and VRAM for something a few hundred
- * pixels wide — and the width must be one /api/preview accepts.
+ * The static WebP the build step made for this work's cover, at the smallest
+ * built width of at least `minWidth` (or the widest there is). Null when there
+ * is no such file — a work added upstream since the last deployment, or a cover
+ * that would not resolve when the site was built.
  */
-export function previewAtWidth(work: Work, locale: string, width: number): string {
-  return `${previewPath(work, locale)}&w=${width}`;
+export function builtCover(work: Work, minWidth = 0): string | null {
+  const key = coverKey(work);
+  if (!BUILT_COVERS.has(key) || !COVER_WIDTHS.length) return null;
+  const width = COVER_WIDTHS.find((candidate) => candidate >= minWidth) ?? COVER_WIDTHS[COVER_WIDTHS.length - 1];
+  return coverPath(key, width);
+}
+
+/**
+ * A cover for somewhere with no image loader, such as a WebGL texture: the
+ * built file when there is one, otherwise /api/preview, which passes the
+ * original through at full size.
+ */
+export function coverUrl(work: Work, locale: string, minWidth: number): string {
+  return builtCover(work, minWidth) ?? previewPath(work, locale);
 }

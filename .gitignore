@@ -20,6 +20,9 @@
 # production
 /build
 
+# covers pre-rendered by scripts/build-covers.mjs
+/public/covers/
+
 # misc
 .DS_Store
 *.pem

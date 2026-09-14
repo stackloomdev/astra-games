@@ -1,6 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import type { NextConfig } from 'next';
-
-import { DEVICE_SIZES, IMAGE_SIZES } from './lib/preview-sizes';
 
 /**
  * RFC 8288 discovery links, advertised on the pages an agent would land on.
@@ -20,7 +20,32 @@ const DISCOVERY_LINK = [
   '<https://creativecommons.org/publicdomain/zero/1.0/>; rel="license"',
 ].join(', ');
 
+/**
+ * What scripts/build-covers.mjs wrote for this build: the widths it encodes and
+ * the key of every cover it produced. Absent in a `next dev` that has not run
+ * `npm run covers`, which only means every cover takes the /api/preview
+ * pass-through at full size.
+ */
+function readCoverManifest(): { widths: number[]; keys: string[] } {
+  try {
+    const manifest = JSON.parse(readFileSync(join(process.cwd(), 'public/covers/manifest.json'), 'utf8'));
+    if (!Array.isArray(manifest.widths) || typeof manifest.covers !== 'object') throw new Error('malformed');
+    return { widths: manifest.widths, keys: Object.keys(manifest.covers) };
+  } catch {
+    return { widths: [], keys: [] };
+  }
+}
+
+const covers = readCoverManifest();
+
 const nextConfig: NextConfig = {
+  // Inlined into server and client bundles alike, so the rendered HTML, the
+  // hydrated cards and the WebGL deck all agree on which covers are static files.
+  env: {
+    ASTRA_COVER_KEYS: covers.keys.join(','),
+    ASTRA_COVER_WIDTHS: covers.widths.join(','),
+  },
+
   async headers() {
     // Scoped to the rendered pages: static assets gain nothing from carrying
     // discovery links on every request.
@@ -31,23 +56,15 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    // Covers are resized by /api/preview itself, not by Next's optimiser: on
-    // Vercel that optimiser bills against an image-transformation quota and
-    // answers 402 once it runs out, which took every cover on the site down.
-    // See lib/image-loader.ts and lib/preview-resize.js.
+    // Nothing goes through Next's own optimiser: on Vercel its transformations
+    // are quota-limited, and resizing inside a function instead ran out the
+    // Active CPU allowance. Built covers are already the right size and the
+    // loader only picks one of their widths; a cover without a built file is
+    // rendered `unoptimized` and skips the loader.
     loader: 'custom',
     loaderFile: './lib/image-loader.ts',
-    // These are the widths the loader may name, and the route accepts no other.
-    imageSizes: IMAGE_SIZES,
-    deviceSizes: DEVICE_SIZES,
-  },
-
-  // The bundled screenshots live in public/, which is served from the CDN and is
-  // not otherwise part of a serverless bundle — /api/preview needs to read them
-  // to resize them. Without this it still works, by redirecting at the full-size
-  // CDN copy instead.
-  outputFileTracingIncludes: {
-    '/api/preview': ['./public/previews/**'],
+    // A srcset may only name widths that exist on disk.
+    ...(covers.widths.length ? { deviceSizes: covers.widths, imageSizes: [] } : {}),
   },
 };
 
