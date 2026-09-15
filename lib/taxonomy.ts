@@ -1,10 +1,3 @@
-import type { WorkCategory } from './catalog';
-
-/** Display order of the category pill rail. Labels come from the dictionary. */
-export const CATEGORY_ORDER: (WorkCategory | 'all')[] = [
-  'all', 'game', 'experiment', 'app', 'tool', 'website', 'other',
-];
-
 /** Deterministic gradient per work so covers we cannot fetch still feel authored. */
 const GRADIENTS = [
   'linear-gradient(135deg, #ff385c 0%, #92174d 52%, #2a0a3d 100%)',

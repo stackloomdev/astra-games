@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'कोई मेल नहीं मिला',
     emptyBody: 'कोई और शब्द आज़माएँ, या',
     reset: 'फ़िल्टर रीसेट करें',
-    categories: { all: 'सभी', game: 'गेम', experiment: 'प्रयोग और कला', app: 'ऐप', tool: 'टूल', website: 'साइट', other: 'अन्य' },
+    all: 'सभी',
   },
   card: { playable: 'खेलने योग्य', open: 'खोलें', viewSource: 'सोर्स', by: 'द्वारा', screenshotAlt: 'गेमप्ले स्क्रीनशॉट', details: 'विवरण' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'रिपॉज़िटरी',
     author: 'रचनाकार',
     category: 'श्रेणी',
-    listedUnder: 'अपस्ट्रीम अनुभाग',
     notFound: 'यह रचना सूची में नहीं है',
     notFoundBody: 'हो सकता है इसे अपस्ट्रीम से हटा दिया गया हो, या लिंक बदल गया हो।',
     upstreamNote: 'इस पृष्ठ की सारी सामग्री अपस्ट्रीम README से आती है। यह साइट उसे संपादित नहीं करती।',

@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'Aucun résultat',
     emptyBody: 'Essayez un autre mot-clé, ou',
     reset: 'réinitialisez les filtres',
-    categories: { all: 'Tout', game: 'Jeux', experiment: 'Expériences et art', app: 'Applis', tool: 'Outils', website: 'Sites', other: 'Autres' },
+    all: 'Tout',
   },
   card: { playable: 'Jouable', open: 'Ouvrir', viewSource: 'Source', by: 'par', screenshotAlt: 'capture de jeu', details: 'Détails' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Dépôt',
     author: 'Créateur',
     category: 'Catégorie',
-    listedUnder: 'Rubrique amont',
     notFound: 'Cette œuvre n’est pas au catalogue',
     notFoundBody: 'Elle a peut-être été retirée en amont, ou le lien a changé.',
     upstreamNote: 'Tout le contenu de cette page vient du README amont. Ce site ne le modifie pas.',

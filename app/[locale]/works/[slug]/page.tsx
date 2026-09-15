@@ -74,8 +74,7 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
   const related = catalog.works.filter((entry) => entry.id !== work.id).slice(0, 3);
   const facts = [
     { term: dict.detail.author, value: work.author.name, href: work.author.url },
-    { term: dict.detail.category, value: dict.works.categories[work.category] },
-    { term: dict.detail.listedUnder, value: work.sourceCategory },
+    { term: dict.detail.category, value: work.sourceCategory },
     { term: dict.detail.repository, value: hostOf(work.repoUrl), href: work.repoUrl },
   ].filter((fact) => fact.value);
 
@@ -109,7 +108,7 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
 
               <div className="mt-5 flex flex-wrap items-center gap-2">
                 <span className="rounded-[var(--radius-badge)] border border-[var(--palette-border-strong)] bg-white/[0.05] px-[10px] py-[5px] t-badge">
-                  {dict.works.categories[work.category]}
+                  {work.sourceCategory}
                 </span>
                 {work.demoUrl ? (
                   <span className="flex items-center gap-[6px] rounded-[var(--radius-badge)] bg-[var(--palette-rausch)] px-[10px] py-[5px] t-badge text-white">

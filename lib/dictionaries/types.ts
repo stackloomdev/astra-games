@@ -39,7 +39,8 @@ export interface Dictionary {
     emptyTitle: string;
     emptyBody: string;
     reset: string;
-    categories: Record<'all' | 'game' | 'experiment' | 'app' | 'tool' | 'website' | 'other', string>;
+    /** The first pill of the section rail; the sections themselves are titled by upstream. */
+    all: string;
   };
   card: {
     playable: string;
@@ -76,7 +77,6 @@ export interface Dictionary {
     repository: string;
     author: string;
     category: string;
-    listedUnder: string;
     notFound: string;
     notFoundBody: string;
     upstreamNote: string;

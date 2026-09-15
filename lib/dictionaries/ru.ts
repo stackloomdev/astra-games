@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'Ничего не найдено',
     emptyBody: 'Попробуйте другое слово или',
     reset: 'сбросьте фильтры',
-    categories: { all: 'Все', game: 'Игры', experiment: 'Эксперименты и арт', app: 'Приложения', tool: 'Инструменты', website: 'Сайты', other: 'Прочее' },
+    all: 'Все',
   },
   card: { playable: 'Играбельно', open: 'Открыть', viewSource: 'Исходники', by: 'автор', screenshotAlt: 'скриншот игрового процесса', details: 'Подробнее' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Репозиторий',
     author: 'Автор',
     category: 'Категория',
-    listedUnder: 'Раздел в исходнике',
     notFound: 'Такой работы в каталоге нет',
     notFoundBody: 'Возможно, её убрали в исходнике или ссылка изменилась.',
     upstreamNote: 'Всё на этой странице взято из исходного README. Сайт его не редактирует.',

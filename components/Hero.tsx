@@ -138,7 +138,7 @@ export default function Hero({
           {/* Below lg the hero is already a full screen of copy; the deck would
               only push the stats off it. */}
           <Reveal delay={520} className="hidden lg:block">
-            <HeroCarousel3D works={deckWorks} locale={locale} dict={dict} />
+            <HeroCarousel3D works={deckWorks} locale={locale} />
           </Reveal>
         </div>
 

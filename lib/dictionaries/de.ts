@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'Nichts gefunden',
     emptyBody: 'Anderes Stichwort versuchen, oder',
     reset: 'Filter zurücksetzen',
-    categories: { all: 'Alle', game: 'Spiele', experiment: 'Experimente & Kunst', app: 'Apps', tool: 'Werkzeuge', website: 'Websites', other: 'Sonstiges' },
+    all: 'Alle',
   },
   card: { playable: 'Spielbar', open: 'Öffnen', viewSource: 'Quellcode', by: 'von', screenshotAlt: 'Screenshot aus dem Spiel', details: 'Details' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Repository',
     author: 'Kreative',
     category: 'Kategorie',
-    listedUnder: 'Upstream-Rubrik',
     notFound: 'Diese Arbeit steht nicht im Katalog',
     notFoundBody: 'Sie wurde vielleicht upstream entfernt, oder der Link hat sich geändert.',
     upstreamNote: 'Alles auf dieser Seite stammt aus der Upstream-README. Diese Seite bearbeitet es nicht.',

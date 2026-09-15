@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'Tidak ada yang cocok',
     emptyBody: 'Coba kata kunci lain, atau',
     reset: 'atur ulang filter',
-    categories: { all: 'Semua', game: 'Game', experiment: 'Eksperimen & seni', app: 'Aplikasi', tool: 'Alat', website: 'Situs', other: 'Lainnya' },
+    all: 'Semua',
   },
   card: { playable: 'Bisa dimainkan', open: 'Buka', viewSource: 'Kode', by: 'oleh', screenshotAlt: 'tangkapan layar permainan', details: 'Detail' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Repositori',
     author: 'Kreator',
     category: 'Kategori',
-    listedUnder: 'Bagian di hulu',
     notFound: 'Karya itu tidak ada di katalog',
     notFoundBody: 'Mungkin sudah dihapus di hulu, atau tautannya berubah.',
     upstreamNote: 'Semua isi halaman ini berasal dari README hulu. Situs ini tidak menyuntingnya.',

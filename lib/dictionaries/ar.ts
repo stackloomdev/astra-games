@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'لا نتائج مطابقة',
     emptyBody: 'جرّب كلمة أخرى، أو',
     reset: 'أعد ضبط التصفية',
-    categories: { all: 'الكل', game: 'ألعاب', experiment: 'تجارب وفن', app: 'تطبيقات', tool: 'أدوات', website: 'مواقع', other: 'أخرى' },
+    all: 'الكل',
   },
   card: { playable: 'قابلة للعب', open: 'افتح', viewSource: 'المصدر', by: 'بواسطة', screenshotAlt: 'لقطة من اللعب', details: 'التفاصيل' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'المستودع',
     author: 'المبدع',
     category: 'التصنيف',
-    listedUnder: 'القسم في المصدر',
     notFound: 'هذا العمل غير موجود في الفهرس',
     notFoundBody: 'ربما أُزيل من المصدر، أو تغيّر الرابط.',
     upstreamNote: 'كل ما في هذه الصفحة مأخوذ من ملف README الأصلي، ولا يحرّره هذا الموقع.',

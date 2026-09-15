@@ -50,7 +50,7 @@ export const RAW_URL: string;
 export const REFRESH_SECONDS: number;
 
 export function parseCatalogMarkdown(markdown: string, options?: Record<string, unknown>): Work[];
-export function classifyWork(sourceCategory: string, description?: string, parents?: string): WorkCategory;
+export function classifyWork(sourceCategory: string, parents?: string): WorkCategory;
 export function safeUrl(input: string, options?: Record<string, unknown>): string | null;
 export interface CatalogService {
   loadCatalog: () => Promise<Catalog>;

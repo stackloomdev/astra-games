@@ -117,6 +117,7 @@ export function GET() {
             description: { type: 'string' },
             category: {
               type: 'string',
+              description: 'Coarse type, read from the upstream headings the entry sits under; the same for a work in every language. The section itself is sourceCategory.',
               enum: ['game', 'website', 'app', 'tool', 'experiment', 'other'],
             },
             sourceCategory: { type: 'string', description: 'The upstream section heading, untranslated by us.' },

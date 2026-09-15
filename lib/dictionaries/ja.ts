@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: '該当する作品がありません',
     emptyBody: '別のキーワードを試すか、',
     reset: '絞り込みをリセット',
-    categories: { all: 'すべて', game: 'ゲーム', experiment: '実験・アート', app: 'アプリ', tool: 'ツール', website: 'サイト', other: 'その他' },
+    all: 'すべて',
   },
   card: { playable: '遊べる', open: '開く', viewSource: 'ソース', by: '制作', screenshotAlt: 'プレイ画面', details: '詳細' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'リポジトリ',
     author: '制作者',
     category: 'カテゴリ',
-    listedUnder: '上流の分類',
     notFound: 'この作品は見つかりません',
     notFoundBody: '上流から削除されたか、リンクが変わった可能性があります。',
     upstreamNote: 'このページの内容はすべて上流 README のものです。当サイトでは編集しません。',

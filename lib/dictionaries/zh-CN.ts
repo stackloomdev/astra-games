@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: '没有匹配的作品',
     emptyBody: '换个关键词，或者',
     reset: '重置筛选',
-    categories: { all: '全部', game: '游戏', experiment: '实验与艺术', app: '应用', tool: '工具', website: '网站', other: '其他' },
+    all: '全部',
   },
   card: { playable: '可试玩', open: '打开', viewSource: '看源码', by: '作者', screenshotAlt: '实机画面', details: '查看详情' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: '代码仓库',
     author: '作者',
     category: '分类',
-    listedUnder: '上游栏目',
     notFound: '没有找到这个作品',
     notFoundBody: '它可能已经从上游目录中移除，或者链接已经变化。',
     upstreamNote: '本页内容全部来自上游 README，本站不做二次编辑。',

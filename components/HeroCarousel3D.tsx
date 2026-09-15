@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import type { Work } from '@/lib/catalog';
-import type { Dictionary, Locale } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
 import { coverUrl, workHref } from '@/lib/work-url';
 
 const ADVANCE_MS = 4200;
@@ -29,12 +29,10 @@ const CLICK_SLOP_PX = 6;
 export default function HeroCarousel3D({
   works,
   locale,
-  dict,
   className = '',
 }: {
   works: Work[];
   locale: Locale;
-  dict: Dictionary;
   className?: string;
 }) {
   const router = useRouter();
@@ -462,7 +460,7 @@ export default function HeroCarousel3D({
           active work also exists here as ordinary text and a real link. */}
       <div className="mt-1 text-center">
         <p className="t-micro text-[var(--palette-rausch)]">
-          {dict.works.categories[current.category] ?? dict.works.categories.other}
+          {current.sourceCategory}
         </p>
         <a
           href={workHref(locale, current)}

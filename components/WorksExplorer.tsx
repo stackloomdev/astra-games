@@ -2,23 +2,23 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useMemo, useState } from 'react';
-import type { Work, WorkCategory } from '@/lib/catalog';
+import type { Work } from '@/lib/catalog';
 import type { Dictionary, Locale } from '@/lib/i18n';
-import { CATEGORY_ORDER } from '@/lib/taxonomy';
 import WorkCard from './WorkCard';
 
-type Filter = WorkCategory | 'all';
-
 /**
- * Category pill rail + search over the catalogue. The rail follows Airbnb's
- * horizontally scrollable pill bar with an underline on the active pill; the
- * grid re-flows with a layout animation, which collapses to an instant swap
- * under reduced motion.
+ * Section pill rail + search over the catalogue. The pills are the upstream
+ * README's own sections — same titles, same order, translated by upstream in
+ * each language's README — so the filter always matches the list on GitHub, and
+ * a section added or renamed there shows up here without a code change. The
+ * rail follows Airbnb's horizontally scrollable pill bar with an underline on
+ * the active pill; the grid re-flows with a layout animation, which collapses to
+ * an instant swap under reduced motion.
  */
 /**
  * Above this many cards the grid stops animating its reflow. A FLIP pass
  * measures and re-positions every card in the list, so the cost of switching
- * category grows with the catalogue — which has gone from six entries to over
+ * section grows with the catalogue — which has gone from six entries to over
  * sixty in a few days. Past the threshold the cards still fade in and out;
  * only the position choreography is dropped.
  */
@@ -33,31 +33,36 @@ export default function WorksExplorer({
   dict: Dictionary;
   locale: Locale;
 }) {
-  const [filter, setFilter] = useState<Filter>('all');
+  // null shows every section.
+  const [section, setSection] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const reduceMotion = useReducedMotion();
 
-  const counts = useMemo(() => {
-    const map = new Map<Filter, number>([['all', works.length]]);
-    for (const work of works) map.set(work.category, (map.get(work.category) ?? 0) + 1);
-    return map;
-  }, [works]);
+  // Walking the works in list order makes the Map's insertion order the order in
+  // which the README introduces each section.
+  const rail = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const work of [...works].sort((a, b) => a.sourceOrder - b.sourceOrder)) {
+      counts.set(work.sourceCategory, (counts.get(work.sourceCategory) ?? 0) + 1);
+    }
+    return [
+      { section: null, label: dict.works.all, count: works.length },
+      ...[...counts].map(([name, count]) => ({ section: name, label: name, count })),
+    ];
+  }, [works, dict]);
 
   const animateLayout = !reduceMotion && works.length <= LAYOUT_ANIMATION_LIMIT;
-
-  // Categories with no entries are hidden rather than shown as dead pills.
-  const rail = CATEGORY_ORDER.filter((category) => (counts.get(category) ?? 0) > 0);
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return works.filter((work) => {
-      if (filter !== 'all' && work.category !== filter) return false;
+      if (section !== null && work.sourceCategory !== section) return false;
       if (!needle) return true;
       return [work.name, work.description, work.author.name, work.sourceCategory]
         .filter(Boolean)
         .some((field) => field.toLowerCase().includes(needle));
     });
-  }, [works, filter, query]);
+  }, [works, section, query]);
 
   return (
     <div>
@@ -68,14 +73,14 @@ export default function WorksExplorer({
           role="tablist"
           aria-label={dict.works.eyebrow}
         >
-          {rail.map((category) => {
-            const active = filter === category;
+          {rail.map((pill) => {
+            const active = section === pill.section;
             return (
               <button
-                key={category}
+                key={pill.section ?? ''}
                 role="tab"
                 aria-selected={active}
-                onClick={() => setFilter(category)}
+                onClick={() => setSection(pill.section)}
                 className={`relative shrink-0 rounded-[var(--radius-standard)] px-[14px] py-[9px] t-body-med transition-colors duration-200 ${
                   active
                     ? 'text-[var(--palette-text-primary)]'
@@ -83,13 +88,13 @@ export default function WorksExplorer({
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-[7px]">
-                  {dict.works.categories[category]}
+                  {pill.label}
                   <span
                     className={`t-badge tabular-nums ${
                       active ? 'text-[var(--palette-rausch)]' : 'text-[var(--palette-text-tertiary)]'
                     }`}
                   >
-                    {counts.get(category) ?? 0}
+                    {pill.count}
                   </span>
                 </span>
                 {active ? (
@@ -173,7 +178,7 @@ export default function WorksExplorer({
             <button
               onClick={() => {
                 setQuery('');
-                setFilter('all');
+                setSection(null);
               }}
               className="text-[var(--palette-rausch)] underline underline-offset-4"
             >

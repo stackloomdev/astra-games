@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: '일치하는 작품이 없습니다',
     emptyBody: '다른 키워드를 써보거나,',
     reset: '필터 초기화',
-    categories: { all: '전체', game: '게임', experiment: '실험·아트', app: '앱', tool: '도구', website: '사이트', other: '기타' },
+    all: '전체',
   },
   card: { playable: '플레이 가능', open: '열기', viewSource: '소스', by: '제작', screenshotAlt: '실제 플레이 화면', details: '자세히' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: '저장소',
     author: '제작자',
     category: '분류',
-    listedUnder: '상위 분류',
     notFound: '해당 작품을 찾을 수 없습니다',
     notFoundBody: '상위에서 삭제되었거나 링크가 바뀌었을 수 있습니다.',
     upstreamNote: '이 페이지의 내용은 모두 상위 README에서 온 것이며, 이 사이트는 편집하지 않습니다.',

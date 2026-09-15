@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'No hay coincidencias',
     emptyBody: 'Prueba otra palabra clave, o',
     reset: 'restablece los filtros',
-    categories: { all: 'Todo', game: 'Juegos', experiment: 'Experimentos y arte', app: 'Apps', tool: 'Herramientas', website: 'Sitios', other: 'Otros' },
+    all: 'Todo',
   },
   card: { playable: 'Jugable', open: 'Abrir', viewSource: 'Código', by: 'por', screenshotAlt: 'captura del juego', details: 'Detalles' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Repositorio',
     author: 'Creador',
     category: 'Categoría',
-    listedUnder: 'Sección original',
     notFound: 'Esa obra no está en el catálogo',
     notFoundBody: 'Puede que se haya eliminado aguas arriba, o que el enlace haya cambiado.',
     upstreamNote: 'Todo el contenido de esta página viene del README original. Este sitio no lo edita.',

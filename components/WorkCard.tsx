@@ -116,8 +116,10 @@ export default function WorkCard({ work, index, dict, locale }: WorkCardProps) {
             className="absolute inset-0 bg-gradient-to-t from-[var(--palette-bg-raised)] via-transparent to-transparent"
           />
 
-          <span className="absolute start-3 top-3 rounded-[var(--radius-badge)] bg-black/55 px-[10px] py-[5px] t-badge text-white backdrop-blur-sm">
-            {dict.works.categories[work.category] ?? dict.works.categories.other}
+          {/* The upstream section, titled as on GitHub. Some translations run
+              long, so it truncates rather than crossing the cover. */}
+          <span className="absolute start-3 top-3 max-w-[calc(100%-1.5rem)] truncate rounded-[var(--radius-badge)] bg-black/55 px-[10px] py-[5px] t-badge text-white backdrop-blur-sm">
+            {work.sourceCategory}
           </span>
 
           {/* Straight to the demo, skipping the detail page. z-2 puts it above

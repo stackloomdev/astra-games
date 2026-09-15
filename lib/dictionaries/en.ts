@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     emptyTitle: 'Nothing matches',
     emptyBody: 'Try another keyword, or',
     reset: 'reset the filters',
-    categories: { all: 'All', game: 'Games', experiment: 'Experiments & art', app: 'Apps', tool: 'Tools', website: 'Sites', other: 'Other' },
+    all: 'All',
   },
   card: { playable: 'Playable', open: 'Open', viewSource: 'Source', by: 'by', screenshotAlt: 'gameplay screenshot', details: 'Details' },
   criteria: {
@@ -73,7 +73,6 @@ const dictionary: Dictionary = {
     repository: 'Repository',
     author: 'Creator',
     category: 'Category',
-    listedUnder: 'Listed under',
     notFound: 'That work is not in the catalogue',
     notFoundBody: 'It may have been removed upstream, or the link may have changed.',
     upstreamNote: 'Everything on this page comes from the upstream README. This site does not edit it.',
