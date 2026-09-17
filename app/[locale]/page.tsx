@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation';
+import { GuideSection } from '@/components/Editorial';
+import { isContentLocale } from '@/lib/editorial';
 import CriteriaSection from '@/components/CriteriaSection';
 import Hero from '@/components/Hero';
 import MagneticButton from '@/components/MagneticButton';
@@ -62,7 +64,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
-      <main>
+      <main id="main-content">
         <Hero
           dict={dict}
           locale={locale}
@@ -77,6 +79,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         />
 
         <Marquee items={dict.marquee} label={dict.works.eyebrow} />
+        {isContentLocale(locale) && <GuideSection locale={locale} />}
 
         {/* --- Catalogue ---------------------------------------------------- */}
         <section id="works" className="shell scroll-mt-24 py-24 sm:py-32">

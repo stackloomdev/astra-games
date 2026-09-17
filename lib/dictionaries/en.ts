@@ -75,7 +75,7 @@ const dictionary: Dictionary = {
     category: 'Category',
     notFound: 'That work is not in the catalogue',
     notFoundBody: 'It may have been removed upstream, or the link may have changed.',
-    upstreamNote: 'Everything on this page comes from the upstream README. This site does not edit it.',
+    upstreamNote: 'The work description and facts above come from the upstream README. Any Astra Games guides are listed separately, with their own sources and verification notes.',
     otherWorks: 'Keep looking',
     metadata: 'Details',
   },

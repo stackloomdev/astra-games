@@ -75,7 +75,7 @@ const dictionary: Dictionary = {
     category: '分类',
     notFound: '没有找到这个作品',
     notFoundBody: '它可能已经从上游目录中移除，或者链接已经变化。',
-    upstreamNote: '本页内容全部来自上游 README，本站不做二次编辑。',
+    upstreamNote: '上述作品简介与资料来自上游 README；本站指南另行列出，并标明独立来源与核验范围。',
     otherWorks: '继续看看',
     metadata: '作品信息',
   },

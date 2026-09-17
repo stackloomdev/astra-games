@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { UPSTREAM_REPO, X_PROFILE } from '@/lib/links';
+import { contentNavigation } from '@/lib/content-navigation';
 import LocaleSwitcher from './LocaleSwitcher';
 
 interface SiteHeaderProps {
@@ -41,13 +42,17 @@ export default function SiteHeader({ dict, locale, localeHrefs, homeHref }: Site
     };
   }, []);
 
+  const content = contentNavigation(locale);
   const nav = [
     { href: `${homeHref}#works`, label: dict.nav.works },
     { href: `${homeHref}#how`, label: dict.nav.how },
-    { href: `${homeHref}#about`, label: dict.nav.about },
+    content.items[0],
+    { href: content.items[1].href, label: dict.nav.about },
   ];
 
   return (
+    <>
+    <a href="#main-content" className="sr-only fixed start-4 top-4 z-[100] rounded-lg bg-[var(--palette-bg-raised)] p-4 focus:not-sr-only">{dict.nav.skipToContent}</a>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] ${
         condensed
@@ -84,13 +89,21 @@ export default function SiteHeader({ dict, locale, localeHrefs, homeHref }: Site
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <details className="relative lg:hidden">
+            <summary aria-label={content.information} className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-[var(--palette-border-strong)]">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 5h14M3 10h14M3 15h14" /></svg>
+            </summary>
+            <nav aria-label={content.information} className="absolute end-0 top-14 max-h-[75svh] w-[min(280px,85vw)] overflow-auto rounded-xl border border-[var(--palette-border-strong)] bg-[var(--palette-bg-raised)] p-2 shadow-xl">
+              {[...nav.slice(0, 2), ...content.items].map((item) => <a key={item.href} href={item.href} onClick={(event) => event.currentTarget.closest('details')?.removeAttribute('open')} className="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm hover:bg-white/5">{item.label}</a>)}
+            </nav>
+          </details>
           <LocaleSwitcher current={locale} label={dict.nav.language} hrefs={localeHrefs} />
           <a
             href={X_PROFILE}
             target="_blank"
             rel="noreferrer noopener"
             aria-label="Astra Games on X"
-            className="inline-flex items-center gap-2 rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
+            className="hidden min-h-11 min-w-11 items-center justify-center gap-2 sm:inline-flex rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
           >
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
               <path d="M13.6 10.6 21 2h-1.8l-6.4 7.4L7.7 2H2l7.8 11.3L2 22h1.8l6.8-7.9 5.4 7.9H22l-8.4-11.4zm-2.4 2.8-.8-1.1L4.4 3.3h2.7l5 7.2.8 1.1 6.5 9.3h-2.7l-5.5-7.9z" />
@@ -101,7 +114,7 @@ export default function SiteHeader({ dict, locale, localeHrefs, homeHref }: Site
             target="_blank"
             rel="noreferrer noopener"
             aria-label="GitHub"
-            className="inline-flex items-center gap-2 rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
+            className="hidden min-h-11 min-w-11 items-center justify-center gap-2 sm:inline-flex rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
           >
             <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
@@ -117,5 +130,6 @@ export default function SiteHeader({ dict, locale, localeHrefs, homeHref }: Site
         style={{ transform: `scaleX(${progress})`, opacity: condensed ? 1 : 0 }}
       />
     </header>
+    </>
   );
 }
