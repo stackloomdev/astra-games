@@ -15,13 +15,13 @@ interface CountUpProps {
  */
 export default function CountUp({ to, durationMs = 1400, suffix = '' }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(to);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setValue(to);
       return;
     }
@@ -55,9 +55,9 @@ export default function CountUp({ to, durationMs = 1400, suffix = '' }: CountUpP
   }, [to, durationMs]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums" aria-label={`${to}${suffix}`}><span aria-hidden="true">
       {value}
       {suffix}
-    </span>
+    </span></span>
   );
 }

@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { DEFAULT_LOCALE, LOCALES } from '@/lib/i18n';
 import { SITE_URL } from '@/lib/links';
+import { CONTENT_LOCALES, GUIDES } from '@/lib/editorial';
+import { INFORMATION_PAGES, INFORMATION_UPDATED } from '@/lib/site-information';
 import { workSlug } from '@/lib/work-url';
 
 export const revalidate = 300;
@@ -51,5 +53,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...home, ...details];
+  const content = [
+    { path: '/guides', date: GUIDES.map((guide) => guide.published).sort().at(-1) },
+    ...GUIDES.map((guide) => ({ path: `/guides/${guide.slug}`, date: guide.published })),
+    ...INFORMATION_PAGES.map((page) => ({ path: `/${page}`, date: INFORMATION_UPDATED })),
+  ].flatMap(({ path, date }) => CONTENT_LOCALES.map((locale) => ({
+    url: `${SITE_URL}/${locale}${path}`, lastModified: date,
+    alternates: { languages: { ...Object.fromEntries(CONTENT_LOCALES.map((code) => [code, `${SITE_URL}/${code}${path}`])), 'x-default': `${SITE_URL}/en${path}` } },
+  })));
+  return [...home, ...details, ...content];
 }

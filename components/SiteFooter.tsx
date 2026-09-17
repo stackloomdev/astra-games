@@ -1,3 +1,4 @@
+import { contentNavigation } from '@/lib/content-navigation';
 import type { Dictionary } from '@/lib/i18n';
 import { BROKEN_LINK_ISSUE, CONTRIBUTING, SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 
@@ -10,7 +11,9 @@ export default function SiteFooter({
   homeHref: string;
   readmeUrl: string;
 }) {
+  const content = contentNavigation(homeHref.split('/')[1]);
   const columns = [
+    { heading: content.information, items: content.items },
     {
       heading: dict.footer.catalogue,
       items: [
@@ -33,7 +36,7 @@ export default function SiteFooter({
   return (
     <footer id="about" className="relative overflow-hidden border-t border-[var(--palette-border)]">
       <div className="shell py-16">
-        <div className="grid gap-12 md:grid-cols-[1.6fr_repeat(2,1fr)]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_repeat(3,1fr)]">
           <div>
             <p className="t-ui-semi tracking-[-0.44px]">Astra Games</p>
             <p className="t-body mt-3 max-w-[42ch] text-[var(--palette-text-secondary)]">

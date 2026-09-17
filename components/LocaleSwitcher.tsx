@@ -39,7 +39,7 @@ export default function LocaleSwitcher({ current, label, hrefs }: LocaleSwitcher
         aria-expanded={open}
         aria-label={label}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex items-center gap-[7px] rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
+        className="inline-flex min-h-11 items-center gap-[7px] rounded-[var(--radius-standard)] border border-[var(--palette-border-strong)] px-3 py-[9px] t-body-med transition-[border-color,background-color] duration-200 hover:border-[var(--palette-rausch)] hover:bg-white/[0.05]"
       >
         <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <circle cx="8" cy="8" r="6.4" />

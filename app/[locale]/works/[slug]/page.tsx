@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { GuideSection } from '@/components/Editorial';
+import { guidesForWork, isContentLocale } from '@/lib/editorial';
 import MagneticButton from '@/components/MagneticButton';
 import Reveal from '@/components/Reveal';
 import SiteFooter from '@/components/SiteFooter';
@@ -71,7 +73,9 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
   // The build step's static WebP when there is one; see WorkCard.
   const banner = builtCover(work);
 
-  const related = catalog.works.filter((entry) => entry.id !== work.id).slice(0, 3);
+  const related = catalog.works.filter((entry) => entry.id !== work.id)
+    .sort((a, b) => Number(b.category === work.category) - Number(a.category === work.category))
+    .slice(0, 3);
   const facts = [
     { term: dict.detail.author, value: work.author.name, href: work.author.url },
     { term: dict.detail.category, value: work.sourceCategory },
@@ -85,7 +89,7 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
       />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
-      <main className="pt-[68px]">
+      <main id="main-content" className="pt-[68px]">
         {/* --- Cover banner ------------------------------------------------ */}
         <section className="relative isolate overflow-hidden">
           <div aria-hidden="true" className="absolute inset-0 -z-10">
@@ -226,6 +230,8 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
             ))}
           </div>
         </section>
+
+        {isContentLocale(locale) && <GuideSection locale={locale} guides={guidesForWork(work)} />}
 
         {/* --- Related ------------------------------------------------------ */}
         {related.length ? (
