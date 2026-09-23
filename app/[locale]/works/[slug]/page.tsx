@@ -9,6 +9,7 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import StructuredData from '@/components/StructuredData';
 import WorkCard from '@/components/WorkCard';
+import { toCardWork } from '@/lib/card-work';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { DEFAULT_LOCALE, LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SITE_URL } from '@/lib/links';
@@ -75,7 +76,8 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
 
   const related = catalog.works.filter((entry) => entry.id !== work.id)
     .sort((a, b) => Number(b.category === work.category) - Number(a.category === work.category))
-    .slice(0, 3);
+    .slice(0, 3)
+    .map(toCardWork);
   const facts = [
     { term: dict.detail.author, value: work.author.name, href: work.author.url },
     { term: dict.detail.category, value: work.sourceCategory },

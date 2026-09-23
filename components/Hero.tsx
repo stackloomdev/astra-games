@@ -1,4 +1,4 @@
-import type { Work } from '@/lib/catalog';
+import type { CardWork } from '@/lib/card-work';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import CountUp from './CountUp';
@@ -12,7 +12,7 @@ interface HeroProps {
   dict: Dictionary;
   locale: Locale;
   /** Covers for the deck beside the headline. */
-  deckWorks: Work[];
+  deckWorks: CardWork[];
   workCount: number;
   authorCount: number;
   playableCount: number;

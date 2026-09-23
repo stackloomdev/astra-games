@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import type { Work } from '@/lib/catalog';
+import type { CardWork } from '@/lib/card-work';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { previewPath } from '@/lib/preview-version';
 import { gradientFor, monogram } from '@/lib/taxonomy';
@@ -14,7 +14,7 @@ import { builtCover, workHref } from '@/lib/work-url';
  * suppressed on touch and under reduced motion; the card is a plain link there.
  */
 interface WorkCardProps {
-  work: Work;
+  work: CardWork;
   index: number;
   dict: Dictionary;
   locale: Locale;

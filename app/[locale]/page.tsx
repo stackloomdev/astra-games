@@ -12,6 +12,7 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import StructuredData from '@/components/StructuredData';
 import WorksExplorer from '@/components/WorksExplorer';
+import { toCardWork } from '@/lib/card-work';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
@@ -45,6 +46,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   // the order.
   await new Promise((resolve) => setImmediate(resolve));
   const works = catalog.works;
+  const cards = works.map(toCardWork);
 
   const authorCount = new Set(
     works.map((work) => work.author.name.trim().toLowerCase()).filter(Boolean),
@@ -76,7 +78,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           locale={locale}
           // Only entries whose cover resolves to real artwork are worth putting
           // at the top of the page; the generated fallback is not a showcase.
-          deckWorks={works.filter((work) => work.demoUrl).slice(0, 5)}
+          deckWorks={cards.filter((work) => work.demoUrl).slice(0, 5)}
           workCount={works.length}
           authorCount={authorCount}
           playableCount={playableCount}
@@ -121,7 +123,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           ) : null}
 
           <Reveal threshold={0.05}>
-            <WorksExplorer works={works} dict={dict} locale={locale} />
+            <WorksExplorer works={cards} dict={dict} locale={locale} />
           </Reveal>
         </section>
 
