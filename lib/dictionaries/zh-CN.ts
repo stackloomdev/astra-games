@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: '收录作品',
     statAuthors: '参与创作者',
     statPlayable: '可直接试玩',
-    lastChecked: '最近核对',
   },
   marquee: ['单键飞行', '半流体物理', '海岛塔防', '卡丁车竞速', '粒子艺术', '球形世界探索', '程序化美术', 'Web Audio', 'Three.js', 'Canvas 2D', '原生 WebGL', 'One Shot 测试', '多轮迭代'],
   works: {

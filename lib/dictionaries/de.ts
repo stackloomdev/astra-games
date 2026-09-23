@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'Gelistete Arbeiten',
     statAuthors: 'Kreative',
     statPlayable: 'Sofort spielbar',
-    lastChecked: 'Zuletzt geprüft',
   },
   marquee: ['Ein-Tasten-Flug', 'Soft-Body-Physik', 'Insel-Tower-Defense', 'Kart-Rennen', 'Partikelkunst', 'Kugelwelten', 'Prozedurale Grafik', 'Web Audio', 'Three.js', 'Canvas 2D', 'Reines WebGL', 'One-Shot-Tests', 'Iterative Entwicklung'],
   works: {

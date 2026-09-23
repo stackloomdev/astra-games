@@ -13,7 +13,7 @@ import SiteHeader from '@/components/SiteHeader';
 import StructuredData from '@/components/StructuredData';
 import WorksExplorer from '@/components/WorksExplorer';
 import { loadCatalogFor } from '@/lib/catalog-service';
-import { LOCALES, getDictionary, isLocale, localeEntry, type Locale } from '@/lib/i18n';
+import { LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import { previewPath } from '@/lib/preview-version';
 import { homeGraph } from '@/lib/structured-data';
@@ -21,17 +21,6 @@ import { homeGraph } from '@/lib/structured-data';
 // Matches the catalogue service's own five-minute freshness window, so the
 // rendered page and the JSON API never drift apart by more than one interval.
 export const revalidate = 300;
-
-function formatDate(iso: string | null, locale: Locale): string | null {
-  if (!iso) return null;
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return null;
-  return new Intl.DateTimeFormat(localeEntry(locale).htmlLang, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(date);
-}
 
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale: raw } = await params;
@@ -91,7 +80,6 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           workCount={works.length}
           authorCount={authorCount}
           playableCount={playableCount}
-          checkedAt={formatDate(catalog.source.lastSuccessfulAt ?? catalog.source.checkedAt, locale)}
           stale={catalog.source.stale}
         />
 

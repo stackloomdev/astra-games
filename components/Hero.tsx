@@ -16,7 +16,6 @@ interface HeroProps {
   workCount: number;
   authorCount: number;
   playableCount: number;
-  checkedAt: string | null;
   stale: boolean;
 }
 
@@ -27,7 +26,6 @@ export default function Hero({
   workCount,
   authorCount,
   playableCount,
-  checkedAt,
   stale,
 }: HeroProps) {
   const stats = [
@@ -152,14 +150,6 @@ export default function Hero({
                 </dd>
               </div>
             ))}
-            {checkedAt ? (
-              <div className="ms-auto self-end">
-                <dt className="sr-only">{dict.hero.lastChecked}</dt>
-                <dd className="t-small text-[var(--palette-text-tertiary)]">
-                  {dict.hero.lastChecked} {checkedAt}
-                </dd>
-              </div>
-            ) : null}
           </dl>
         </Reveal>
       </div>

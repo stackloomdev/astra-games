@@ -27,7 +27,6 @@ export interface Dictionary {
     statWorks: string;
     statAuthors: string;
     statPlayable: string;
-    lastChecked: string;
   };
   marquee: string[];
   works: {

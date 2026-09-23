@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'Работ в списке',
     statAuthors: 'Авторов',
     statPlayable: 'Играбельны сразу',
-    lastChecked: 'Последняя проверка',
   },
   marquee: ['Полёт одной кнопкой', 'Мягкая физика', 'Островной tower defense', 'Картинг', 'Партиклы как искусство', 'Сферические миры', 'Процедурная графика', 'Web Audio', 'Three.js', 'Canvas 2D', 'Чистый WebGL', 'One-shot тесты', 'Итеративная разработка'],
   works: {

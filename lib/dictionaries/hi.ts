@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'सूचीबद्ध रचनाएँ',
     statAuthors: 'रचनाकार',
     statPlayable: 'अभी खेलने योग्य',
-    lastChecked: 'अंतिम जाँच',
   },
   marquee: ['एक-बटन उड़ान', 'सॉफ़्ट-बॉडी भौतिकी', 'द्वीप टावर डिफेंस', 'कार्ट रेसिंग', 'पार्टिकल आर्ट', 'गोलाकार दुनिया', 'प्रोसीजरल आर्ट', 'Web Audio', 'Three.js', 'Canvas 2D', 'शुद्ध WebGL', 'वन-शॉट परीक्षण', 'क्रमिक विकास'],
   works: {

@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'Trabalhos listados',
     statAuthors: 'Criadores',
     statPlayable: 'Jogáveis agora',
-    lastChecked: 'Última verificação',
   },
   marquee: ['Voo de um botão', 'Física de corpo mole', 'Tower defense na ilha', 'Corrida de karts', 'Arte de partículas', 'Mundos esféricos', 'Arte procedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL puro', 'Testes one-shot', 'Desenvolvimento iterativo'],
   works: {

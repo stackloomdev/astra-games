@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'Listed works',
     statAuthors: 'Creators',
     statPlayable: 'Playable now',
-    lastChecked: 'Last checked',
   },
   marquee: ['One-button flight', 'Soft-body physics', 'Island tower defence', 'Kart racing', 'Particle art', 'Spherical worlds', 'Procedural art', 'Web Audio', 'Three.js', 'Canvas 2D', 'Raw WebGL', 'One-shot tests', 'Iterative builds'],
   works: {

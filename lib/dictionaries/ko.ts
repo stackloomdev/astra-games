@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: '등재 작품',
     statAuthors: '제작자',
     statPlayable: '바로 플레이 가능',
-    lastChecked: '최근 확인',
   },
   marquee: ['원버튼 비행', '소프트바디 물리', '섬 타워 디펜스', '카트 레이싱', '파티클 아트', '구형 월드 탐험', '프로시저럴 아트', 'Web Audio', 'Three.js', 'Canvas 2D', '순수 WebGL', '원샷 테스트', '반복 개발'],
   works: {
