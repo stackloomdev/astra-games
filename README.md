@@ -103,7 +103,7 @@ URL 来自社区编辑的 README，所以抓取是收紧的：只允许 HTTPS，
 | robots | 通配 + 13 个 AI 抓取器显式放行 |
 | `/llms.txt` | 从实时目录生成的纯文本简报 |
 
-结构化数据用 schema.org：首页是 `CollectionPage` + `ItemList`，每条作品按分类映射为 `VideoGame` / `SoftwareApplication` / `CreativeWork`；详情页额外带 `BreadcrumbList`。
+结构化数据用 schema.org：首页是 `CollectionPage` + 摘要式 `ItemList`，每项只有位置、名称和详情页地址；完整的作品节点在详情页，按分类映射为 `VideoGame` / `SoftwareApplication` / `CreativeWork`，另带 `BreadcrumbList`。首页不内联完整节点，是因为 161 个作品的节点超过首页 RSC payload 的三分之一，而 ISR 每次重新生成都要把它重写好几遍。
 
 **只写目录真正记录的字段。** 没有 `offers`、没有 `aggregateRating`、没有 `isAccessibleForFree` —— 这些上游没有逐条核实，编出来既会被搜索引擎判为虚假标记，也会被回答引擎当成事实复述出去。
 

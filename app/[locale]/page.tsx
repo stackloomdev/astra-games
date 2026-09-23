@@ -16,7 +16,6 @@ import { toCardWork } from '@/lib/card-work';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
-import { previewPath } from '@/lib/preview-version';
 import { homeGraph } from '@/lib/structured-data';
 
 // Matches the catalogue service's own five-minute freshness window, so the
@@ -62,14 +61,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <>
-      <StructuredData
-        data={homeGraph({
-          locale,
-          dict,
-          catalog,
-          previewUrlFor: (work) => previewPath(work, locale),
-        })}
-      />
+      <StructuredData data={homeGraph({ locale, dict, catalog })} />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
       <main id="main-content">
