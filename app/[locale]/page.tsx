@@ -1,3 +1,4 @@
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { notFound } from 'next/navigation';
 import { GuideSection } from '@/components/Editorial';
 import { isContentLocale } from '@/lib/editorial';
@@ -38,6 +39,14 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const locale = raw as Locale;
 
   const [dict, catalog] = await Promise.all([getDictionary(locale), loadCatalogFor(locale)]);
+  // A regeneration that cannot reach upstream would replace the cached page
+  // with a stale or fallback copy — the English snapshot lists seven works —
+  // and pay a full ISR write for it, then another once upstream recovers.
+  // Throwing leaves ISR serving the last good page and retrying on the next
+  // request. The build has no earlier page to keep, so it renders what it has.
+  if (catalog.source.stale && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+    throw new Error(`The ${locale} catalogue is ${catalog.source.status}; keeping the cached page`);
+  }
   // Yield once before rendering. The catalogue comes either from the service's
   // memory or from GitHub, and the page body used to finish before the
   // streamed metadata in the first case and after it in the second. React
