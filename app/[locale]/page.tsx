@@ -1,3 +1,4 @@
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { notFound } from 'next/navigation';
 import { GuideSection } from '@/components/Editorial';
 import { isContentLocale } from '@/lib/editorial';
@@ -11,26 +12,15 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import StructuredData from '@/components/StructuredData';
 import WorksExplorer from '@/components/WorksExplorer';
+import { toCardWork } from '@/lib/card-work';
 import { loadCatalogFor } from '@/lib/catalog-service';
-import { LOCALES, getDictionary, isLocale, localeEntry, type Locale } from '@/lib/i18n';
+import { LOCALES, getDictionary, isLocale, type Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
-import { previewPath } from '@/lib/preview-version';
 import { homeGraph } from '@/lib/structured-data';
 
 // Matches the catalogue service's own five-minute freshness window, so the
 // rendered page and the JSON API never drift apart by more than one interval.
 export const revalidate = 300;
-
-function formatDate(iso: string | null, locale: Locale): string | null {
-  if (!iso) return null;
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return null;
-  return new Intl.DateTimeFormat(localeEntry(locale).htmlLang, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(date);
-}
 
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale: raw } = await params;
@@ -38,7 +28,24 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const locale = raw as Locale;
 
   const [dict, catalog] = await Promise.all([getDictionary(locale), loadCatalogFor(locale)]);
+  // A regeneration that cannot reach upstream would replace the cached page
+  // with a stale or fallback copy — the English snapshot lists seven works —
+  // and pay a full ISR write for it, then another once upstream recovers.
+  // Throwing leaves ISR serving the last good page and retrying on the next
+  // request. The build has no earlier page to keep, so it renders what it has.
+  if (catalog.source.stale && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+    throw new Error(`The ${locale} catalogue is ${catalog.source.status}; keeping the cached page`);
+  }
+  // Yield once before rendering. The catalogue comes either from the service's
+  // memory or from GitHub, and the page body used to finish before the
+  // streamed metadata in the first case and after it in the second. React
+  // serialises in completion order, so the same content came out as two
+  // different documents, and ISR stores every change between them as a full
+  // write. By the next macrotask the metadata has always settled, which fixes
+  // the order.
+  await new Promise((resolve) => setImmediate(resolve));
   const works = catalog.works;
+  const cards = works.map(toCardWork);
 
   const authorCount = new Set(
     works.map((work) => work.author.name.trim().toLowerCase()).filter(Boolean),
@@ -54,14 +61,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <>
-      <StructuredData
-        data={homeGraph({
-          locale,
-          dict,
-          catalog,
-          previewUrlFor: (work) => previewPath(work, locale),
-        })}
-      />
+      <StructuredData data={homeGraph({ locale, dict, catalog })} />
       <SiteHeader dict={dict} locale={locale} localeHrefs={localeHrefs} homeHref={homeHref} />
 
       <main id="main-content">
@@ -70,11 +70,10 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           locale={locale}
           // Only entries whose cover resolves to real artwork are worth putting
           // at the top of the page; the generated fallback is not a showcase.
-          deckWorks={works.filter((work) => work.demoUrl).slice(0, 5)}
+          deckWorks={cards.filter((work) => work.demoUrl).slice(0, 5)}
           workCount={works.length}
           authorCount={authorCount}
           playableCount={playableCount}
-          checkedAt={formatDate(catalog.source.lastSuccessfulAt ?? catalog.source.checkedAt, locale)}
           stale={catalog.source.stale}
         />
 
@@ -116,7 +115,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           ) : null}
 
           <Reveal threshold={0.05}>
-            <WorksExplorer works={works} dict={dict} locale={locale} />
+            <WorksExplorer works={cards} dict={dict} locale={locale} />
           </Reveal>
         </section>
 

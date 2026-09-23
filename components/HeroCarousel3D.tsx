@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import type { Work } from '@/lib/catalog';
+import type { CardWork } from '@/lib/card-work';
 import type { Locale } from '@/lib/i18n';
 import { coverUrl, workHref } from '@/lib/work-url';
 
@@ -31,7 +31,7 @@ export default function HeroCarousel3D({
   locale,
   className = '',
 }: {
-  works: Work[];
+  works: CardWork[];
   locale: Locale;
   className?: string;
 }) {

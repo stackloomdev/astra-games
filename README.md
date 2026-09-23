@@ -67,6 +67,8 @@ npm start
 2. 上游暂时不可达 —— 继续用最近一次成功的结果，页面标记为旧数据。
 3. 冷启动就失败 —— 回退到该语言的快照。
 
+首页是 ISR 页面，运行时重新生成遇到后两种情况会直接抛错：Vercel 继续提供上一版正常页面，下一个请求再重试。只有构建时没有上一版可用，才会把旧数据或快照渲染进页面。
+
 快照只有英文和中文两份（`lib/catalog-fallback.*.json`），因为一份快照就是某种语言目录的副本，不能拿去顶替别的语言。没有快照的语言在这种情况下显示空目录和重试入口，而不是显示错语言的内容。
 
 ```sh
@@ -101,7 +103,7 @@ URL 来自社区编辑的 README，所以抓取是收紧的：只允许 HTTPS，
 | robots | 通配 + 13 个 AI 抓取器显式放行 |
 | `/llms.txt` | 从实时目录生成的纯文本简报 |
 
-结构化数据用 schema.org：首页是 `CollectionPage` + `ItemList`，每条作品按分类映射为 `VideoGame` / `SoftwareApplication` / `CreativeWork`；详情页额外带 `BreadcrumbList`。
+结构化数据用 schema.org：首页是 `CollectionPage` + 摘要式 `ItemList`，每项只有位置、名称和详情页地址；完整的作品节点在详情页，按分类映射为 `VideoGame` / `SoftwareApplication` / `CreativeWork`，另带 `BreadcrumbList`。首页不内联完整节点，是因为 161 个作品的节点超过首页 RSC payload 的三分之一，而 ISR 每次重新生成都要把它重写好几遍。
 
 **只写目录真正记录的字段。** 没有 `offers`、没有 `aggregateRating`、没有 `isAccessibleForFree` —— 这些上游没有逐条核实，编出来既会被搜索引擎判为虚假标记，也会被回答引擎当成事实复述出去。
 

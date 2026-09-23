@@ -1,8 +1,9 @@
+import type { CardWork } from './card-work';
 import type { Work } from './catalog';
 
-export function previewVersion(work: Work): string;
+export function previewVersion(work: CardWork): string;
 /** `/api/preview?id=…&v=…&l=…` — version pins the cache, locale selects the catalogue. */
-export function previewPath(work: Work, locale: string): string;
+export function previewPath(work: CardWork, locale: string): string;
 type CoverLinks = Pick<Work, 'imageUrl' | 'demoUrl' | 'sourceUrl' | 'repoUrl'>;
 
 /** The bundled screenshot captured for this work's demo or source link, if any. */

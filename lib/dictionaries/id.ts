@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: 'Karya terdaftar',
     statAuthors: 'Kreator',
     statPlayable: 'Bisa langsung dimainkan',
-    lastChecked: 'Terakhir diperiksa',
   },
   marquee: ['Terbang satu tombol', 'Fisika soft-body', 'Tower defense pulau', 'Balap gokart', 'Seni partikel', 'Dunia berbentuk bola', 'Seni prosedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL murni', 'Uji one-shot', 'Pengembangan iteratif'],
   works: {

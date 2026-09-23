@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useMemo, useState } from 'react';
-import type { Work } from '@/lib/catalog';
+import type { CardWork } from '@/lib/card-work';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import WorkCard from './WorkCard';
 
@@ -29,7 +29,7 @@ export default function WorksExplorer({
   dict,
   locale,
 }: {
-  works: Work[];
+  works: CardWork[];
   dict: Dictionary;
   locale: Locale;
 }) {

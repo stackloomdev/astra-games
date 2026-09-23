@@ -18,7 +18,6 @@ const dictionary: Dictionary = {
     statWorks: '掲載作品',
     statAuthors: '制作者',
     statPlayable: 'すぐ遊べる',
-    lastChecked: '最終確認',
   },
   marquee: ['ワンボタン飛行', 'ソフトボディ物理', '島のタワーディフェンス', 'カートレース', 'パーティクルアート', '球状ワールド探索', 'プロシージャル生成', 'Web Audio', 'Three.js', 'Canvas 2D', '生の WebGL', 'ワンショット検証', '反復開発'],
   works: {

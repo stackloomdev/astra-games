@@ -1,4 +1,4 @@
-import type { Work } from '@/lib/catalog';
+import type { CardWork } from '@/lib/card-work';
 import type { Dictionary, Locale } from '@/lib/i18n';
 import { SUBMIT_ISSUE, UPSTREAM_REPO } from '@/lib/links';
 import CountUp from './CountUp';
@@ -12,11 +12,10 @@ interface HeroProps {
   dict: Dictionary;
   locale: Locale;
   /** Covers for the deck beside the headline. */
-  deckWorks: Work[];
+  deckWorks: CardWork[];
   workCount: number;
   authorCount: number;
   playableCount: number;
-  checkedAt: string | null;
   stale: boolean;
 }
 
@@ -27,7 +26,6 @@ export default function Hero({
   workCount,
   authorCount,
   playableCount,
-  checkedAt,
   stale,
 }: HeroProps) {
   const stats = [
@@ -152,14 +150,6 @@ export default function Hero({
                 </dd>
               </div>
             ))}
-            {checkedAt ? (
-              <div className="ms-auto self-end">
-                <dt className="sr-only">{dict.hero.lastChecked}</dt>
-                <dd className="t-small text-[var(--palette-text-tertiary)]">
-                  {dict.hero.lastChecked} {checkedAt}
-                </dd>
-              </div>
-            ) : null}
           </dl>
         </Reveal>
       </div>

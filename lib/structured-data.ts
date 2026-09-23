@@ -87,17 +87,20 @@ function workNode(work: Work, locale: Locale, previewUrl: string) {
   };
 }
 
-/** Home page: the site, its publisher, and the catalogue as an ordered list. */
+/**
+ * Home page: the site, its publisher, and the catalogue as a summary list —
+ * each entry names its detail page, which carries the full node. Inlining every
+ * node here made this block over a third of the page's RSC payload, which an
+ * ISR page stores in its HTML and again in each of its RSC files.
+ */
 export function homeGraph({
   locale,
   dict,
   catalog,
-  previewUrlFor,
 }: {
   locale: Locale;
   dict: Dictionary;
   catalog: Catalog;
-  previewUrlFor: (work: Work) => string;
 }) {
   const url = `${SITE_URL}/${locale}`;
 
@@ -126,7 +129,8 @@ export function homeGraph({
         itemListElement: catalog.works.map((work, index) => ({
           '@type': 'ListItem',
           position: index + 1,
-          item: workNode(work, locale, previewUrlFor(work)),
+          url: `${SITE_URL}/${locale}/works/${workSlug(work)}`,
+          name: work.name,
         })),
       },
     ],
