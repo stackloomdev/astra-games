@@ -38,6 +38,14 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const locale = raw as Locale;
 
   const [dict, catalog] = await Promise.all([getDictionary(locale), loadCatalogFor(locale)]);
+  // Yield once before rendering. The catalogue comes either from the service's
+  // memory or from GitHub, and the page body used to finish before the
+  // streamed metadata in the first case and after it in the second. React
+  // serialises in completion order, so the same content came out as two
+  // different documents, and ISR stores every change between them as a full
+  // write. By the next macrotask the metadata has always settled, which fixes
+  // the order.
+  await new Promise((resolve) => setImmediate(resolve));
   const works = catalog.works;
 
   const authorCount = new Set(
