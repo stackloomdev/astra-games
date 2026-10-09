@@ -128,6 +128,10 @@ MIT。上游清单文字与视觉素材以 CC0 1.0 发布；链接指向的作�
 
 ### Adsterra advertising
 
+**All ads and the sponsor slot are off by default.** Set `NEXT_PUBLIC_ADS_ENABLED=true`
+in the deployment's environment (Vercel and Netlify separately) and redeploy to turn
+them on; the value is inlined at build time.
+
 The seven approved units are configured in `lib/adsterra.ts`. Advertising runs only on
 `astragames.aigccreative.com`, on localized catalogue and work detail pages, after
 explicit advertising consent. Local development and Vercel previews never request
