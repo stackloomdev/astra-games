@@ -115,11 +115,11 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
             </p>
           ) : null}
 
+          <SponsorSlot dict={dict} />
+
           <Reveal threshold={0.05}>
             <WorksExplorer works={cards} dict={dict} locale={locale} />
           </Reveal>
-
-          <SponsorSlot dict={dict} />
         </section>
 
         <CriteriaSection dict={dict} />

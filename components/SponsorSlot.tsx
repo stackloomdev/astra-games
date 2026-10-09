@@ -16,7 +16,7 @@ export default function SponsorSlot({ dict }: { dict: Dictionary }) {
   return (
     <aside
       aria-label={label}
-      className="mt-12 flex flex-col gap-4 rounded-[var(--radius-card)] border border-dashed border-[var(--palette-border-strong)] bg-white/[0.02] px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
+      className="mb-10 flex flex-col gap-4 rounded-[var(--radius-card)] border border-dashed border-[var(--palette-border-strong)] bg-white/[0.02] px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
     >
       <div className="flex min-w-0 items-center gap-4">
         <span className="t-micro shrink-0 text-[var(--palette-text-tertiary)]">{label}</span>
