@@ -5,7 +5,7 @@ const dictionary: Dictionary = {
     title: 'Astra Games — GPT-6 Astra 作品精选',
     tagline: '值得玩的游戏，值得做的点子',
     description:
-      '用 GPT-6 Astra 做出来的游戏、交互实验与艺术沙盒精选。目录实时同步上游 awesome-gpt-6-astra，收录即可玩。',
+      '用 GPT-6 Astra 做出来的游戏、交互实验与艺术沙盒精选。目录实时同步上游 awesome-gpt-6-astra，提供原作者的试玩入口。',
   },
   nav: { works: '作品目录', how: '如何收录', about: '关于', language: '语言', skipToContent: '跳到主要内容' },
   hero: {
@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: '提交你的作品',
     statWorks: '收录作品',
     statAuthors: '参与创作者',
-    statPlayable: '可直接试玩',
+    statPlayable: '提供试玩链接',
   },
   marquee: ['单键飞行', '半流体物理', '海岛塔防', '卡丁车竞速', '粒子艺术', '球形世界探索', '程序化美术', 'Web Audio', 'Three.js', 'Canvas 2D', '原生 WebGL', 'One Shot 测试', '多轮迭代'],
   works: {
     eyebrow: '作品目录',
-    heading: ['收录即可玩，', '不是一堆死链接'],
+    heading: ['发现社区作品，', '再打开原作者的演示'],
     lead: '目录直接解析 {readme}，上游增删改后这里几分钟内自动跟上，本站不保存第二份作品数据。',
     upstreamReadme: '上游 README',
     search: '搜索作品、作者或玩法',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: '重置筛选',
     all: '全部',
   },
-  card: { playable: '可试玩', open: '打开', viewSource: '看源码', by: '作者', screenshotAlt: '实机画面', details: '查看详情' },
+  card: { playable: '试玩链接', open: '打开', viewSource: '看源码', by: '作者', screenshotAlt: '实机画面', details: '查看详情' },
   criteria: {
     eyebrow: '收录标准',
     heading: ['一条好推荐，', '让人一眼知道玩什么'],

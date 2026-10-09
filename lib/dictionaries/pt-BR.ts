@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: 'Envie seu trabalho',
     statWorks: 'Trabalhos listados',
     statAuthors: 'Criadores',
-    statPlayable: 'Jogáveis agora',
+    statPlayable: 'Links de demonstração',
   },
   marquee: ['Voo de um botão', 'Física de corpo mole', 'Tower defense na ilha', 'Corrida de karts', 'Arte de partículas', 'Mundos esféricos', 'Arte procedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL puro', 'Testes one-shot', 'Desenvolvimento iterativo'],
   works: {
     eyebrow: 'Catálogo',
-    heading: ['Aqui tudo é jogável mesmo\u00A0—', 'não é uma pilha de links mortos'],
+    heading: ['Explore projetos da comunidade,', 'depois abra a demonstração original'],
     lead: 'O catálogo é lido direto de {readme}. Adições e correções na origem aparecem aqui em minutos; este site não guarda uma segunda cópia da lista.',
     upstreamReadme: 'o README original',
     search: 'Buscar trabalhos, criadores ou mecânicas',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: 'limpe os filtros',
     all: 'Tudo',
   },
-  card: { playable: 'Jogável', open: 'Abrir', viewSource: 'Código', by: 'por', screenshotAlt: 'captura do jogo', details: 'Detalhes' },
+  card: { playable: 'Demonstração', open: 'Abrir', viewSource: 'Código', by: 'por', screenshotAlt: 'captura do jogo', details: 'Detalhes' },
   criteria: {
     eyebrow: 'O que entra na lista',
     heading: ['Uma boa entrada diz', 'no que você está se metendo'],

@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: 'Kirim karyamu',
     statWorks: 'Karya terdaftar',
     statAuthors: 'Kreator',
-    statPlayable: 'Bisa langsung dimainkan',
+    statPlayable: 'Tautan demo',
   },
   marquee: ['Terbang satu tombol', 'Fisika soft-body', 'Tower defense pulau', 'Balap gokart', 'Seni partikel', 'Dunia berbentuk bola', 'Seni prosedural', 'Web Audio', 'Three.js', 'Canvas 2D', 'WebGL murni', 'Uji one-shot', 'Pengembangan iteratif'],
   works: {
     eyebrow: 'Katalog',
-    heading: ['Semua di sini benar-benar bisa dimainkan\u00A0—', 'bukan tumpukan tautan mati'],
+    heading: ['Jelajahi karya komunitas,', 'lalu buka demo asli pembuatnya'],
     lead: 'Katalog dibaca langsung dari {readme}. Penambahan dan perubahan di hulu muncul di sini dalam hitungan menit; situs ini tidak menyimpan salinan kedua dari daftarnya.',
     upstreamReadme: 'README hulu',
     search: 'Cari karya, kreator, atau mekanik',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: 'atur ulang filter',
     all: 'Semua',
   },
-  card: { playable: 'Bisa dimainkan', open: 'Buka', viewSource: 'Kode', by: 'oleh', screenshotAlt: 'tangkapan layar permainan', details: 'Detail' },
+  card: { playable: 'Demo', open: 'Buka', viewSource: 'Kode', by: 'oleh', screenshotAlt: 'tangkapan layar permainan', details: 'Detail' },
   criteria: {
     eyebrow: 'Yang masuk daftar',
     heading: ['Entri yang baik memberi tahu', 'apa yang akan kamu hadapi'],

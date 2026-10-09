@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: 'Submit your work',
     statWorks: 'Listed works',
     statAuthors: 'Creators',
-    statPlayable: 'Playable now',
+    statPlayable: 'Demo links',
   },
   marquee: ['One-button flight', 'Soft-body physics', 'Island tower defence', 'Kart racing', 'Particle art', 'Spherical worlds', 'Procedural art', 'Web Audio', 'Three.js', 'Canvas 2D', 'Raw WebGL', 'One-shot tests', 'Iterative builds'],
   works: {
     eyebrow: 'Catalogue',
-    heading: ['Everything here is playable\u00A0—', 'not a pile of dead links'],
+    heading: ['Explore community projects,', 'then open the original demo'],
     lead: 'The catalogue is parsed straight from {readme}. Additions and edits upstream show up here within minutes; this site keeps no second copy of the list.',
     upstreamReadme: 'the upstream README',
     search: 'Search works, creators or mechanics',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: 'reset the filters',
     all: 'All',
   },
-  card: { playable: 'Playable', open: 'Open', viewSource: 'Source', by: 'by', screenshotAlt: 'gameplay screenshot', details: 'Details' },
+  card: { playable: 'Demo', open: 'Open', viewSource: 'Source', by: 'by', screenshotAlt: 'gameplay screenshot', details: 'Details' },
   criteria: {
     eyebrow: 'What gets listed',
     heading: ['A good entry tells you', 'what you are getting into'],

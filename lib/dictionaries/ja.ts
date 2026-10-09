@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: '作品を投稿する',
     statWorks: '掲載作品',
     statAuthors: '制作者',
-    statPlayable: 'すぐ遊べる',
+    statPlayable: 'デモリンク',
   },
   marquee: ['ワンボタン飛行', 'ソフトボディ物理', '島のタワーディフェンス', 'カートレース', 'パーティクルアート', '球状ワールド探索', 'プロシージャル生成', 'Web Audio', 'Three.js', 'Canvas 2D', '生の WebGL', 'ワンショット検証', '反復開発'],
   works: {
     eyebrow: 'カタログ',
-    heading: ['掲載作品はすべて遊べます。', 'リンク切れの山ではありません'],
+    heading: ['コミュニティ作品を探して、', '作者のデモを開く'],
     lead: 'カタログは {readme} を直接解析しています。上流での追加・変更は数分でここに反映され、このサイトはリストの複製を持ちません。',
     upstreamReadme: '上流の README',
     search: '作品・制作者・遊び方で検索',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: '絞り込みをリセット',
     all: 'すべて',
   },
-  card: { playable: '遊べる', open: '開く', viewSource: 'ソース', by: '制作', screenshotAlt: 'プレイ画面', details: '詳細' },
+  card: { playable: 'デモ', open: '開く', viewSource: 'ソース', by: '制作', screenshotAlt: 'プレイ画面', details: '詳細' },
   criteria: {
     eyebrow: '掲載基準',
     heading: ['良いエントリーは、', '何が待っているかを伝えます'],

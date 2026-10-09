@@ -17,12 +17,12 @@ const dictionary: Dictionary = {
     submit: '작품 제출하기',
     statWorks: '등재 작품',
     statAuthors: '제작자',
-    statPlayable: '바로 플레이 가능',
+    statPlayable: '데모 링크',
   },
   marquee: ['원버튼 비행', '소프트바디 물리', '섬 타워 디펜스', '카트 레이싱', '파티클 아트', '구형 월드 탐험', '프로시저럴 아트', 'Web Audio', 'Three.js', 'Canvas 2D', '순수 WebGL', '원샷 테스트', '반복 개발'],
   works: {
     eyebrow: '카탈로그',
-    heading: ['여기 있는 건 다 플레이됩니다.', '죽은 링크 더미가 아닙니다'],
+    heading: ['커뮤니티 작품을 둘러보고,', '원작자의 데모를 열어보세요'],
     lead: '카탈로그는 {readme}를 그대로 파싱합니다. 상위에서 추가·수정하면 몇 분 안에 반영되며, 이 사이트는 목록 사본을 따로 두지 않습니다.',
     upstreamReadme: '상위 README',
     search: '작품, 제작자, 플레이 방식 검색',
@@ -31,7 +31,7 @@ const dictionary: Dictionary = {
     reset: '필터 초기화',
     all: '전체',
   },
-  card: { playable: '플레이 가능', open: '열기', viewSource: '소스', by: '제작', screenshotAlt: '실제 플레이 화면', details: '자세히' },
+  card: { playable: '데모', open: '열기', viewSource: '소스', by: '제작', screenshotAlt: '실제 플레이 화면', details: '자세히' },
   criteria: {
     eyebrow: '등재 기준',
     heading: ['좋은 항목은', '무엇을 하게 될지 알려줍니다'],
