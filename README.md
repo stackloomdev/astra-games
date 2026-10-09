@@ -124,3 +124,21 @@ Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空�
 ## 许可
 
 MIT。上游清单文字与视觉素材以 CC0 1.0 发布；链接指向的作品各自遵循原许可。
+
+
+### Adsterra advertising
+
+The seven approved units are configured in `lib/adsterra.ts`. Advertising runs only on
+`astragames.aigccreative.com`, on localized catalogue and work detail pages, after
+explicit advertising consent. Local development and Vercel previews never request
+live ads. About, privacy, contact and guides have no ad scripts. Ad settings lets
+visitors decline or withdraw; withdrawal reloads the document to remove handlers.
+
+Desktop uses the 728×90 banner; narrower layouts use 320×50. Both also use 300×250
+and one native placement per page. Popunder and Social Bar load once per document.
+Smartlink is a labelled sponsored link, never a replacement for Play. Provider tags
+run directly in the page; postscribe serializes banner tags so their global
+`atOptions` values cannot race and supports their document.write behavior. Do not
+wrap the provider tags in an additional iframe, refresh ads automatically, click
+ads during testing, or enable them on an unapproved domain. Ad fill and earnings
+are controlled by the provider; verify reporting in the Adsterra dashboard.

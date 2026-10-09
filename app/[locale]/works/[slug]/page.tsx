@@ -1,3 +1,4 @@
+import { AdBanner, NativeAd, SponsoredOffers } from '@/components/Advertising';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -233,6 +234,7 @@ export default async function WorkPage({ params }: PageProps<'/[locale]/works/[s
           </div>
         </section>
 
+        <div className="shell"><AdBanner /><AdBanner rectangle /><SponsoredOffers /><NativeAd /></div>
         {isContentLocale(locale) && <GuideSection locale={locale} guides={guidesForWork(work)} />}
 
         {/* --- Related ------------------------------------------------------ */}

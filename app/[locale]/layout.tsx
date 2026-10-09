@@ -1,3 +1,4 @@
+import { AdvertisingProvider } from '@/components/Advertising';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
@@ -81,7 +82,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
             }
           `}</style>
         </noscript>
-        {children}
+        <AdvertisingProvider locale={locale}>{children}</AdvertisingProvider>
         {/* Cookieless page analytics and real-user Core Web Vitals. Both only
             report from a Vercel deployment; locally they are inert. */}
         <Analytics />

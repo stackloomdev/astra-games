@@ -1,3 +1,4 @@
+import { AdBanner, NativeAd, SponsoredOffers } from '@/components/Advertising';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import { notFound } from 'next/navigation';
 import { GuideSection } from '@/components/Editorial';
@@ -79,6 +80,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         />
 
         <Marquee items={dict.marquee} label={dict.works.eyebrow} />
+        <div className="shell"><AdBanner /><SponsoredOffers /></div>
         {isContentLocale(locale) && <GuideSection locale={locale} />}
 
         {/* --- Catalogue ---------------------------------------------------- */}
@@ -116,12 +118,14 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           ) : null}
 
           <SponsorSlot dict={dict} />
+          <AdBanner rectangle />
 
           <Reveal threshold={0.05}>
             <WorksExplorer works={cards} dict={dict} locale={locale} />
           </Reveal>
         </section>
 
+        <div className="shell"><NativeAd /></div>
         <CriteriaSection dict={dict} />
 
         {/* --- How it works -------------------------------------------------- */}
