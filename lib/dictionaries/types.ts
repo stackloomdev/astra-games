@@ -82,6 +82,11 @@ export interface Dictionary {
     otherWorks: string;
     metadata: string;
   };
+  sponsor: {
+    label: string;
+    pitch: string;
+    cta: string;
+  };
   footer: {
     disclaimer: string;
     license: string;

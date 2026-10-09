@@ -10,6 +10,7 @@ import ProcessTimeline from '@/components/ProcessTimeline';
 import Reveal from '@/components/Reveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+import SponsorSlot from '@/components/SponsorSlot';
 import StructuredData from '@/components/StructuredData';
 import WorksExplorer from '@/components/WorksExplorer';
 import { toCardWork } from '@/lib/card-work';
@@ -113,6 +114,8 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
               {dict.hero.staleBadge}
             </p>
           ) : null}
+
+          <SponsorSlot dict={dict} />
 
           <Reveal threshold={0.05}>
             <WorksExplorer works={cards} dict={dict} locale={locale} />

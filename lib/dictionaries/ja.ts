@@ -78,6 +78,7 @@ const dictionary: Dictionary = {
     otherWorks: 'ほかの作品',
     metadata: '作品情報',
   },
+  sponsor: { label: 'スポンサー', pitch: 'AI でゲームを作る人たちに、あなたのプロダクトを届けませんか。', cta: 'スポンサーになる' },
   footer: {
     disclaimer: 'GPT-6 Astra で作られた作品のコミュニティ管理リストです。OpenAI とは無関係です。掲載は探索する価値があることを示すもので、性能評価や公式推奨ではありません。',
     license: 'リスト自身のテキストとビジュアルは CC0 1.0 で公開しています。リンク先の作品は各自のライセンスに従います。',

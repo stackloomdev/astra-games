@@ -78,6 +78,7 @@ const dictionary: Dictionary = {
     otherWorks: 'Lanjut menjelajah',
     metadata: 'Info karya',
   },
+  sponsor: { label: 'Sponsor', pitch: 'Tampilkan produk Anda di depan orang-orang yang membuat game dengan AI.', cta: 'Jadi sponsor' },
   footer: {
     disclaimer: 'Daftar karya buatan GPT-6 Astra yang dikelola komunitas. Tidak berafiliasi dengan OpenAI. Masuk daftar berarti layak dijelajahi — bukan tolok ukur maupun rekomendasi resmi.',
     license: 'Teks dan visual milik daftar ini dirilis di bawah CC0 1.0. Karya yang ditautkan tetap memakai lisensinya masing-masing.',

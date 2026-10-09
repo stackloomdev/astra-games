@@ -78,6 +78,7 @@ const dictionary: Dictionary = {
     otherWorks: '继续看看',
     metadata: '作品信息',
   },
+  sponsor: { label: '赞助', pitch: '让你的产品出现在用 AI 做游戏的人面前。', cta: '成为赞助商' },
   footer: {
     disclaimer: '社区维护的 GPT-6 Astra 作品清单，与 OpenAI 无隶属关系。收录表示值得探索，不代表性能评测或官方推荐。',
     license: '清单文字与视觉素材以 CC0 1.0 贡献至公有领域；链接指向的作品仍遵循各自许可。',
