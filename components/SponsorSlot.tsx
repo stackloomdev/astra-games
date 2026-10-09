@@ -1,3 +1,4 @@
+import { ADS_ENABLED } from '@/lib/ads-enabled';
 import type { Dictionary } from '@/lib/i18n';
 import { SPONSOR_EMAIL } from '@/lib/links';
 import { SPONSOR } from '@/lib/sponsor';
@@ -12,6 +13,7 @@ const CONTACT_HREF = `mailto:${SPONSOR_EMAIL}?subject=${encodeURIComponent('Astr
 export default function SponsorSlot({ dict }: { dict: Dictionary }) {
   const { label, pitch, cta } = dict.sponsor;
   const sponsor = SPONSOR;
+  if (!ADS_ENABLED) return null;
 
   return (
     <aside

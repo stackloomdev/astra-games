@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
+import { ADS_ENABLED } from '@/lib/ads-enabled';
 import { adsAllowed, bannerForWidth, bannerMarkup, BANNERS, CONSENT_KEY, createAdQueue, GLOBAL_ADS, NATIVE_KEY, SMARTLINK } from '@/lib/adsterra';
 
 type Choice = 'accepted' | 'declined' | null;
@@ -13,6 +14,12 @@ function stillConsented() {
 }
 
 export function AdvertisingProvider({ children, locale }: { children: ReactNode; locale: string }) {
+  // Switched off: no consent prompt, no settings button, no provider scripts.
+  if (!ADS_ENABLED) return children;
+  return <ConsentedAdvertising locale={locale}>{children}</ConsentedAdvertising>;
+}
+
+function ConsentedAdvertising({ children, locale }: { children: ReactNode; locale: string }) {
   const path = usePathname();
   const [choice, setChoice] = useState<Choice>(null);
   const [ready, setReady] = useState(false);
@@ -59,6 +66,10 @@ export function AdvertisingProvider({ children, locale }: { children: ReactNode;
 }
 
 export function AdBanner({ rectangle = false }: { rectangle?: boolean }) {
+  return ADS_ENABLED ? <BannerSlot rectangle={rectangle} /> : null;
+}
+
+function BannerSlot({ rectangle }: { rectangle: boolean }) {
   const { enabled, zh } = useContext(AdsContext);
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<{ key: string; width: number; height: number } | null>(null);
@@ -92,6 +103,10 @@ export function AdBanner({ rectangle = false }: { rectangle?: boolean }) {
 }
 
 export function NativeAd() {
+  return ADS_ENABLED ? <NativeSlot /> : null;
+}
+
+function NativeSlot() {
   const { enabled, zh } = useContext(AdsContext);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
