@@ -23,6 +23,8 @@ export default async function InformationPage({ params }: Props) {
   const links = info === 'privacy' ? [
     ['Vercel Web Analytics · Privacy', 'https://vercel.com/docs/analytics/privacy-policy'],
     ['Vercel Speed Insights · Privacy', 'https://vercel.com/docs/speed-insights/privacy-policy'],
+    ['Adsterra · Privacy policy', 'https://adsterra.com/privacy-policy-managed/'],
+    ['Adsterra · Cookie policy', 'https://adsterra.com/cookies/'],
     ['Vercel · Privacy policy', 'https://vercel.com/legal/privacy-policy'],
     [zh ? '联系与隐私反馈' : 'Contact & privacy questions', `/${locale}/contact`],
   ] : [
