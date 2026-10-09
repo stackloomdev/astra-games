@@ -78,6 +78,7 @@ const dictionary: Dictionary = {
     otherWorks: 'Seguir explorando',
     metadata: 'Ficha',
   },
+  sponsor: { label: 'Patrocinio', pitch: 'Muestra tu producto a quienes crean juegos con IA.', cta: 'Patrocinar' },
   footer: {
     disclaimer: 'Lista mantenida por la comunidad de obras hechas con GPT-6 Astra. Sin relación con OpenAI. Estar listado significa que vale la pena explorarlo: no es un benchmark ni una recomendación oficial.',
     license: 'El texto y los recursos visuales propios de la lista se publican bajo CC0 1.0. Las obras enlazadas conservan sus propias licencias.',
