@@ -58,7 +58,7 @@ function ConsentedAdvertising({ children, locale }: { children: ReactNode; local
     {ready && <button className="ad-settings" onClick={() => setSettings(true)}>{zh ? '广告设置' : 'Ad settings'}</button>}
     {ready && (choice === null || settings) && <section className="ad-consent" role="dialog" aria-modal="false" aria-labelledby="ad-consent-title">
       <div><strong id="ad-consent-title">{zh ? '广告与 Cookie 选择' : 'Advertising & cookie choices'}</strong>
-        <p>{zh ? '同意后，本网站将加载 Adsterra 广告（包括弹窗和悬浮广告）。广告合作方可能使用 Cookie、IP 地址和设备信息进行广告投放、统计及反欺诈。拒绝后仍可浏览全部作品。' : 'With your permission, we load Adsterra ads, including popunders and floating ads. Advertising partners may use cookies, your IP address and device information for advertising, measurement and fraud prevention. You can browse all works if you decline.'} <a href={`/${zh ? 'zh-CN' : 'en'}/privacy`}>{zh ? '隐私说明' : 'Privacy notice'}</a></p>
+        <p>{zh ? '同意后，本网站将加载 Adsterra 广告（包括悬浮广告）。广告合作方可能使用 Cookie、IP 地址和设备信息进行广告投放、统计及反欺诈。拒绝后仍可浏览全部作品。' : 'With your permission, we load Adsterra ads, including floating ads. Advertising partners may use cookies, your IP address and device information for advertising, measurement and fraud prevention. You can browse all works if you decline.'} <a href={`/${zh ? 'zh-CN' : 'en'}/privacy`}>{zh ? '隐私说明' : 'Privacy notice'}</a></p>
       </div>
       <div className="ad-consent-actions"><button onClick={() => choose('declined')}>{zh ? '拒绝广告 Cookie' : 'Decline ad cookies'}</button><button onClick={() => choose('accepted')}>{zh ? '同意并继续' : 'Accept & continue'}</button></div>
     </section>}

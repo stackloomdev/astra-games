@@ -2,7 +2,6 @@ export const AD_HOST = 'astragames.aigccreative.com';
 export const CONSENT_KEY = 'astra-ad-consent-v1';
 export const SMARTLINK = 'https://arwf.org/4/02136891cd5e3c14177cf28df443c36c';
 export const GLOBAL_ADS = [
-  { id: 'astra-popunder', src: 'https://afders.org/1/f779f69d28e9832b585c2b0c107585f6', target: 'head' },
   { id: 'astra-social-bar', src: 'https://bicea.org/14/95086edd12585303ad57f6de57f152dc', target: 'body' },
 ] as const;
 export const NATIVE_KEY = 'e56e2513b7bdba55a8fbe1807e479a71';
