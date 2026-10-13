@@ -9,6 +9,21 @@ import subprocess
 import time
 
 
+def write_credentials(config, key_id, key_secret):
+    config.parent.mkdir(mode=0o700, exist_ok=True)
+    # builtins.open supports an opener; pathlib.Path.open does not.
+    output = open(config, 'x', opener=lambda path, flags: os.open(path, flags, 0o600))
+    try:
+        with output:
+            json.dump({'current': 'default', 'profiles': {'default': {
+                'mode': 'AK', 'access_key_id': key_id, 'access_key_secret': key_secret,
+            }}}, output)
+    except BaseException:
+        # Exclusive open succeeded: only this invocation's new file is removed.
+        config.unlink(missing_ok=True)
+        raise
+
+
 def main():
     instance = os.environ['ECS_INSTANCE_ID']
     region = os.environ['ECS_REGION']
@@ -28,12 +43,8 @@ def main():
     if not key_id or not key_secret:
         raise ValueError('Configure ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET Actions secrets')
     config = Path.home() / '.workbench/config.json'
-    config.parent.mkdir(mode=0o700, exist_ok=True)
     # A runner must start without other Workbench profiles; never overwrite one.
-    with config.open('x', opener=lambda path, flags: os.open(path, flags, 0o600)) as output:
-        json.dump({'current': 'default', 'profiles': {'default': {
-            'mode': 'AK', 'access_key_id': key_id, 'access_key_secret': key_secret,
-        }}}, output)
+    write_credentials(config, key_id, key_secret)
     child_env = {key: value for key, value in os.environ.items() if key not in {'ALIBABA_CLOUD_ACCESS_KEY_ID', 'ALIBABA_CLOUD_ACCESS_KEY_SECRET'}}
 
     def cli(*args):
@@ -94,8 +105,10 @@ def main():
                 raise RuntimeError('ECS transaction exceeded the observation deadline; inspect its systemd log')
             time.sleep(5)
     finally:
-        subprocess.run(['workbench', 'daemon', 'stop'], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
-        config.unlink(missing_ok=True)
+        try:
+            subprocess.run(['workbench', 'daemon', 'stop'], env=child_env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
+        finally:
+            config.unlink(missing_ok=True)
 
 
 if __name__ == '__main__':
