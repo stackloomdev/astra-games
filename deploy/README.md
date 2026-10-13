@@ -37,7 +37,9 @@ References: [Workbench credential configuration](https://help.aliyun.com/en/ecs/
    and raster screenshots from the upstream's official codeload archive. Every
    locale must be ready before building. The existing bounded cover builder runs
    before Next.js; unavailable external cover sources retain their normal fallback.
-3. Next.js standalone output includes `public` and `.next/static`. CI starts that
+3. `ASTRA_ECS_BUILD=1` enables Next.js standalone output only in the ECS build,
+   preserving existing Vercel/Netlify build adapters. The package includes
+   `public` and `.next/static`. CI starts that
    exact package and checks locale redirects, all language pages and fresh APIs,
    JavaScript/CSS, built WebP covers, original screenshot previews, and editorial
    pages. The build ID and `/api/health` identify the exact commit.

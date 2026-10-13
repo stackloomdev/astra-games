@@ -3,6 +3,7 @@ set -euo pipefail
 export ASTRA_README_BASE_URL=http://127.0.0.1:3031/
 export ASTRA_MIRROR_PORT=3031
 export NEXT_TELEMETRY_DISABLED=1
+export ASTRA_ECS_BUILD=1
 python3 -u deploy/catalog-mirror.py lib/i18n.ts > "$RUNNER_TEMP/astra-build-mirror.log" 2>&1 &
 mirror_pid=$!
 trap 'kill "$mirror_pid" 2>/dev/null || true' EXIT
