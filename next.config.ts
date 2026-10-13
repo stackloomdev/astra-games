@@ -39,9 +39,12 @@ function readCoverManifest(): { widths: number[]; keys: string[] } {
 const covers = readCoverManifest();
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
+  generateBuildId: async () => process.env.ASTRA_BUILD_SHA || null,
   // Inlined into server and client bundles alike, so the rendered HTML, the
   // hydrated cards and the WebGL deck all agree on which covers are static files.
   env: {
+    ASTRA_BUILD_SHA: process.env.ASTRA_BUILD_SHA || '',
     ASTRA_COVER_KEYS: covers.keys.join(','),
     ASTRA_COVER_WIDTHS: covers.widths.join(','),
   },

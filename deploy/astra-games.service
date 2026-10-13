@@ -1,0 +1,24 @@
+[Unit]
+Description=Astra Games Next.js application
+Wants=network-online.target astra-catalog-mirror.service
+After=network-online.target astra-catalog-mirror.service
+
+[Service]
+Type=simple
+User=astra-games
+Group=astra-games
+WorkingDirectory=/opt/astra-games/current
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+Environment=ASTRA_README_BASE_URL=http://127.0.0.1:3031/
+ExecStart=/bin/bash /opt/astra-games/start-app.sh
+Restart=on-failure
+RestartSec=5
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
