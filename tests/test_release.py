@@ -209,6 +209,37 @@ class ReleaseTests(unittest.TestCase):
         self.assertTrue(self.old.exists())
         self.assertEqual((self.root / 'current').resolve(), self.old)
 
+    def test_success_marker_failure_is_a_transaction_failure(self):
+        deployer = FakeDeployer(self.root)
+        original_touch = Path.touch
+        def touch(path, *args, **kwargs):
+            if path == self.new / '.deployed':
+                raise OSError('marker is unwritable')
+            return original_touch(path, *args, **kwargs)
+        with patch.object(release, 'mirror_ready'), patch.object(Path, 'touch', touch):
+            with self.assertRaisesRegex(OSError, 'marker'):
+                deployer.activate(self.new, 'b' * 40, lambda: deployer.finish(self.new, (40, 1), 'deploy'))
+        self.assertEqual((self.root / 'current').resolve(), self.old)
+        self.assertFalse(deployer.state.exists())
+
+    def test_old_mirror_restart_error_does_not_skip_app_recovery(self):
+        (self.new / 'deploy/catalog-mirror.py').write_text('new mirror')
+        deployer = FakeDeployer(self.root, fail=True)
+        restarts = 0
+        def command(*args):
+            nonlocal restarts
+            deployer.commands.append(args)
+            if args == ('systemctl', 'restart', 'astra-catalog-mirror'):
+                restarts += 1
+                if restarts == 2:
+                    raise release.subprocess.CalledProcessError(1, args)
+        deployer.command = command
+        with patch.object(release, 'mirror_ready'):
+            with self.assertRaises(RuntimeError):
+                deployer.activate(self.new, 'b' * 40)
+        self.assertEqual((self.root / 'current').resolve(), self.old)
+        self.assertEqual(deployer.checks[-1][1], 'a' * 40)
+
 
 if __name__ == '__main__':
     unittest.main()

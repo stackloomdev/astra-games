@@ -165,10 +165,10 @@ class Deployer:
             self.point_to(previous)
             self.restore_configuration(configuration)
             if mirror_changed:
-                self.command('systemctl', 'restart', 'astra-catalog-mirror')
                 try:
+                    self.command('systemctl', 'restart', 'astra-catalog-mirror')
                     mirror_ready('http://127.0.0.1:3031/', previous / 'lib/i18n.ts', seconds=10)
-                except (RuntimeError, OSError):
+                except (RuntimeError, OSError, subprocess.SubprocessError):
                     print('WARNING: prior upstream mirror is unavailable; restoring the app with its static pages and fallback', flush=True)
             self.command('systemctl', 'restart', 'astra-games')
             previous_metadata = previous / 'release.json'
@@ -178,9 +178,9 @@ class Deployer:
             raise
 
     def finish(self, release, sequence, action):
+        (release / '.deployed').touch()
         write_json(self.state, {'run_id': sequence[0], 'attempt': sequence[1], 'release': release.name, 'action': action})
         try:
-            (release / '.deployed').touch()
             # Only prune releases produced by this installer; preserve manual ones.
             completed = sorted((path for path in self.releases.iterdir() if path.is_dir() and not path.is_symlink() and (path / '.deployed').exists()),
                                key=lambda path: (path / '.deployed').stat().st_mtime, reverse=True)
