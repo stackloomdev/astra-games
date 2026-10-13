@@ -122,6 +122,14 @@ class ReleaseTests(unittest.TestCase):
                 deployer.activate(self.new, 'b' * 40)
             self.assertEqual(('systemctl', 'restart', 'astra-catalog-mirror') in deployer.commands, changed)
 
+    def test_legacy_release_without_bundled_mirror_can_activate(self):
+        (self.old / 'deploy/catalog-mirror.py').unlink()
+        deployer = FakeDeployer(self.root)
+        with patch.object(release, 'mirror_ready'):
+            deployer.activate(self.new, 'b' * 40)
+        self.assertEqual((self.root / 'current').resolve(), self.new)
+        self.assertIn(('systemctl', 'restart', 'astra-catalog-mirror'), deployer.commands)
+
     def test_first_rollback_can_restore_the_legacy_source_release(self):
         (self.old / 'release.json').unlink()
         deployer = FakeDeployer(self.root, fail=True)

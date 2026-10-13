@@ -144,7 +144,8 @@ class Deployer:
         previous = self.current.resolve(strict=True)
         # Preserve the production mirror's last-good snapshot when its code and
         # locale registry are unchanged; staging used an independent process.
-        mirror_changed = any((previous / name).read_bytes() != (release / name).read_bytes()
+        mirror_changed = any(not (previous / name).is_file() or not (release / name).is_file() or
+                             (previous / name).read_bytes() != (release / name).read_bytes()
                              for name in ['deploy/catalog-mirror.py', 'lib/i18n.ts'])
         configuration = self.snapshot_configuration()
         try:
