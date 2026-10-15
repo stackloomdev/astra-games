@@ -126,23 +126,9 @@ Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空�
 MIT。上游清单文字与视觉素材以 CC0 1.0 发布；链接指向的作品各自遵循原许可。
 
 
-### Adsterra advertising
+### Advertising
 
-**All ads and the sponsor slot are off by default.** Set `NEXT_PUBLIC_ADS_ENABLED=true`
-in the deployment's environment (Vercel and Netlify separately) and redeploy to turn
-them on; the value is inlined at build time.
-
-The seven approved units are configured in `lib/adsterra.ts`. Advertising runs only on
-`astragames.aigccreative.com`, on localized catalogue and work detail pages, after
-explicit advertising consent. Local development and Vercel previews never request
-live ads. About, privacy, contact and guides have no ad scripts. Ad settings lets
-visitors decline or withdraw; withdrawal reloads the document to remove handlers.
-
-Desktop uses the 728×90 banner; narrower layouts use 320×50. Both also use 300×250
-and one native placement per page. Popunder and Social Bar load once per document.
-Smartlink is a labelled sponsored link, never a replacement for Play. Provider tags
-run directly in the page; postscribe serializes banner tags so their global
-`atOptions` values cannot race and supports their document.write behavior. Do not
-wrap the provider tags in an additional iframe, refresh ads automatically, click
-ads during testing, or enable them on an unapproved domain. Ad fill and earnings
-are controlled by the provider; verify reporting in the Adsterra dashboard.
+Third-party ad-network scripts, placements, Smartlink links and the advertising
+consent UI were removed on October 15, 2026 after reports of unwanted redirects.
+`NEXT_PUBLIC_ADS_ENABLED` now controls only the independently rendered sponsor
+slot; it cannot enable the removed ad-network integration.

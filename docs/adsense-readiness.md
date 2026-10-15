@@ -28,3 +28,11 @@ Before ads go live, implement the applicable consent management requirements, up
 - Adsterra consent controls are not a Google-certified CMP and do not satisfy future Google consent requirements by themselves. If Google ads are introduced, assess the actual partner, region and cookie behavior before enabling them.
 - Using another advertising network is not, by itself, proof of an AdSense violation. Google explicitly prohibits Google ads on sites containing or triggering pop-unders; the configured Adsterra pop-under must be disabled before combining with Google ads. Review floating placements, deceptive links and the landing pages actually delivered. See https://support.google.com/adsense/answer/1346295 and https://support.google.com/adsense/answer/9728. The rejection notice does not identify the exact offending pages.
 - Keep source research distinct from actual play observations, and review permissions for branded recreations individually. Listing all works does not automatically make all pages suitable for advertisements.
+
+## October 15, 2026 advertising removal
+
+The former Adsterra integration (all remaining scripts, placements, Smartlinks,
+consent UI and PostScribe dependency) has been removed after unwanted redirects
+were reported. The October 9 audit above describes historical behavior.
+`NEXT_PUBLIC_ADS_ENABLED` now controls only the independent sponsor slot.
+This removal is not a guarantee of AdSense approval.
