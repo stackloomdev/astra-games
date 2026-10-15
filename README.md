@@ -117,7 +117,7 @@ URL 来自社区编辑的 README，所以抓取是收紧的：只允许 HTTPS，
 
 ## 部署
 
-Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空。
+Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空。连接 GitHub 仓库后，由 Vercel 的 Git 集成自动构建和发布。
 
 生产域名 `astragames.aigccreative.com` 目前指向旧的 `astragames` 项目；切换到本项目需要在 Vercel 里把域名从旧项目移除、绑定到新项目。`aigccreative.com` 属于另一个雷达网站项目，不要整域绑定。
 

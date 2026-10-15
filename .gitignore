@@ -46,7 +46,7 @@ next-env.d.ts
 # editor / agent local config
 /.claude
 
-# Deployment artifacts and local cloud credentials
+# Local artifacts and credentials
 /dist/
 /.workbench/
 /.aws/

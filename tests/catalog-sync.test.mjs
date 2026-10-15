@@ -50,27 +50,29 @@ test('an explicitly emptied upstream catalogue removes obsolete entries', async 
   assert.deepEqual(empty.works, []);
 });
 
-test('mirror responses preserve upstream verification time and remaining freshness', async () => {
-  const upstreamTime = Date.UTC(2026, 8, 17);
-  let time = upstreamTime + 299_000;
+test('upstream conditional requests renew freshness without losing catalogue entries', async () => {
+  let time = Date.UTC(2026, 8, 17);
   let reads = 0;
-  const service = createCatalogService({ fallback: null, now: () => time,
-    fetchImpl: async () => {
+  const service = createCatalogService({ readmePath: 'README.zh-CN.md', fallback: null, now: () => time,
+    fetchImpl: async (url, options) => {
       reads++;
-      if (reads === 1) return new Response(document(['First']), { headers: {
-        'X-Astra-Upstream-Checked-At': new Date(upstreamTime).toISOString(), ETag: 'first',
-      } });
-      if (reads === 2) return new Response(null, { status: 304, headers: {
-        'X-Astra-Upstream-Checked-At': new Date(upstreamTime + 300_000).toISOString(),
-      } });
+      assert.equal(url, 'https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/README.zh-CN.md');
+      if (reads === 1) return new Response(document(['First']), { headers: { ETag: 'first' } });
+      assert.equal(options.headers['If-None-Match'], 'first');
+      if (reads === 2) return new Response(null, { status: 304 });
       return new Response('Unavailable', { status: 503 });
     } });
-  assert.equal((await service.loadCatalog()).source.lastSuccessfulAt, new Date(upstreamTime).toISOString());
-  time += 1_001;
+  const first = await service.loadCatalog();
+  time += 300_001;
   const unchanged = await service.loadCatalog();
   assert.equal(reads, 2);
-  assert.equal(unchanged.source.lastSuccessfulAt, new Date(upstreamTime + 300_000).toISOString());
-  time = upstreamTime + 600_001;
+  assert.deepEqual(unchanged.works, first.works);
+  assert.equal(unchanged.source.revision, first.source.revision);
+  assert.equal(unchanged.source.lastSuccessfulAt, new Date(time).toISOString());
+  time += 299_999;
+  await service.loadCatalog();
+  assert.equal(reads, 2);
+  time += 2;
   const stale = await service.loadCatalog();
   assert.equal(reads, 3);
   assert.equal(stale.source.status, 'stale');
