@@ -21,6 +21,10 @@ export default async function InformationPage({ params }: Props) {
   const copy = INFORMATION[info][locale];
   const zh = locale === 'zh-CN';
   const links = info === 'privacy' ? [
+    [zh ? 'Google 如何使用合作网站的数据' : 'How Google uses data from partner sites', 'https://policies.google.com/technologies/partner-sites'],
+    [zh ? 'Google 广告合作伙伴' : 'Google advertising partners', 'https://support.google.com/adsense/answer/9012903'],
+    [zh ? 'Google 我的广告中心' : 'Google My Ad Center', 'https://myadcenter.google.com/'],
+    [zh ? '第三方个性化广告退出选项' : 'Third-party personalized advertising choices', 'https://optout.aboutads.info/'],
     ['Vercel Web Analytics · Privacy', 'https://vercel.com/docs/analytics/privacy-policy'],
     ['Vercel Speed Insights · Privacy', 'https://vercel.com/docs/speed-insights/privacy-policy'],
     ['Vercel · Privacy policy', 'https://vercel.com/legal/privacy-policy'],

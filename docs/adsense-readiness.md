@@ -17,7 +17,7 @@ The September content change did not certify approval or submit an application. 
 
 Review the main `aigccreative.com` website as well: the rejection screenshot names that site entry, and the precise rejected pages are not identified. The separate radar website is outside this repository.
 
-Assess proposed ad-bearing pages for sufficient original value and actual rights. A CC0 catalogue statement does not clear every external game or branded recreation. Do not place ads on unreviewed, thin, copied or problematic pages merely because a domain is approved. A future implementation should explicitly select eligible pages; global automatic ad injection is not added here.
+Assess proposed ad-bearing pages for sufficient original value and actual rights. A CC0 catalogue statement does not clear every external game or branded recreation. Do not place ads on unreviewed, thin, copied or problematic pages merely because a domain is approved. The October 28 integration adds the owner-requested AdSense loader to language pages; it does not certify every page as suitable for ads. Use AdSense page/area exclusions for unsuitable pages and controls.
 
 Before ads go live, implement the applicable consent management requirements, update privacy disclosures for actual Google data use, and verify publisher-specific ads.txt/domain configuration. None of these is replaced by a privacy page or disclaimer. See the current Google Publisher Policies for replicated content, privacy disclosures and intellectual property.
 
@@ -36,3 +36,12 @@ consent UI and PostScribe dependency) has been removed after unwanted redirects
 were reported. The October 9 audit above describes historical behavior.
 `NEXT_PUBLIC_ADS_ENABLED` now controls only the independent sponsor slot.
 This removal is not a guarantee of AdSense approval.
+
+## October 28, 2026 Google AdSense connection
+
+- Added the owner's ordinary, non-AMP AdSense script to the shared language layout's `<head>`, with `async`, `crossorigin="anonymous"` and publisher `ca-pub-9565558700858500`. It covers the catalogue, work details and information pages in every supported language without a second client-side injector. It is independent of the sponsor-slot environment flag.
+- Added the matching `public/ads.txt` entry on this subdomain. The main radar site's existing verification and ads.txt are managed in its separate repository.
+- Updated English and Chinese privacy disclosures, Google partner-data/advertising-partner references and personalization opt-out links. No Adsterra scripts or consent controls are reintroduced.
+- The supplied dashboard still shows the site as Getting ready / 正在准备. This deployment is code installation, not approval or proof of ad delivery. Do not delete and recreate the site entry to restart review.
+- In AdSense Privacy & messaging, the owner should configure/publish the applicable Google-certified consent messages for the site's audiences. The old Adsterra consent UI is absent and is not a certified Google CMP. This code change does not claim the dashboard's consent messages have been configured.
+- Auto ads are already enabled in the supplied dashboard. Actual ad placement and eligibility remain controlled by Google and the site's account settings; this integration does not add fake ad units or request clicks.

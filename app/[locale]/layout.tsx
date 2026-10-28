@@ -63,6 +63,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
 
   return (
     <html lang={entry.htmlLang} dir={entry.dir} className={figtree.variable}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9565558700858500"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         {/*
           Entrance animations start from a hidden state, and the hero headline
