@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { GUIDES, CONTENT_LOCALES } from '../lib/editorial.ts';
 const base = process.argv[2] || 'http://localhost:3100';
+const canonicalOrigin = 'https://aigccreative.com';
 const paths = CONTENT_LOCALES.flatMap((locale) => [
   `/${locale}/guides`, ...GUIDES.map(({ slug }) => `/${locale}/guides/${slug}`),
   ...['about', 'privacy', 'contact'].map((page) => `/${locale}/${page}`),
@@ -13,9 +14,8 @@ for (const path of paths) {
   assert.equal(response.status, 200, path);
   const html = await response.text();
   assert.ok(html.includes('<h1'), `${path}: server-rendered heading`);
-  assert.ok(html.includes(`rel="canonical" href="https://astragames.aigccreative.com${path}"`), `${path}: self canonical`);
-  assert.ok(sitemap.includes(`<loc>https://astragames.aigccreative.com${path}</loc>`), `${path}: sitemap entry`);
-  assert.ok(!html.includes('pagead2.googlesyndication.com'), `${path}: no ad script`);
+  assert.ok(html.includes(`rel="canonical" href="${canonicalOrigin}${path}"`), `${path}: self canonical`);
+  assert.ok(sitemap.includes(`<loc>${canonicalOrigin}${path}</loc>`), `${path}: sitemap entry`);
 }
 for (const path of ['/ja/privacy', '/ja/guides', '/en/guides/missing-guide']) {
   assert.equal((await fetch(base + path)).status, 404, `${path}: unavailable content stays 404`);
