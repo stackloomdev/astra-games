@@ -4,7 +4,7 @@
 
 作品目录不在本仓库维护 —— 页面在服务端解析上游对应语言的 README，上游合并 PR 后本站几分钟内自动跟上，不需要改网站数据，也不需要重新部署。
 
-- 线上：<https://astragames.aigccreative.com>
+- 线上：<https://aigccreative.com>
 - 设计系统：[DESIGN.md](DESIGN.md)
 
 ## 页面
@@ -119,7 +119,7 @@ URL 来自社区编辑的 README，所以抓取是收紧的：只允许 HTTPS，
 
 Vercel，零配置。Framework 自动识别为 Next.js，Root Directory 留空。连接 GitHub 仓库后，由 Vercel 的 Git 集成自动构建和发布。
 
-生产域名 `astragames.aigccreative.com` 目前指向旧的 `astragames` 项目；切换到本项目需要在 Vercel 里把域名从旧项目移除、绑定到新项目。`aigccreative.com` 属于另一个雷达网站项目，不要整域绑定。
+生产站点使用 `www.aigccreative.com`，Vercel 将 `aigccreative.com` 转到此站点。旧域名 `astragames.aigccreative.com` 继续绑定生产项目，由 `next.config.ts` 将请求永久重定向到 `aigccreative.com`，保留路径和查询参数。
 
 ## 许可
 

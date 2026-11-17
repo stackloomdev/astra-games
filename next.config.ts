@@ -46,6 +46,20 @@ const nextConfig: NextConfig = {
     ASTRA_COVER_WIDTHS: covers.widths.join(','),
   },
 
+  // Move the old host before normalizing trailing slashes on the destination.
+  skipTrailingSlashRedirect: true,
+  async redirects() {
+    return [
+      {
+        source: '/:path(.*)',
+        has: [{ type: 'host', value: 'astragames\\.aigccreative\\.com' }],
+        destination: 'https://aigccreative.com/:path',
+        permanent: true,
+      },
+      { source: '/:path+/', destination: '/:path+', permanent: true },
+    ];
+  },
+
   async headers() {
     // Scoped to the rendered pages: static assets gain nothing from carrying
     // discovery links on every request.

@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { loadCatalogFor } from '@/lib/catalog-service';
 import { DEFAULT_LOCALE, isLocale, type Locale } from '@/lib/i18n';
+import { SITE_URL } from '@/lib/links';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -92,7 +93,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
               : `${workCount} works built with GPT-6 Astra`}
           </div>
           <div style={{ margin: '0 14px', color: '#ff385c' }}>·</div>
-          <div>astragames.aigccreative.com</div>
+          <div>{new URL(SITE_URL).hostname}</div>
         </div>
       </div>
     ),

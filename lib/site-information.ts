@@ -35,7 +35,7 @@ export const INFORMATION: Record<InformationPage, Localized<ArticleCopy>> = {
     en: {
       title: 'Privacy notice',
       description: 'How Astra Games uses hosting, audience statistics and performance measurements, and what happens when you follow an external game link.',
-      intro: 'This notice covers astragames.aigccreative.com. It does not describe the separate radar website or the external games and repositories you may visit. Questions about this website can be raised through the contact page.',
+      intro: 'This notice covers Astra Games at aigccreative.com. External games and repositories have their own privacy policies. Use the contact page for questions about this website.',
       sections: [
         { heading: 'Browsing and hosting', paragraphs: ['Browsing the catalogue does not require an account, email address or payment. Catalogue search and category filtering run in the page; this version does not send the text you type into that search field as a custom analytics event.', 'Vercel hosts and delivers the website. Requests necessarily provide technical information such as an IP address and request headers to the hosting infrastructure; operational or security logs may be processed by the provider. We do not promise that no technical data is processed simply because the site has no login.'] },
         { heading: 'Audience and performance measurement', paragraphs: ['The production website includes Vercel Web Analytics and Speed Insights. They provide visit statistics and loading/interaction measurements. Depending on the service, data can include page URL, referrer, browser/device information, approximate region and timing metrics.', 'Vercel describes these services as using no analytics cookies. This does not mean that loading a page sends no data. Read the linked provider notices for their current processing and storage details. Browser tools that block these measurement requests do not prevent you from using the catalogue.'] },
@@ -47,7 +47,7 @@ export const INFORMATION: Record<InformationPage, Localized<ArticleCopy>> = {
     'zh-CN': {
       title: '隐私政策',
       description: '说明 Astra Games 的托管、访问统计、性能测量，以及打开外部作品链接后的数据处理边界。',
-      intro: '本说明适用于 astragames.aigccreative.com，不覆盖独立的雷达主站，也不覆盖你通过本站访问的外部游戏和仓库。有关本站的问题可通过联系页面提出。',
+      intro: '本说明适用于 aigccreative.com 上的 Astra Games。外部游戏和仓库适用各自的隐私政策。有关本站的问题可通过联系页面提出。',
       sections: [
         { heading: '浏览与网站托管', paragraphs: ['浏览目录不需要注册、提供邮箱或付款。目录搜索和分类筛选在页面内执行；本版本不会把你在搜索框输入的文字作为自定义统计事件发送。', '网站由 Vercel 托管和分发。访问请求必然向托管基础设施提供 IP 地址、请求头等技术信息，服务提供方可能处理运行或安全日志。没有登录功能不等于没有技术数据处理。'] },
         { heading: '访问统计与性能测量', paragraphs: ['生产网站包含 Vercel Web Analytics 与 Speed Insights，用来了解访问情况和页面加载、交互性能。根据不同服务，数据可能包含页面网址、来源、浏览器与设备信息、大致地区以及计时指标。', 'Vercel 将这些服务描述为不使用统计 Cookie；这不等于访问页面不会传输数据。当前处理与存储方式见下方服务商说明。使用浏览器工具阻止这些测量请求，不影响浏览目录。'] },
